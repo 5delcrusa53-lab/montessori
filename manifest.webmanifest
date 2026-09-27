@@ -1,0 +1,43 @@
+{
+  "name": "L’atelier Montessori — 30 jeux",
+  "short_name": "Montessori",
+  "description": "30 jeux inspirés du vrai matériel Montessori, pour les enfants de 5 à 8 ans.",
+  "lang": "fr",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": [
+    "fullscreen",
+    "standalone"
+  ],
+  "orientation": "any",
+  "background_color": "#eef1e4",
+  "theme_color": "#eef1e4",
+  "categories": [
+    "education",
+    "kids",
+    "games"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>L’atelier Montessori — 30 jeux pour les 5-8 ans</title>
+<meta name="description" content="30 jeux inspirés du vrai matériel Montessori, pour les enfants de 5 à 8 ans.">
+<meta name="theme-color" content="#eef1e4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b2019" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Montessori">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eef1e4;--paper:#fffef9;--ink:#2f3a2b;--muted:#6f7a66;--line:#d9dfcb;--wood:#ebcd9b;--wood2:#c9955a;
+--lang:#dc5b8a;--math:#2f6fd0;--sens:#e9822c;--monde:#379e52;--ok:#2d9d55;--bad:#d9534a;--gold:#e3a90f;
+--shadow:0 3px 0 rgba(70,60,30,.14),0 10px 22px rgba(70,60,30,.09);
+--font:ui-rounded,"SF Pro Rounded","Nunito","Varela Round","Segoe UI",system-ui,sans-serif;
+--read:"Andika","Comic Sans MS","Chalkboard SE","Comic Neue",ui-rounded,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b2019;--paper:#283024;--ink:#eef2e6;--muted:#aab4a0;--line:#3b4535;--shadow:0 3px 0 rgba(0,0,0,.35),0 10px 22px rgba(0,0,0,.28);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b2019;--paper:#283024;--ink:#eef2e6;--muted:#aab4a0;--line:#3b4535;--shadow:0 3px 0 rgba(0,0,0,.35),0 10px 22px rgba(0,0,0,.28);color-scheme:dark}
+html{background:var(--bg);height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-tap-highlight-color:transparent;overflow-x:hidden;line-height:1.4}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none;padding:0;touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--math);outline-offset:3px}
+[hidden]{display:none!important}
+.read{font-family:var(--read)}
+b.tv{color:#2f6fd0}b.tc{color:#d42f5f}
+
+/* ---------- accueil ---------- */
+.hero{max-width:1100px;margin:0 auto;padding:14px 18px 8px}
+.toprow{display:flex;justify-content:flex-end;gap:10px;align-items:center}
+.installbtn{margin-right:auto;min-height:46px;padding:0 16px;border-radius:999px;background:var(--monde);color:#fff;font-weight:700;box-shadow:var(--shadow)}
+.iconbtn{width:46px;height:46px;border-radius:14px;background:var(--paper);box-shadow:var(--shadow);font-size:1.25rem;display:grid;place-items:center}
+.starpill{background:var(--paper);box-shadow:var(--shadow);border-radius:999px;padding:10px 16px;font-weight:700;white-space:nowrap}
+.starpill.bump{animation:bump .45s}
+@keyframes bump{50%{transform:scale(1.22)}}
+.tiles{margin:18px 0 10px;display:flex;flex-wrap:wrap;gap:14px 22px;font-weight:400}
+.word{display:flex;gap:5px}
+.tile{display:grid;place-items:center;width:clamp(30px,8.4vw,58px);height:clamp(40px,11vw,74px);background:#fffdf6;border-radius:8px;
+font-family:var(--read);font-weight:700;font-size:clamp(1.6rem,7vw,3.4rem);box-shadow:0 3px 0 rgba(0,0,0,.16),0 6px 14px rgba(0,0,0,.08);transform:rotate(var(--r));line-height:1}
+.tile.v{color:#2463c9}.tile.c{color:#d12b3c}.tile.p{color:#8a7a60;width:clamp(16px,4vw,26px)}
+.lead{max-width:62ch;font-size:1.08rem;color:var(--muted);margin:6px 0 4px}
+.shelf{max-width:1100px;margin:0 auto;padding:18px 18px 6px}
+.shelf h2{display:flex;align-items:center;gap:10px;margin:0;font-size:1.45rem}
+.shelf h2 .dot{width:18px;height:18px;border-radius:5px;background:var(--c)}
+.shelf-sub{margin:2px 0 12px 28px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:14px}
+.card{display:flex;flex-direction:column;text-align:left;background:var(--paper);border-radius:18px;border:3px solid var(--wood);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.c-ico{display:grid;place-items:center;height:86px;font-size:2.8rem;background:color-mix(in srgb,var(--c) 16%,var(--paper));border-bottom:3px solid var(--wood)}
+.c-body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.c-name{font-weight:700;font-size:1.05rem;line-height:1.15}
+.c-sub{font-size:.86rem;color:var(--muted);line-height:1.3;flex:1}
+.c-foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.age{font-size:.76rem;font-weight:700;color:var(--c)}
+.medals{display:flex;gap:4px}.medals i{width:12px;height:12px;border-radius:50%;background:var(--line)}.medals i.on{background:var(--gold)}
+.tips{max-width:1100px;margin:26px auto 40px;padding:0 18px}
+.tips>div{background:var(--paper);border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);border-left:6px solid var(--monde)}
+.tips h3{margin:0 0 6px;font-size:1.15rem}.tips p{margin:8px 0;max-width:75ch;color:var(--ink)}
+
+/* ---------- vue jeu ---------- */
+#gameView{--c:var(--math)}
+.gbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:10px;padding:10px 14px;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.gtitle{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+.gtitle span{font-size:1.6rem}
+.gtitle h2{margin:0;font-size:1.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gwrap{max-width:760px;margin:0 auto;padding:2px 14px 30px}
+.levels{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}
+.lvl{flex:1 0 auto;display:flex;flex-direction:column;align-items:flex-start;padding:8px 12px;border-radius:14px;background:var(--paper);box-shadow:var(--shadow);text-align:left;border:3px solid transparent;max-width:230px}
+.lvl b{font-size:.9rem}.lvl small{font-size:.76rem;color:var(--muted)}
+.lvl.on{border-color:var(--c)}
+.dots{display:flex;gap:7px;justify-content:center;margin:6px 0 10px}
+.dots i{width:14px;height:14px;border-radius:50%;background:var(--line);transition:.3s}
+.dots i.on{background:var(--gold);transform:scale(1.15)}
+.fiche{background:var(--paper);border-radius:16px;box-shadow:var(--shadow);padding:10px 14px;font-size:.93rem}
+.fiche summary{cursor:pointer;font-weight:700}
+.fiche summary small{color:var(--muted);font-weight:400}
+.fiche dl{margin:8px 0 2px}.fiche dt{font-weight:700;margin-top:10px}.fiche dd{margin:2px 0 0;line-height:1.45;max-width:70ch}
+.consigne{display:flex;align-items:center;gap:10px;margin-top:12px;background:color-mix(in srgb,var(--c) 15%,var(--paper));border-radius:18px;padding:10px 12px}
+.consigne p{margin:0;font-size:1.12rem;font-weight:600;line-height:1.35}
+.speak{flex:none;width:48px;height:48px;border-radius:50%;background:var(--c);color:#fff;font-size:1.3rem}
+.area{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:14px;padding-bottom:40px}
+
+/* ---------- éléments communs ---------- */
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{background:var(--paper);border-radius:16px;padding:12px 18px;font-weight:700;font-size:1rem;box-shadow:var(--shadow);min-height:48px;transition:transform .12s}
+.btn:active,.numcard:active,.lcard:active{transform:translateY(2px)}
+.btn.primary{background:var(--c);color:#fff}
+.btn.big{font-size:1.3rem;padding:14px 22px}
+.btn.small{padding:6px 12px;min-height:38px;font-size:.9rem}
+.good{outline:4px solid var(--ok);outline-offset:3px}
+.btn.good,.numcard.good,.frb.good,.co-b.good,.sgcard.good,.lcard.good{background:var(--ok)!important;color:#fff!important}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@keyframes popin{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.lrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.emo{font-size:2.4rem;line-height:1}
+.lcard{width:78px;height:92px;border-radius:14px;font-family:var(--read);font-size:3.2rem;font-weight:700;display:grid;place-items:center;box-shadow:var(--shadow);color:#33291f}
+.lcard.v{background:#bcd8f6}.lcard.c{background:#f6c2d3}
+.numcard{min-width:72px;height:80px;padding:0 14px;border-radius:14px;background:#fffdf6;color:#33291f;font-size:2.3rem;font-weight:700;display:grid;place-items:center;box-shadow:var(--shadow)}
+.numcard.big{font-size:3.2rem;min-width:104px;height:104px}
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translate(-50%,160%);background:var(--ok);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:30;transition:transform .3s;max-width:92vw;text-align:center}
+.toast.show{transform:translate(-50%,0)}.toast.soft{background:#7a5a3a}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
+.modal{position:fixed;inset:0;background:rgba(30,35,25,.5);display:grid;place-items:center;z-index:50;padding:20px}
+.mbox{background:var(--paper);border-radius:26px;padding:24px;text-align:center;max-width:380px;width:100%;animation:popin .3s}
+.mbox h3{margin:6px 0;font-size:1.5rem}.m-emo{font-size:4rem}
+.mbtns{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+
+/* 1 lettres rugueuses */
+.rg{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.rg-word{display:flex;align-items:center;gap:12px;background:var(--paper);border-radius:18px;padding:10px 18px;box-shadow:var(--shadow);font-size:1.7rem}
+.rg-word b{color:var(--c)}
+.rg-card{position:relative;width:min(80vw,320px);aspect-ratio:1;border-radius:22px;box-shadow:var(--shadow);overflow:hidden;border:8px solid #e2c28e}
+.rg-card.v{background:#8fbdec}.rg-card.c{background:#f0a3bd}
+.rg-card canvas{position:absolute;inset:0;width:100%;height:100%}
+.rg-dr{touch-action:none;cursor:crosshair}
+.gauge{width:min(80vw,320px);height:14px;border-radius:99px;background:var(--line);overflow:hidden}
+.gauge i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f5c542,var(--ok));transition:width .25s}
+
+/* 2 son */
+.sn{display:flex;flex-direction:column;align-items:center;gap:18px}
+.sn-pic{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--paper);border-radius:24px;padding:16px 30px;box-shadow:var(--shadow)}
+.emo.xl{font-size:5rem}
+.sn-w{font-size:2.1rem;letter-spacing:.03em}
+.blank{display:inline-block;min-width:1em;border-bottom:4px dashed var(--c);color:var(--muted);text-align:center}
+.hp{font-size:.9rem;color:var(--muted)}
+
+/* 3 alphabet mobile */
+.am{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.am-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center}
+.am-pic{font-size:3.6rem;background:var(--paper);border-radius:20px;padding:6px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:6px}
+.am-pic small{font-size:1rem}
+.am-model{font-size:2.1rem;color:var(--muted);letter-spacing:.14em}
+.am-mat{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:14px;border-radius:14px;background:#dfe8d0;min-height:86px;width:min(100%,560px)}
+.am-slot{width:clamp(32px,9.5vw,48px);height:58px;border-radius:10px;border:2.5px dashed #9aa58c;background:rgba(255,255,255,.5);font-family:var(--read);font-size:2.2rem;font-weight:700;display:grid;place-items:center}
+.am-slot.v,.am-l.v{color:#2463c9}.am-slot.c,.am-l.c{color:#d12b3c}
+.am-slot.v,.am-slot.c{border:2.5px solid transparent;background:#fffdf6;box-shadow:0 2px 0 rgba(0,0,0,.14);animation:popin .2s}
+.am-slot.wrong{border-color:var(--bad)!important;background:#ffe7e4}
+.am-box{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;width:min(100%,460px);background:var(--wood);padding:10px;border-radius:16px;box-shadow:inset 0 2px 6px rgba(0,0,0,.18)}
+.am-l{height:52px;background:#fffdf6;border-radius:8px;font-family:var(--read);font-size:1.9rem;font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,.14)}
+
+/* 4 grammaire */
+.gr{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%}
+.gr-sent{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:flex-end;font-size:1.9rem}
+.gr-w{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 10px;border-radius:14px;border:3px solid transparent}
+.gr-w.cur{border-color:var(--c);background:var(--paper)}
+.gr-s{width:52px;height:52px;border-radius:12px;background:#fffdf6;border:2px dashed #c6b89e;display:grid;place-items:center}
+.gr-w.done .gr-s{border:2px solid transparent;animation:popin .25s}
+.gr-p{font-size:1.9rem;padding-bottom:12px}
+.sym{width:44px;height:44px;display:block}
+.gr-pal{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.gr-b{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fffdf6;color:#33291f;border-radius:16px;padding:10px 12px;box-shadow:var(--shadow);min-width:88px;font-weight:700;font-size:.9rem}
+
+/* 5 barres numériques */
+.nbw{--u:min(8.2vw,36px);display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.nb-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+.nb{display:inline-flex;border-radius:4px;overflow:hidden;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.nb i{width:var(--u);height:32px;position:relative;cursor:pointer;display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700;font-size:.9rem}
+.nb i.r{background:#d93636}.nb i.b{background:#2f6fd0}
+.nb i.k::after{content:attr(data-n)}
+.plus{font-size:1.9rem}
+.nb-count{color:var(--muted);font-weight:600;text-align:center}
+
+/* 6 fuseaux */
+.fz{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.fz-basket{background:var(--paper);border-radius:18px;padding:10px 14px;box-shadow:var(--shadow);width:min(100%,540px);font-weight:700}
+.fz-pile{display:flex;flex-wrap:wrap;gap:3px;margin-top:8px;min-height:28px}
+.fz-pile i,.fz-in i{display:block;width:6px;height:28px;border-radius:3px;background:linear-gradient(90deg,#c08a4e,#f2d4a2 50%,#c08a4e);clip-path:polygon(50% 0,100% 18%,100% 82%,50% 100%,0 82%,0 18%)}
+.fz-box{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;width:min(100%,540px);background:#a8743f;padding:8px;border-radius:14px}
+.fz-c{position:relative;background:#f3dfbd;border-radius:6px;padding:26px 3px 30px;min-height:120px;display:flex;flex-direction:column}
+.fz-num{position:absolute;top:2px;left:0;right:0;text-align:center;font-weight:700;font-size:1.25rem;color:#5b3d1e}
+.fz-in{flex:1;display:flex;flex-wrap:wrap;gap:3px;align-content:flex-start;justify-content:center;padding:4px;min-height:64px}
+.fz-in i{height:34px}
+.fz-rm{position:absolute;bottom:4px;left:50%;margin-left:-14px;width:28px;height:24px;border-radius:8px;background:rgba(0,0,0,.12);font-weight:700;color:#5b3d1e}
+.fz-c.good{box-shadow:inset 0 0 0 3px var(--ok)}.fz-c.bad{box-shadow:inset 0 0 0 3px var(--sens)}
+
+/* 7 cartes et jetons */
+.cj{display:flex;flex-direction:column;align-items:center;gap:14px}
+.cj-tok{display:grid;grid-template-columns:32px 32px;column-gap:28px;row-gap:8px;min-height:52px;padding:10px 18px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow);min-width:140px;justify-content:center;background-image:linear-gradient(var(--line),var(--line));background-size:2px 100%;background-position:center;background-repeat:no-repeat}
+.cj-tok i{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff8a80,#d32f2f 60%,#9a1c1c);animation:popin .2s}
+.cj-q{text-align:center}.cj-q p{font-weight:700;margin:0 0 10px}
+
+/* 8 perles dorées */
+.pd{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.pd-num{font-size:3.3rem;font-weight:800;letter-spacing:.06em;background:#fffdf6;padding:0 20px;border-radius:14px;box-shadow:var(--shadow)}
+.pd-cards{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-weight:700}
+.pd-card{background:#fffdf6;border-radius:8px;padding:3px 10px;box-shadow:0 2px 0 rgba(0,0,0,.12);font-size:1.15rem}
+.pd-cards b{color:var(--muted)}
+.pd-tray{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.pd-take{width:82px;height:104px;background:var(--wood);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:8px 4px;color:#4a3420;font-size:.8rem;font-weight:700}
+.pd-ic{height:62px;display:grid;place-items:center}
+.pd-ic .br{height:60px;width:8px;background-size:8px 6px}
+.pd-ic .pl{width:54px;height:54px;background-size:5.4px 5.4px,auto}
+.pd-ic .cb{width:42px;height:42px;background-size:4.2px 4.2px,auto;box-shadow:4px -4px 0 #d7a93a,8px -8px 0 #b98c1f}
+.pd-mat{display:grid;gap:6px;width:min(100%,540px);background:#dde3cc;border-radius:16px;padding:8px}
+.pd-col{display:flex;flex-direction:column;align-items:center;gap:4px;background:#f7f3e6;border-radius:10px;padding:6px 2px;color:#33291f}
+.pd-h{font-size:.78rem;font-weight:800}
+.pd-stack{min-height:170px;width:100%;display:flex;flex-wrap:wrap;gap:3px;align-content:flex-start;justify-content:center;padding:14px 4px 4px}
+.pd-stack[data-s="100"],.pd-stack[data-s="1000"]{flex-direction:column;flex-wrap:nowrap;align-items:center;justify-content:flex-start}
+.pd-stack[data-s="100"] .pl+.pl{margin-top:-58px}
+.pd-stack[data-s="1000"] .cb+.cb{margin-top:-50px}
+.pd-cnt{font-size:1.6rem;font-weight:800}
+.pd-col.bad{box-shadow:inset 0 0 0 3px var(--sens)}
+.pd-help{margin:0;color:var(--muted);font-size:.9rem;text-align:center}
+.bd{display:block;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6c4,#e9b620 55%,#a67a00)}
+.br{display:block;width:12px;height:100px;border-radius:6px;background:radial-gradient(circle,#ffe27a 0 32%,#d29c00 40% 48%,transparent 52%) 0 0/12px 10px repeat-y}
+.pl{display:block;width:70px;height:70px;border-radius:3px;background:radial-gradient(circle,#ffe27a 0 30%,#d29c00 36% 44%,transparent 48%) 0 0/7px 7px,#f3d27a;border:1px solid #b88a00}
+.cb{display:block;width:60px;height:60px;border-radius:3px;background:radial-gradient(circle,#ffe27a 0 30%,#d29c00 36% 44%,transparent 48%) 0 0/6px 6px,#f0c95c;border:1px solid #9c7400;box-shadow:5px -5px 0 #d7a93a,10px -10px 0 #b98c1f}
+
+/* 9 Seguin */
+.sg{display:flex;flex-direction:column;align-items:center;gap:16px}
+.bgrp{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:12px;background:#fffdf6;border-radius:16px;box-shadow:var(--shadow)}
+.tens{display:flex;flex-direction:column;gap:4px}
+.bbar{display:inline-flex;gap:1px;padding:2px 3px;border-radius:8px;background:linear-gradient(#8d8d8d,#8d8d8d) center/100% 2px no-repeat}
+.bbar i{display:block;width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.75),var(--bc) 48%);border:1px solid rgba(0,0,0,.28)}
+.sm .bbar i{width:9px;height:9px}
+.sm.bgrp{padding:8px}
+.sg-board{background:var(--wood);padding:12px 18px;border-radius:14px;box-shadow:var(--shadow)}
+.sg-slot{display:flex;background:#fffdf6;border-radius:8px;padding:2px 14px;font-size:3.4rem;font-weight:700;color:#33291f;font-family:var(--read)}
+.sg-slot .cov{color:#c0392b;animation:popin .25s}
+.sgcard{width:64px;height:78px;border-radius:10px;background:#fffdf6;color:#33291f;font-size:2.3rem;font-weight:700;box-shadow:var(--shadow);font-family:var(--read)}
+.sgcard.wide{width:88px}
+.sg-choices{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.sg-ch{border-radius:18px}
+
+/* 10 planche de multiplication */
+.mb{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.mb-card{font-size:2rem;font-weight:800;background:#fffdf6;color:#33291f;padding:4px 20px;border-radius:12px;box-shadow:var(--shadow)}
+.mb-board{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;width:min(100%,380px);background:#f6ecd8;padding:8px;border-radius:12px;box-shadow:var(--shadow);border:7px solid var(--wood2)}
+.mb-top{font-weight:800;color:#5b3d1e;aspect-ratio:1;font-size:.82rem;border-radius:50%}
+.mb-top.on{background:#d62828;color:#fff}
+.mb-corner{display:grid;place-items:center;font-weight:800;color:#fff;background:var(--math);border-radius:6px;font-size:.9rem}
+.mb-h{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#cdbb98 0 28%,transparent 31%)}
+.mb-h.on{background:radial-gradient(circle at 38% 32%,#ff9a8f,#d32f2f 50%,#931919 66%,transparent 70%);animation:popin .2s}
+.mb-count{font-size:1.4rem;font-weight:800;min-height:1.6em}
+.mb-q{text-align:center}.mb-q p{margin:0 0 10px}
+
+/* 11 fractions */
+.fr{display:flex;flex-direction:column;align-items:center;gap:16px}
+.fr-svg{width:min(62vw,240px);display:block}
+.fr-frame{fill:#2f8a45}.fr-hole{fill:#f4ecda}
+.fr-svg path.on{fill:#d83a3a;stroke:#7d1616;stroke-width:1.5}
+.fr-svg path.off{fill:none;stroke:#a89878;stroke-width:1.5;stroke-dasharray:4 3}
+.fr-knob{fill:#e2b33c;stroke:#8a6d1d;stroke-width:1.2}
+.frb{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fffdf6;color:#33291f;border-radius:16px;padding:10px 18px;box-shadow:var(--shadow);min-width:80px}
+.frb small{font-weight:700}
+.frac{display:inline-flex;flex-direction:column;align-items:center;font-size:1.8rem;font-weight:800;line-height:1.05}
+.frac i{font-style:normal}.frac i:first-child{border-bottom:3px solid currentColor;padding:0 6px}
+
+/* 12 tablettes */
+.ct{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.ct-lab{display:flex;justify-content:space-between;width:min(100%,380px);font-weight:700;color:var(--muted);font-size:.92rem}
+.ct-row{display:flex;gap:5px;justify-content:center;padding:10px;background:var(--paper);border-radius:14px;box-shadow:var(--shadow)}
+.ct-slot{width:38px;height:64px;border-radius:6px;border:2px dashed var(--line)}
+.ct-slot .tab{animation:popin .2s;margin:-2px}
+.tab{display:block;width:38px;height:64px;border-radius:5px;background:var(--col);border-top:10px solid #e7c996;border-bottom:10px solid #e7c996;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.ct-tray{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:16px;background:var(--wood);border-radius:16px;min-height:96px;width:min(100%,420px)}
+.gone{visibility:hidden}
+
+/* 13 tour rose */
+.tr{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.tr-build{min-height:70px;display:flex;align-items:center;justify-content:flex-start;padding:10px}
+.tr-build.tower{flex-direction:column-reverse}
+.tr-build.stair{flex-direction:row;align-items:flex-end}
+.cu{display:block;width:var(--s);height:var(--s);background:linear-gradient(135deg,#ffd6e3,#ef97b6);box-shadow:inset -2px -2px 0 rgba(160,50,90,.18)}
+.pr{display:block;width:var(--s);height:var(--s);background:linear-gradient(135deg,#b07b4f,#6b4220);box-shadow:inset -2px -2px 0 rgba(0,0,0,.2)}
+.tr-build .cu,.tr-build .pr{animation:popin .2s}
+.tr-rug{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:flex-end;padding:16px;background:repeating-linear-gradient(45deg,#e7dcc2 0 10px,#dfd1b1 10px 20px);border-radius:18px;width:min(100%,520px)}
+.tr-p{min-width:48px;min-height:48px;display:grid;place-items:center;padding:4px}
+
+/* 14 cabinet géométrique */
+.gc{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.gc-piece{width:130px;height:130px;filter:drop-shadow(0 4px 0 rgba(0,0,0,.2))}
+.gc-piece svg,.gc-f svg{width:100%;height:100%;display:block}
+.gc-frames{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.gc-f{width:min(40vw,130px);height:min(40vw,130px);border-radius:6px;overflow:hidden;box-shadow:var(--shadow)}
+.gc-wood{fill:#ead09f}.gc-hole{fill:#5e4630}.gc-blue{fill:#2f6fd0}.gc-knob{fill:#e2b33c;stroke:#8a6d1d;stroke-width:1.5}
+.gc-names{display:flex;flex-direction:column;gap:10px;width:min(100%,320px)}
+
+/* 15 boîtes à sons */
+.bs{display:flex;flex-direction:column;align-items:center;gap:10px}
+.bs-lab{font-weight:800}
+.bs-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:16px 14px 20px;border-radius:18px;background:var(--wood);margin-bottom:8px}
+.cyl{width:52px;height:98px;display:flex;flex-direction:column;align-items:center;position:relative;transition:transform .2s}
+.cyl .lid{width:50px;height:16px;border-radius:50%;background:var(--lc);position:relative;z-index:1;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.cyl .body{width:46px;height:80px;margin-top:-8px;border-radius:0 0 10px 10px;background:linear-gradient(90deg,#b0804a,#ecc995 45%,#b0804a)}
+.cyl.red{--lc:#d62828}.cyl.blue{--lc:#2f6fd0}
+.cyl.sel{transform:translateY(-10px)}.cyl.sel .body{outline:3px solid var(--c);outline-offset:2px}
+.cyl.play{animation:rattle .6s}
+@keyframes rattle{20%{rotate:-9deg}40%{rotate:9deg}60%{rotate:-6deg}80%{rotate:6deg}}
+.cyl.done{opacity:.6}
+.cyl.done::after{content:attr(data-p);position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;border-radius:99px;padding:0 8px;font-weight:800;font-size:.85rem;z-index:2}
+
+/* 16 continents */
+.co{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.co-pic{background:var(--paper);border-radius:24px;padding:14px 26px;box-shadow:var(--shadow);text-align:center}
+.co-pic .emo{font-size:5rem}
+.co-lab{font-size:1.25rem;font-weight:700;margin-top:6px}
+.co-btns{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:min(100%,460px)}
+.co-b{background:var(--cb);color:var(--ct);border-radius:16px;padding:14px 8px;font-weight:800;font-size:1.02rem;box-shadow:var(--shadow);border:2px solid rgba(0,0,0,.15);min-height:56px}
+.co-note{margin:0;color:var(--muted);font-size:.9rem}
+
+/* 17 horloge */
+.hk{display:flex;flex-direction:column;align-items:center;gap:16px}
+.ck{width:min(70vw,260px);display:block}
+.ck-rim{fill:var(--math)}.ck-face{fill:#fffdf6}
+.tk{stroke:#9a8a74;stroke-width:1.2}.tk5{stroke:#33291f;stroke-width:3}
+.ck-n{font:700 20px ui-rounded,"Segoe UI",sans-serif;fill:#33291f;text-anchor:middle}
+.ck-h{stroke:#1f3f8f;stroke-width:8;stroke-linecap:round}
+.ck-m{stroke:#d62828;stroke-width:5;stroke-linecap:round}
+.ck-c{fill:#33291f}
+.hk-leg{display:flex;gap:14px;font-size:.9rem;font-weight:700;color:var(--muted)}
+.hk-leg i{display:inline-block;width:22px;height:6px;border-radius:3px;vertical-align:middle;margin-right:5px}
+.hc{display:flex;flex-direction:column;gap:10px;width:min(100%,300px)}
+
+/* 18 mettre la table */
+.tb{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.tb-mat{position:relative;width:min(100%,560px);aspect-ratio:16/10;border-radius:14px;background:repeating-linear-gradient(0deg,#e5d7ba 0 6px,#eee2c8 6px 12px);box-shadow:var(--shadow);border:6px solid #d5bd92}
+.tb-spot{position:absolute;border-radius:8px}
+.tb-spot svg{width:100%;height:100%;display:block}
+.tb-spot.ghost svg{opacity:.3;filter:grayscale(1) brightness(.55)}
+.tb-spot.hide svg{opacity:0}
+.tb-spot.placed svg{opacity:1;filter:none;animation:popin .25s}
+.tb-tray{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:14px;background:var(--wood);border-radius:18px;width:min(100%,560px)}
+.tb-it{width:72px;height:92px;background:#fffdf6;border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:.72rem;font-weight:700;color:#5b3d1e;padding:6px;transition:transform .15s}
+.tb-it svg{height:56px;width:auto;max-width:58px}
+.tb-it.sel{outline:4px solid var(--c);transform:translateY(-5px)}
+.tb-it.used{visibility:hidden}
+/* ---------- nouveaux jeux ---------- */
+.lcard.ph{width:auto;min-width:96px;padding:0 14px;font-size:2.5rem}
+.et{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+.et-label{background:#fffdf6;color:#33291f;font-size:clamp(1.7rem,7vw,2.6rem);padding:10px 26px;border-radius:10px;box-shadow:var(--shadow);border:1px solid #e3d6bb;letter-spacing:.03em;text-align:center}
+.et-label.red{background:#d9343f;color:#fff;border-color:#b3222c}
+.et-objs{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.et-o{width:96px;height:96px;font-size:3.4rem;background:var(--paper);border-radius:20px;box-shadow:var(--shadow)}
+.sp{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
+.sp-lab{font-weight:800;color:var(--muted);font-size:.92rem}
+.sp-snake,.sp-new{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;padding:12px;background:#fffdf6;border-radius:16px;box-shadow:var(--shadow);width:min(100%,560px);min-height:52px}
+.sp-bar{padding:4px;border-radius:10px;transition:opacity .3s}
+.sp-bar.used{opacity:.18}
+.sp-bar.next{outline:3px dashed var(--c);outline-offset:1px}
+.sp-head{font-size:1.8rem}
+.sp-info{font-weight:700;text-align:center;min-height:1.4em}
+.stg{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.st-op{font-size:2rem;font-weight:800;background:#fffdf6;color:#33291f;padding:4px 18px;border-radius:12px;box-shadow:var(--shadow)}
+.st-mat{display:grid;gap:6px;width:min(100%,520px);background:#dde3cc;border-radius:16px;padding:8px}
+.st-col{background:#f7f3e6;border-radius:10px;padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#33291f;min-height:190px}
+.st-col.full{box-shadow:inset 0 0 0 3px var(--gold);cursor:pointer}
+.st-part{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;width:100%;min-height:34px}
+.st-part+.st-part{border-top:2px dashed #cbbfa5;padding-top:6px}
+.stp{display:grid;place-items:center;width:30px;height:30px;border-radius:4px;background:var(--sc);color:#fff;font-style:normal;font-weight:800;font-size:.7rem;box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.st-cnt{font-weight:800;font-size:1.3rem}
+.st-hint{font-size:.74rem;font-weight:800;color:#8a6d1d;text-align:center}
+.hb{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.hb-tile{font-size:2.2rem;font-weight:800;background:#fffdf6;color:#33291f;width:84px;height:84px;display:grid;place-items:center;border-radius:12px;box-shadow:var(--shadow);border:3px solid var(--c)}
+.hb-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;width:min(100%,460px);background:var(--wood);padding:6px;border-radius:12px}
+.hb-c{aspect-ratio:1;background:#fffdf6;color:#33291f;border-radius:5px;font-weight:700;font-size:clamp(.66rem,2.9vw,1rem)}
+.hb-c.hid{background:rgba(255,255,255,.45);border:1.5px dashed #b08a55}
+.hb-c.placed{background:var(--c);color:#fff;border:none;animation:popin .25s}
+.hb-prog{font-weight:700;color:var(--muted)}
+.cy{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.cy-block{display:flex;align-items:center;gap:4px;padding:16px 12px;background:linear-gradient(#e9c890,#cf9e61);border-radius:10px;box-shadow:var(--shadow),inset 0 -6px 0 rgba(0,0,0,.12);max-width:100%;overflow-x:auto}
+.cy-hole{display:grid;place-items:center;height:44px;min-width:22px}
+.cy-hole i{display:block;width:var(--d);height:calc(var(--d)*.42);border-radius:50%;background:#4a3420;box-shadow:inset 0 3px 3px rgba(0,0,0,.5)}
+.cy-hole.full i{background:#e2bc80;box-shadow:inset 0 -2px 0 rgba(0,0,0,.2);display:grid;place-items:center}
+.cy-hole.full i::after{content:'';width:6px;height:6px;border-radius:50%;background:#7a5634}
+.cy-tray{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;justify-content:center;padding:14px;background:var(--wood);border-radius:16px;width:min(100%,520px)}
+.cy-c{display:flex;flex-direction:column;align-items:center;padding:6px 4px;border-radius:8px;min-width:30px;transition:transform .15s}
+.cy-c .kn{width:9px;height:9px;border-radius:50%;background:#7a5634}
+.cy-c .kst{width:3px;height:6px;background:#7a5634}
+.cy-c .cb2{width:var(--d);height:var(--h);background:linear-gradient(90deg,#c8995c,#f1d4a3 45%,#c8995c);border-radius:3px}
+.cy-c.sel{outline:3px solid var(--c);transform:translateY(-5px)}
+.so{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.so-pic{width:170px;height:170px;background:#fffdf6;border-radius:24px;box-shadow:var(--shadow);padding:12px}
+.so-pic svg,.so-b svg{width:100%;height:100%;display:block}
+.so-opts{display:flex;flex-direction:column;gap:10px;width:min(100%,340px)}
+.so-bases{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.so-b{width:90px;height:90px;background:#fffdf6;border-radius:16px;box-shadow:var(--shadow);padding:12px}
+.bell{width:50px;height:88px;position:relative;transition:transform .2s}
+.bell svg{width:100%;height:100%;display:block;transform-origin:50% 10%}
+.bell.sel{transform:translateY(-10px)}
+.bell.play svg{animation:ring .7s}
+@keyframes ring{15%{rotate:-10deg}35%{rotate:9deg}55%{rotate:-6deg}75%{rotate:4deg}}
+.bell.done{opacity:.6}
+.bell.done::after{content:attr(data-p);position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;border-radius:99px;padding:0 8px;font-weight:800;font-size:.8rem;white-space:nowrap}
+.kl{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.kl-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;width:min(100%,560px)}
+.kl-b{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 8px;background:var(--paper);border-radius:18px;box-shadow:var(--shadow);border:3px solid var(--wood);font-weight:800}
+.kl-b span{font-size:2rem}
+.fl{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.fl-tank{position:relative;width:min(80vw,300px);height:230px;border:5px solid #a9cfe2;border-top:none;border-radius:0 0 26px 26px;background:linear-gradient(to bottom,transparent 0 24%,#c7e6f6 24%,#86c3e6 100%);overflow:hidden}
+.fl-it{position:absolute;left:50%;top:0;transform:translateX(-50%);font-size:3.4rem;line-height:1;transition:top 1.3s cubic-bezier(.4,0,.6,1)}
+.fl-it.float{top:13%;animation:bob 1.6s 1.3s ease-in-out infinite}
+.fl-it.sink{top:calc(100% - 62px)}
+@keyframes bob{50%{translate:0 5px}}
+.fl-name{font-weight:800;font-size:1.25rem;text-align:center}
+.cal{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+.cal-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px}
+.cal-strip b{color:var(--muted)}
+.cal-c{background:#fffdf6;color:#33291f;border-radius:12px;padding:10px 12px;font-weight:800;box-shadow:var(--shadow);font-size:1.1rem}
+.cal-c.gap{background:transparent;border:3px dashed var(--c);color:var(--c);box-shadow:none;min-width:70px;text-align:center}
+.cal-c.gap.fill{background:var(--ok);color:#fff;border-style:solid;border-color:var(--ok)}
+.cal-seasons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:min(100%,400px)}
+.cal-s{background:var(--sc);color:#33291f;border-radius:16px;padding:14px;font-weight:800;font-size:1.15rem;box-shadow:var(--shadow)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<section id="home">
+  <header class="hero">
+    <div class="toprow">
+      <button class="installbtn" id="installBtn" hidden>📲 Installer l’appli</button>
+      <button class="iconbtn" id="muteBtn" aria-label="Couper ou remettre la voix">🔊</button>
+      <div class="starpill" aria-label="Étoiles gagnées">⭐ <b class="starCount">0</b></div>
+    </div>
+    <h1 class="tiles" id="tiles" aria-label="L’atelier Montessori"></h1>
+    <p class="lead">30 jeux fidèles au vrai matériel Montessori, pour les enfants de 5 à 8 ans. Chaque jeu a 3 niveaux, une voix qui guide l’enfant et une fiche pour l’adulte.</p>
+  </header>
+  <main id="shelves"></main>
+  <footer class="tips"><div>
+    <h3>🌱 Pour l’adulte : 5 repères Montessori</h3>
+    <p><b>« Aide-moi à faire seul. »</b> Laissez l’enfant choisir son jeu et son niveau. Montrez une fois, lentement, puis retirez-vous.</p>
+    <p><b>Le contrôle de l’erreur est dans le matériel.</b> Inutile de dire « faux » : le jeu montre ce qui ne va pas et l’enfant corrige lui-même.</p>
+    <p><b>La leçon en 3 temps.</b> 1) « C’est… » 2) « Montre-moi… » 3) « Qu’est-ce que c’est ? » On ne passe au 3ᵉ temps que si le 2ᵉ est acquis.</p>
+    <p><b>Du concret à l’abstrait.</b> Ces jeux complètent le vrai matériel (ou des objets de la maison) sans le remplacer : manipuler reste essentiel.</p>
+    <p><b>Des séances courtes.</b> 15 à 20 minutes d’écran suffisent. La répétition est normale : c’est ainsi que l’enfant se construit.</p>
+  </div></footer>
+</section>
+
+<section id="gameView" hidden>
+  <header class="gbar">
+    <button class="iconbtn" id="back" aria-label="Retour à l’accueil">⬅️</button>
+    <div class="gtitle"><span id="gIcon"></span><h2 id="gName"></h2></div>
+    <div class="starpill">⭐ <b class="starCount">0</b></div>
+  </header>
+  <div class="gwrap">
+    <div class="levels" id="levels"></div>
+    <div class="dots" id="dots"></div>
+    <details class="fiche" id="fiche"></details>
+    <div class="consigne" id="consigne"><button class="speak" aria-label="Réécouter la consigne">🔊</button><p></p></div>
+    <div class="area" id="area"></div>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="modal" id="modal" hidden><div class="mbox" id="mbox"></div></div>
+
+<script>
+(function(){
+'use strict';
+/* ================= Outils ================= */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const sample=(a,n)=>shuffle(a).slice(0,n);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const strip=s=>String(s).replace(/<[^>]+>/g,'');
+const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'\u202f');
+const RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+const store={get(k,d){try{const v=localStorage.getItem('atelier-montessori:'+k);return v==null?d:JSON.parse(v);}catch(e){return d;}},
+             set(k,v){try{localStorage.setItem('atelier-montessori:'+k,JSON.stringify(v));}catch(e){}}};
+const state={stars:+store.get('stars',0)||0,done:store.get('done',{})||{},mute:!!store.get('mute',false)};
+
+/* ================= Sons (Web Audio, rien à télécharger) ================= */
+let AC=null,NB=null;
+function ac(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)();}catch(e){return null;}}
+  if(AC.state==='suspended'){try{AC.resume();}catch(e){}}return AC;}
+function tone(f,d,type,vol,when){if(state.mute)return;const c=ac();if(!c)return;const t=c.currentTime+(when||0),o=c.createOscillator(),g=c.createGain();
+  o.type=type||'sine';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(vol||.15,t+.02);g.gain.exponentialRampToValueAtTime(0.0001,t+d);
+  o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.05);}
+const sfx={ok(){tone(523,.18,'sine',.16);tone(659,.18,'sine',.16,.1);tone(784,.32,'sine',.16,.2);},
+  bad(){tone(240,.2,'triangle',.12);tone(200,.28,'triangle',.1,.1);},pop(){tone(760,.08,'sine',.1);},
+  win(){[523,659,784,1047,784,1047].forEach((f,i)=>tone(f,.24,'sine',.14,i*.11));}};
+/* Cylindre sonore : grains de "sable" synthétisés, du plus doux (0) au plus fort (5) */
+function shaker(lv){const c=ac();if(!c)return;
+  if(!NB){NB=c.createBuffer(1,Math.floor(c.sampleRate*.05),c.sampleRate);const d=NB.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;}
+  const grains=[3,9,20,42,85,170][lv],vol=[.35,.45,.55,.65,.75,.85][lv],cut=[700,1300,2300,3800,6000,9000][lv],t0=c.currentTime+.02,dur=.75;
+  const f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=cut;const m=c.createGain();m.gain.value=vol;f.connect(m);m.connect(c.destination);
+  for(let i=0;i<grains;i++){const s=c.createBufferSource();s.buffer=NB;const g=c.createGain();const t=t0+Math.random()*dur,len=.004+Math.random()*.014;
+    g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(.9,t+.0015);g.gain.exponentialRampToValueAtTime(0.0001,t+len);
+    s.connect(g);g.connect(f);s.start(t,Math.random()*.03);s.stop(t+len+.02);}}
+
+/* ================= Voix française ================= */
+let VOICE=null;
+function loadV(){try{const v=speechSynthesis.getVoices();
+  VOICE=v.find(x=>/^fr[-_]FR/i.test(x.lang)&&/google|amélie|amelie|thomas|audrey|marie|denise|julie|hortense/i.test(x.name))||v.find(x=>/^fr[-_]FR/i.test(x.lang))||v.find(x=>/^fr/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){loadV();try{speechSynthesis.addEventListener('voiceschanged',loadV);}catch(e){}}
+function say(t){if(state.mute||!t||!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(strip(t).replace(/[«»]/g,''));u.lang='fr-FR';if(VOICE)u.voice=VOICE;u.rate=.92;u.pitch=1.05;speechSynthesis.speak(u);}catch(e){}}
+
+/* ================= Toast, confettis, fenêtre ================= */
+function toast(t,kind){const el=$('#toast');el.innerHTML=t;el.className='toast show '+(kind||'');clearTimeout(el._t);el._t=setTimeout(()=>{el.className='toast';},2300);}
+const cv=$('#confetti'),cx=cv.getContext('2d');let parts=[],raf=0;
+function confetti(n){if(RM)return;cv.width=innerWidth;cv.height=innerHeight;const W=cv.width,H=cv.height,cols=['#dc5b8a','#2f6fd0','#e9822c','#379e52','#e3a90f','#8f5cc9'];
+  for(let i=0;i<n;i++)parts.push({x:W/2+(Math.random()-.5)*W*.5,y:H*.35,vx:(Math.random()-.5)*11,vy:-Math.random()*11-3,r:4+Math.random()*5,c:pick(cols),a:Math.random()*6,va:(Math.random()-.5)*.3,life:0});
+  if(!raf)raf=requestAnimationFrame(tick);}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.y<cv.height+20&&p.life<240);
+  for(const p of parts){p.vy+=.28;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;p.life++;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.fillStyle=p.c;cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore();}
+  raf=parts.length?requestAnimationFrame(tick):0;}
+function showModal(h){$('#mbox').innerHTML=h;$('#modal').hidden=false;}
+function hideModal(){$('#modal').hidden=true;}
+
+/* ================= Moteur de jeu ================= */
+const DOM={lang:{name:'Langage',sub:'Sons, lettres, mots et grammaire',color:'var(--lang)'},
+  math:{name:'Mathématiques',sub:'Du concret à l’abstrait : compter, grouper, partager',color:'var(--math)'},
+  sens:{name:'Sensoriel',sub:'Affiner les yeux, les mains et les oreilles',color:'var(--sens)'},
+  monde:{name:'Le monde et la vie pratique',sub:'Géographie, heure et gestes du quotidien',color:'var(--monde)'}};
+const GAMES=[];const game=g=>GAMES.push(g);
+const BRAVO=['Bravo !','Super !','Génial !','Bien joué !','Magnifique !','Excellent !','Formidable !','Quel travail !'];
+let cur=null,pushed=false;
+
+const C={
+  consigne(txt,spoken){$('#consigne p').innerHTML=txt;cur.spoken=spoken||strip(txt);say(cur.spoken);},
+  say,pop(){sfx.pop();},
+  later(fn,ms){const rid=cur&&cur.rid;setTimeout(()=>{if(cur&&cur.rid===rid)fn();},ms);},
+  fresh(arr,key){key=key||(x=>JSON.stringify(x));let it=pick(arr);for(let t=0;t<8&&arr.length>1&&cur.last===key(it);t++)it=pick(arr);cur.last=key(it);return it;},
+  win(msg,spoken){if(!cur||cur.locked)return;cur.locked=true;const rid=cur.rid;
+    state.stars++;store.set('stars',state.stars);
+    $$('.starCount').forEach(e=>{e.textContent=state.stars;const p=e.parentElement;p.classList.remove('bump');void p.offsetWidth;p.classList.add('bump');});
+    cur.prog++;renderDots();sfx.ok();confetti(45);
+    const m=msg||pick(BRAVO);toast('⭐ '+m);say(spoken||m);
+    const n=cur.g.rounds||5,delay=Math.min(4200,1500+strip(spoken||m).length*42);
+    setTimeout(()=>{if(!cur||cur.rid!==rid)return;if(cur.prog>=n)levelDone();else newRound();},delay);},
+  fail(el,msg){sfx.bad();if(el)(Array.isArray(el)?el:[el]).forEach(x=>{if(!x)return;x.classList.remove('shake');void x.offsetWidth;x.classList.add('shake');});
+    if(msg){toast(msg,'soft');say(msg);}}
+};
+
+function renderHome(){
+  $('#shelves').innerHTML=Object.entries(DOM).map(([k,d])=>`<section class="shelf" style="--c:${d.color}"><h2><span class="dot"></span>${d.name}</h2><p class="shelf-sub">${d.sub}</p><div class="grid">`+
+    GAMES.filter(g=>g.dom===k).map(g=>{const done=state.done[g.id]||0;
+      return `<button class="card" data-id="${g.id}" style="--c:${d.color}"><span class="c-ico" aria-hidden="true">${g.icon}</span><span class="c-body"><span class="c-name">${g.name}</span><span class="c-sub">${g.sub}</span><span class="c-foot"><span class="age">${g.age}</span><span class="medals" aria-label="${done} niveau(x) réussi(s) sur 3">${[0,1,2].map(i=>`<i class="${i<done?'on':''}"></i>`).join('')}</span></span></span></button>`;}).join('')+`</div></section>`).join('');
+  $$('.starCount').forEach(e=>e.textContent=state.stars);
+}
+function renderDots(){const n=cur.g.rounds||5;$('#dots').innerHTML=Array.from({length:n},(_,i)=>`<i class="${i<cur.prog?'on':''}"></i>`).join('');}
+function openGame(id,lv){
+  const g=GAMES.find(x=>x.id===id);if(!g)return;
+  if(!cur&&!pushed){try{history.pushState({atelier:1},'');pushed=true;}catch(e){}}
+  if(lv==null)lv=Math.min(state.done[id]||0,g.levels.length-1);
+  cur={g,lv,prog:0,rid:0,locked:false,last:null};
+  hideModal();$('#home').hidden=true;$('#gameView').hidden=false;window.scrollTo(0,0);
+  $('#gameView').style.setProperty('--c',DOM[g.dom].color);
+  $('#gIcon').textContent=g.icon;$('#gName').textContent=g.name;
+  $('#levels').innerHTML=g.levels.map((l,i)=>`<button class="lvl ${i===lv?'on':''}" data-l="${i}"><b>Niveau ${i+1}${(state.done[id]||0)>i?' ⭐':''}</b><small>${l}</small></button>`).join('');
+  $('#fiche').open=false;
+  $('#fiche').innerHTML=`<summary>📋 La fiche Montessori <small>(pour l’adulte)</small></summary><dl><dt>🧰 Le matériel d’origine</dt><dd>${g.materiel}</dd><dt>🎯 But</dt><dd>${g.but}</dd><dt>🔎 Contrôle de l’erreur</dt><dd>${g.controle}</dd><dt>🧑‍🏫 Présentation à l’enfant</dt><dd>${g.presentation}</dd><dt>🎂 Âge conseillé</dt><dd>${g.age}</dd></dl>`;
+  renderDots();newRound();
+}
+function newRound(){const A=$('#area');cur.rid++;cur.locked=false;A.onclick=null;A.innerHTML='';A.className='area g-'+cur.g.id;cur.g.round(A,cur.lv,C);}
+function levelDone(){const g=cur.g,lv=cur.lv;state.done[g.id]=Math.max(state.done[g.id]||0,lv+1);store.set('done',state.done);sfx.win();confetti(160);
+  const last=lv>=g.levels.length-1;
+  showModal(`<div class="m-emo">🏆</div><h3>Niveau ${lv+1} réussi !</h3><p>${last?'Tous les niveaux de ce jeu sont terminés. Quel beau travail !':'Tu peux passer au niveau suivant… ou rejouer celui-ci.'}</p><div class="mbtns">${last?'':`<button class="btn primary big" data-m="next">Niveau ${lv+2}</button>`}<button class="btn" data-m="again">🔁 Rejouer ce niveau</button><button class="btn" data-m="home">🏠 Choisir un autre jeu</button></div>`);
+  say(last?'Bravo ! Tu as terminé tous les niveaux de ce jeu !':`Bravo ! Niveau ${lv+1} réussi !`);}
+function goHome(){cur=null;try{speechSynthesis.cancel();}catch(e){}hideModal();$('#gameView').hidden=true;$('#home').hidden=false;renderHome();}
+function leave(){if(pushed){pushed=false;try{history.back();return;}catch(e){}}goHome();}
+
+/* ================= Données partagées ================= */
+const VOW='aeiouyéèêàâîôû';const isV=c=>VOW.includes(String(c).toLowerCase());
+const lcard=l=>`<button class="lcard ${isV(l)?'v':'c'}" data-l="${l}">${l}</button>`;
+function hl(w,l){const i=w.indexOf(l);return i<0?w:w.slice(0,i)+`<b>${w[i]}</b>`+w.slice(i+1);}
+/* ================================================================
+   LANGAGE
+   ================================================================ */
+const LET={a:['ananas','🍍'],e:['renard','🦊'],i:['lit','🛏️'],o:['orange','🍊'],u:['lune','🌙'],y:['yoyo','🪀'],
+  l:['lion','🦁'],m:['mouton','🐑'],n:['nuage','☁️'],r:['robot','🤖'],s:['soleil','☀️'],f:['fraise','🍓'],v:['vache','🐄'],
+  p:['poisson','🐟'],t:['tortue','🐢'],b:['ballon','🎈'],d:['dauphin','🐬'],c:['canard','🦆'],g:['gâteau','🎂'],j:['jus','🧃'],
+  k:['koala','🐨'],z:['zèbre','🦓'],h:['hibou','🦉'],q:['quille','🎳'],w:['wagon','🚃'],x:['taxi','🚕']};
+
+game({id:'rugueuses',dom:'lang',icon:'✍️',name:'Les lettres rugueuses',sub:'Trace les lettres avec ton doigt, comme sur du papier de verre.',age:'5 – 6 ans',rounds:5,
+levels:['Les voyelles','Les consonnes qui chantent (l, m, n, r, s, f, v)','Toutes les lettres'],
+materiel:'26 planchettes : chaque lettre minuscule est découpée dans du papier de verre et collée sur un fond lisse, <b>bleu pour les voyelles</b>, <b>rose pour les consonnes</b>.',
+but:'Relier un son à sa forme écrite avec trois sens à la fois : la vue, le toucher et l’ouïe. La main mémorise le geste : c’est la préparation directe à l’écriture et à la lecture.',
+controle:'Avec le vrai matériel, le doigt sent tout de suite s’il quitte la surface rugueuse. Ici, la jauge ne se remplit que si le doigt reste sur la lettre ; un gribouillage à côté efface le tracé.',
+presentation:'L’adulte trace lentement la lettre avec l’index et le majeur, dans le sens de l’écriture, en disant son <b>son</b> (« mmm » et non « èm »). Puis la leçon en 3 temps : « C’est mmm. » → « Montre-moi mmm. » → « Qu’est-ce que c’est ? » On commence par les consonnes qui peuvent se prolonger (l, m, n, r, s, f, v).',
+round(A,lv,C){
+  const L=C.fresh([...['aeiouy','lmnrsfv','abcdefghijklmnopqrstuvwxyz'][lv]]),[w,emo]=LET[L],v=isV(L);
+  C.consigne(`Trace la lettre <b class="${v?'tv':'tc'}">${L}</b> avec ton doigt. On l’entend dans « ${w} ».`,`Trace la lettre. On l’entend dans : ${w}.`);
+  A.innerHTML=`<div class="rg"><button class="rg-word" data-a="hear"><span class="emo">${emo}</span><span class="read">${hl(w,L)}</span><span>🔊</span></button>
+    <div class="rg-card ${v?'v':'c'}"><canvas class="rg-bg" width="320" height="320"></canvas><canvas class="rg-dr" width="320" height="320"></canvas></div>
+    <div class="gauge" aria-hidden="true"><i></i></div><button class="btn" data-a="clear">🧽 Effacer</button></div>`;
+  const S=320,bg=$('.rg-bg',A),dr=$('.rg-dr',A),d=dr.getContext('2d'),gauge=$('.gauge i',A),font='700 230px "Andika","Comic Sans MS","Chalkboard SE",sans-serif';
+  let inside=[],outside=[],drawing=false,last=null;
+  const paint=()=>{
+    const m=document.createElement('canvas');m.width=m.height=S;const mc=m.getContext('2d');mc.font=font;mc.textAlign='center';
+    const mt=mc.measureText(L),asc=mt.actualBoundingBoxAscent||165,des=mt.actualBoundingBoxDescent||0,y=S/2+(asc-des)/2;
+    mc.fillText(L,S/2,y);
+    const b=bg.getContext('2d');b.clearRect(0,0,S,S);b.font=font;b.textAlign='center';b.fillStyle='#766b5e';b.fillText(L,S/2,y);
+    b.globalCompositeOperation='source-atop';
+    for(let i=0;i<15000;i++){b.fillStyle=Math.random()<.5?'rgba(255,255,255,.42)':'rgba(40,30,20,.45)';b.fillRect(Math.random()*S,Math.random()*S,1.7,1.7);}
+    b.globalCompositeOperation='source-over';
+    const px=mc.getImageData(0,0,S,S).data;inside=[];outside=[];
+    for(let yy=2;yy<S;yy+=6)for(let xx=2;xx<S;xx+=6)(px[(yy*S+xx)*4+3]>140?inside:outside).push(yy*S+xx);};
+  (document.fonts&&document.fonts.load?document.fonts.load(font,L).catch(()=>{}):Promise.resolve()).then(paint);
+  d.lineCap='round';d.lineJoin='round';d.lineWidth=34;d.strokeStyle=d.fillStyle=v?'rgba(25,90,200,.6)':'rgba(200,40,100,.6)';
+  const pos=e=>{const r=dr.getBoundingClientRect();return[(e.clientX-r.left)*S/r.width,(e.clientY-r.top)*S/r.height];};
+  const clear=()=>{d.clearRect(0,0,S,S);gauge.style.width='0';};
+  const check=()=>{if(!inside.length||cur.locked)return;const im=d.getImageData(0,0,S,S).data;let a=0,o=0;
+    for(const i of inside)if(im[i*4+3]>0)a++;for(const i of outside)if(im[i*4+3]>0)o++;
+    const cov=a/inside.length;gauge.style.width=Math.min(100,cov/.7*100)+'%';
+    if(o>inside.length*.9){C.fail(dr.parentElement,'Doucement ! Reste bien sur la lettre rugueuse.');clear();return;}
+    if(cov>=.7)C.win(`Bravo ! Tu as tracé la lettre ${L}, comme dans « ${w} ».`,`Bravo ! Comme dans ${w}.`);};
+  dr.onpointerdown=e=>{e.preventDefault();drawing=true;try{dr.setPointerCapture(e.pointerId);}catch(_){}last=pos(e);d.beginPath();d.arc(last[0],last[1],17,0,Math.PI*2);d.fill();};
+  dr.onpointermove=e=>{if(!drawing)return;const p=pos(e);d.beginPath();d.moveTo(last[0],last[1]);d.lineTo(p[0],p[1]);d.stroke();last=p;};
+  dr.onpointerup=dr.onpointercancel=()=>{if(drawing){drawing=false;check();}};
+  A.onclick=e=>{const a=e.target.closest('[data-a]');if(!a)return;if(a.dataset.a==='hear')say(w);else clear();};
+}});
+
+const WORDS=[['a','abeille','🐝'],['a','avion','✈️'],['a','araignée','🕷️'],['a','ananas','🍍'],['o','orange','🍊'],['o','olive','🫒'],['o','oreille','👂'],
+ ['i','iguane','🦎'],['i','image','🖼️'],['u','usine','🏭'],['u','univers','🌌'],['l','lion','🦁'],['l','lapin','🐰'],['l','lune','🌙'],['l','loup','🐺'],
+ ['m','mouton','🐑'],['m','moto','🏍️'],['m','maison','🏠'],['m','montagne','⛰️'],['n','nuage','☁️'],['n','nez','👃'],['n','neige','❄️'],
+ ['r','robot','🤖'],['r','renard','🦊'],['r','radio','📻'],['r','rose','🌹'],['s','soleil','☀️'],['s','serpent','🐍'],['s','sapin','🎄'],['s','salade','🥗'],
+ ['f','fraise','🍓'],['f','fusée','🚀'],['f','feu','🔥'],['f','fleur','🌸'],['v','vache','🐄'],['v','vélo','🚲'],['v','volcan','🌋'],['v','violon','🎻'],
+ ['p','poisson','🐟'],['p','pomme','🍎'],['p','panda','🐼'],['p','poule','🐔'],['t','tortue','🐢'],['t','tomate','🍅'],['t','tigre','🐯'],['t','train','🚆'],
+ ['b','ballon','🎈'],['b','banane','🍌'],['b','bateau','⛵'],['b','baleine','🐳'],['d','dauphin','🐬'],['d','dé','🎲'],['d','dinosaure','🦕'],['d','dragon','🐉'],
+ ['c','canard','🦆'],['c','carotte','🥕'],['c','cadeau','🎁'],['c','cochon','🐷'],['g','gâteau','🎂'],['g','gorille','🦍'],['g','guitare','🎸'],
+ ['j','jus','🧃'],['j','jongleur','🤹'],['j','journal','📰'],['k','koala','🐨'],['k','kiwi','🥝'],['k','kangourou','🦘'],['z','zèbre','🦓'],['z','zéro','0️⃣']];
+const CONF={b:'dpv',d:'btp',p:'bdt',t:'dpk',m:'nl',n:'mr',f:'vs',v:'fb',s:'zf',z:'sj',c:'gk',k:'cg',g:'cj',j:'gz',l:'rn',r:'lv',a:'ou',o:'au',i:'uy',u:'io'};
+
+game({id:'son',dom:'lang',icon:'👂',name:'Le jeu « J’entends… »',sub:'Écoute le mot et trouve son tout premier son.',age:'5 – 6 ans',rounds:5,
+levels:['3 lettres au choix','4 lettres au choix','Des sons qui se ressemblent (b/d/p, m/n, f/v…)'],
+materiel:'Le jeu oral « Mon petit œil voit quelque chose qui commence par… », puis une boîte d’objets miniatures que l’enfant associe aux lettres rugueuses.',
+but:'Développer la conscience phonologique : isoler le premier son d’un mot, puis le relier à la lettre qui l’écrit.',
+controle:'Une seule lettre va avec le mot. Quand l’enfant la trouve, elle vient compléter le mot écrit.',
+presentation:'On nomme l’objet en étirant son premier son (« fffff… fraise »). On joue d’abord uniquement à l’oral, puis on associe la lettre rugueuse déjà connue.',
+round(A,lv,C){
+  const pool=lv===0?WORDS.filter(x=>'aoilmsrfv'.includes(x[0])):WORDS,[L,w,emo]=C.fresh(pool,x=>x[1]);
+  const letters=[...new Set(pool.map(x=>x[0]))].filter(x=>x!==L);let opts;
+  if(lv<2)opts=shuffle([L,...sample(letters,lv===0?2:3)]);
+  else{const conf=[...(CONF[L]||'')].filter(x=>x!==L);opts=shuffle([L,...conf.slice(0,3),...shuffle(letters.filter(x=>!conf.includes(x)))].slice(0,4));}
+  C.consigne('Écoute bien : par quel son commence ce mot ?',`Par quel son commence : ${w} ?`);
+  A.innerHTML=`<div class="sn"><button class="sn-pic" data-a="hear"><span class="emo xl">${emo}</span><span class="read sn-w"><span class="blank">?</span>${w.slice(1)}</span><span class="hp">🔊 Réécouter</span></button><div class="lrow">${opts.map(lcard).join('')}</div></div>`;
+  A.onclick=e=>{if(e.target.closest('[data-a="hear"]'))return say(w);const b=e.target.closest('.lcard');if(!b||cur.locked)return;
+    if(b.dataset.l===L){b.classList.add('good');$('.blank',A).outerHTML=`<b class="${isV(L)?'tv':'tc'}">${w[0]}</b>`;C.win(`Oui ! « ${w} » commence par ${L}.`,`Oui ! ${w}.`);}
+    else C.fail(b,`Écoute encore : ${w}…`);};
+}});
+
+const AM=[[['sac','🎒'],['bol','🥣'],['riz','🍚'],['rat','🐀'],['lit','🛏️'],['nez','👃'],['feu','🔥'],['ski','🎿'],['bus','🚌'],['clé','🔑'],['thé','🍵'],['dé','🎲'],['ours','🐻'],['lune','🌙']],
+ [['moto','🏍️'],['robe','👗'],['vélo','🚲'],['lama','🦙'],['kiwi','🥝'],['pomme','🍎'],['poule','🐔'],['poire','🍐'],['tigre','🐯'],['livre','📖'],['arbre','🌳'],['zèbre','🦓'],['sapin','🎄'],['lapin','🐰'],['melon','🍈']],
+ [['tomate','🍅'],['tortue','🐢'],['banane','🍌'],['carotte','🥕'],['canard','🦆'],['fusée','🚀'],['girafe','🦒'],['cerise','🍒'],['citron','🍋'],['orange','🍊'],['fraise','🍓'],['dauphin','🐬'],['papillon','🦋'],['crocodile','🐊'],['éléphant','🐘'],['chocolat','🍫']]];
+
+game({id:'alphabet',dom:'lang',icon:'🔤',name:'L’alphabet mobile',sub:'Écris des mots avec les lettres bleues et rouges.',age:'5 – 7 ans',rounds:5,
+levels:['Mots courts, avec le modèle','Mots de 4-5 lettres, sans modèle','Mots longs, sans modèle'],
+materiel:'Une grande boîte à compartiments remplie de lettres découpées : <b>voyelles bleues</b>, <b>consonnes rouges</b>, plusieurs exemplaires de chaque.',
+but:'Écrire avant de savoir tracer : l’enfant compose des mots en isolant chaque son. Maria Montessori a observé que l’écriture précède souvent la lecture.',
+controle:'Quand toutes les cases sont remplies, les lettres mal placées s’entourent de rouge : l’enfant les retire (touche la lettre) et corrige lui-même.',
+presentation:'On prend un objet, on dit son nom lentement en étirant chaque son ; l’enfant cherche la lettre de chaque son et la pose de gauche à droite sur le tapis.',
+round(A,lv,C){
+  const [w,emo]=C.fresh(AM[lv],x=>x[0]),ls=[...w],slots=Array(ls.length).fill(null);let wrongs=new Set();
+  C.consigne(lv===0?`Écris le mot « <span class="read">${w}</span> » avec les lettres de la boîte.`:'Écoute le mot et écris-le avec les lettres de la boîte.',`Écris le mot : ${w}.`);
+  A.innerHTML=`<div class="am"><div class="am-top"><button class="am-pic" data-a="hear">${emo}<small>🔊</small></button><div class="am-model read" ${lv?'hidden':''}>${w}</div></div>
+    <div class="am-mat"></div><div class="am-box">${[...'abcdefghijklmnopqrstuvwxyzéè'].map(l=>`<button class="am-l ${isV(l)?'v':'c'}" data-l="${l}">${l}</button>`).join('')}</div>
+    <div class="row">${lv?'<button class="btn" data-a="hint">💡 Voir le mot</button>':''}<button class="btn" data-a="back">⌫ Retirer</button></div></div>`;
+  const mat=$('.am-mat',A),draw=()=>{mat.innerHTML=slots.map((l,i)=>`<button class="am-slot ${l?(isV(l)?'v':'c'):''} ${wrongs.has(i)?'wrong':''}" data-i="${i}" aria-label="case ${i+1}">${l||''}</button>`).join('');};
+  draw();
+  A.onclick=e=>{const t=e.target;if(cur.locked)return;
+    if(t.closest('[data-a="hear"]'))return say(w);
+    if(t.closest('[data-a="hint"]')){const m=$('.am-model',A);m.hidden=false;say(w);clearTimeout(m._t);m._t=setTimeout(()=>{m.hidden=true;},2500);return;}
+    if(t.closest('[data-a="back"]')){for(let i=slots.length-1;i>=0;i--)if(slots[i]){slots[i]=null;wrongs.delete(i);break;}draw();return;}
+    const s=t.closest('.am-slot');if(s){const i=+s.dataset.i;if(slots[i]){slots[i]=null;wrongs.delete(i);C.pop();draw();}return;}
+    const k=t.closest('.am-l');if(!k)return;const i=slots.indexOf(null);if(i<0)return;slots[i]=k.dataset.l;wrongs.delete(i);C.pop();draw();
+    if(!slots.includes(null)){wrongs=new Set(slots.map((l,j)=>l!==ls[j]?j:-1).filter(j=>j>=0));draw();
+      if(!wrongs.size)C.win(`Bravo ! Tu as écrit « ${w} ».`,`Bravo ! ${w}.`);
+      else C.fail($$('.am-slot.wrong',A),wrongs.size===1?'Presque ! Une lettre n’est pas à sa place. Touche-la pour la retirer.':`Presque ! ${wrongs.size} lettres ne sont pas à leur place.`);}};
+}});
+
+const SYM={art:['Déterminant','<polygon points="24,18 32,32 16,32" fill="#8fcff0" stroke="#5aa9d3"/>'],adj:['Adjectif','<polygon points="24,9 39,37 9,37" fill="#1f3f8f"/>'],
+  nom:['Nom','<polygon points="24,3 46,44 2,44" fill="#161616"/>'],verbe:['Verbe','<circle cx="24" cy="24" r="21" fill="#d62828"/>'],adv:['Adverbe','<circle cx="24" cy="24" r="10" fill="#f39c12"/>']};
+const sym=t=>`<svg viewBox="0 0 48 48" class="sym" aria-hidden="true">${SYM[t][1]}</svg>`;
+const GQ={art:'c’est le petit mot qui annonce le nom.',nom:'est-ce une chose, un animal ou une personne ?',adj:'est-ce qu’il dit comment est le nom ?',verbe:'est-ce une action que l’on peut faire ?',adv:'est-ce qu’il dit comment se fait l’action ?'};
+const GS=[['le/art chat/nom','la/art pomme/nom','un/art ballon/nom','une/art fleur/nom','le/art bateau/nom','la/art lune/nom','un/art lapin/nom','une/art tortue/nom','les/art poissons/nom','des/art étoiles/nom'],
+ ['le/art petit/adj chat/nom','la/art pomme/nom rouge/adj','un/art gros/adj ballon/nom','une/art jolie/adj fleur/nom','le/art grand/adj bateau/nom','un/art lapin/nom blanc/adj','une/art tortue/nom verte/adj','les/art petits/adj poissons/nom'],
+ ['Le/art chat/nom dort/verbe .','La/art petite/adj fille/nom court/verbe .','Un/art gros/adj chien/nom mange/verbe .','Le/art bébé/nom rit/verbe .','Les/art oiseaux/nom chantent/verbe .','Une/art souris/nom danse/verbe .','Le/art lapin/nom blanc/adj saute/verbe .','Le/art cheval/nom court/verbe vite/adv .','La/art tortue/nom marche/verbe lentement/adv .']];
+const GPAL=[['art','nom'],['art','adj','nom'],['art','adj','nom','verbe','adv']];
+
+game({id:'grammaire',dom:'lang',icon:'🔺',name:'Les symboles de grammaire',sub:'Triangles et ronds : trouve le rôle de chaque mot.',age:'6 – 8 ans',rounds:5,
+levels:['Déterminant + nom','Avec l’adjectif','Phrases avec verbe et adverbe'],
+materiel:'Les symboles de grammaire Montessori posés au-dessus des mots : <b>grand triangle noir</b> (nom), <b>petit triangle bleu clair</b> (déterminant), <b>triangle bleu foncé</b> (adjectif), <b>grand rond rouge</b> (verbe), <b>petit rond orange</b> (adverbe).',
+but:'Rendre visible la fonction de chaque mot. Le nom est un triangle noir, stable et ancien comme les pyramides : il désigne les choses. Le verbe est un rond rouge, plein d’énergie comme le soleil : il fait bouger la phrase.',
+controle:'Chaque mot n’accepte qu’un symbole. En cas d’erreur, une question guide l’enfant vers la bonne réponse.',
+presentation:'On joue d’abord avec de vrais objets : « Donne-moi <i>le</i> crayon », puis « <i>le</i> crayon <i>rouge</i> », puis « <i>Cours</i> jusqu’à la porte ! ». L’enfant pose ensuite les symboles sur des étiquettes de mots.',
+round(A,lv,C){
+  const toks=C.fresh(GS[lv]).split(' ').map(s=>{const [w,t]=s.split('/');return{w,t};}),sent=toks.map(x=>x.w).join(' ').replace(' .','.');
+  let curI=toks.findIndex(x=>x.t);
+  C.consigne('Touche le bon symbole pour le mot entouré. Tu peux aussi choisir un autre mot.',`${sent} Trouve le symbole de chaque mot.`);
+  A.innerHTML=`<div class="gr"><div class="gr-sent read">${toks.map((x,i)=>x.t?`<button class="gr-w" data-i="${i}"><span class="gr-s"></span><span>${x.w}</span></button>`:`<span class="gr-p">${x.w}</span>`).join('')}</div>
+    <div class="gr-pal">${GPAL[lv].map(t=>`<button class="gr-b" data-t="${t}">${sym(t)}<span>${SYM[t][0]}</span></button>`).join('')}</div></div>`;
+  const mark=()=>$$('.gr-w',A).forEach(b=>b.classList.toggle('cur',+b.dataset.i===curI));mark();
+  A.onclick=e=>{if(cur.locked)return;const wb=e.target.closest('.gr-w');
+    if(wb){if(!wb.classList.contains('done')){curI=+wb.dataset.i;mark();say(toks[curI].w);}return;}
+    const b=e.target.closest('.gr-b');if(!b||curI<0)return;const tk=toks[curI];
+    if(b.dataset.t===tk.t){const el=$(`.gr-w[data-i="${curI}"]`,A);el.classList.add('done');$('.gr-s',el).innerHTML=sym(tk.t);C.pop();
+      curI=toks.findIndex((x,i)=>x.t&&!$(`.gr-w[data-i="${i}"]`,A).classList.contains('done'));mark();
+      if(curI<0)C.win(`Bravo ! « ${sent} »`,`Bravo ! ${sent}`);}
+    else C.fail(b,`Regarde « ${tk.w} » : ${GQ[tk.t]}`);};
+}});
+
+/* ================================================================
+   MATHÉMATIQUES
+   ================================================================ */
+game({id:'barres',dom:'math',icon:'📏',name:'Les barres numériques',sub:'Compte les barres rouges et bleues.',age:'5 – 6 ans',rounds:5,
+levels:['Barres de 1 à 5','Barres de 1 à 10','Additionner deux barres'],
+materiel:'10 barres en bois de 10 cm à 1 m, divisées en segments de 10 cm alternativement rouges et bleus, et les cartes chiffres de 1 à 10.',
+but:'Associer une quantité à son nom et à son chiffre. Chaque barre est un tout que l’on compte partie par partie : c’est la préparation à l’addition.',
+controle:'Rangées en escalier, les barres montrent immédiatement une erreur. Ici, l’enfant peut toucher chaque segment pour compter à voix haute.',
+presentation:'L’enfant range les barres de la plus longue à la plus courte, compte chaque segment en posant la main dessus (« un, deux, trois »), puis pose la carte chiffre au bout de la barre.',
+round(A,lv,C){
+  const bar=n=>`<span class="nb">${Array.from({length:n},(_,i)=>`<i class="${i%2?'b':'r'}"></i>`).join('')}</span>`;let n,html,msg;
+  if(lv<2){n=rnd(1,lv?10:5);html=bar(n);C.consigne('Compte les parties rouges et bleues de la barre. Quel nombre est-ce ?');msg=`Oui ! C’est la barre de ${n}.`;}
+  else{const a=rnd(1,8),b=rnd(1,10-a);n=a+b;html=`${bar(a)}<b class="plus">+</b>${bar(b)}`;C.consigne('Mets les deux barres bout à bout. Combien cela fait-il en tout ?',`${a} plus ${b}. Combien cela fait-il en tout ?`);msg=`Oui ! ${a} + ${b} = ${n}.`;}
+  const max=lv===0?5:10,set=new Set([n]);let g=0;while(set.size<3&&g++<60)set.add(clamp(n+rnd(-3,3),1,max));
+  A.innerHTML=`<div class="nbw"><div class="nb-line">${html}</div><div class="nb-count">👆 Touche chaque partie pour compter : <b>0</b></div>
+    <div class="lrow">${shuffle([...set]).map(x=>`<button class="numcard" data-n="${x}">${x}</button>`).join('')}</div><button class="btn small" data-a="reset">↺ Recompter</button></div>`;
+  let cnt=0;const cb=$('.nb-count b',A);
+  A.onclick=e=>{if(cur.locked)return;const seg=e.target.closest('.nb i');
+    if(seg){if(!seg.dataset.n){cnt++;seg.dataset.n=cnt;seg.classList.add('k');cb.textContent=cnt;say(String(cnt));}return;}
+    if(e.target.closest('[data-a="reset"]')){cnt=0;cb.textContent=0;$$('.nb i',A).forEach(s=>{delete s.dataset.n;s.classList.remove('k');});return;}
+    const b=e.target.closest('.numcard');if(!b)return;
+    if(+b.dataset.n===n){b.classList.add('good');C.win(msg);}else C.fail(b,'Pas tout à fait… Compte encore en touchant chaque partie.');};
+}});
+
+game({id:'fuseaux',dom:'math',icon:'🥢',name:'La boîte de fuseaux',sub:'Range juste ce qu’il faut de fuseaux dans chaque case.',age:'5 – 6 ans',rounds:1,
+levels:['Cases 0 à 4 (10 fuseaux)','Cases 0 à 9 (45 fuseaux)','Cases dans le désordre'],
+materiel:'Deux boîtes en bois de 5 compartiments numérotés de 0 à 4 et de 5 à 9, avec <b>exactement 45 fuseaux</b> en bois et des rubans.',
+but:'Comprendre qu’un chiffre représente une quantité d’objets séparés, et découvrir le zéro : « zéro, c’est rien du tout ».',
+controle:'Il y a exactement 45 fuseaux (0 + 1 + 2 + … + 9 = 45). S’il en manque ou s’il en reste à la fin, une case est fausse.',
+presentation:'L’enfant lit le chiffre, prend les fuseaux un à un en comptant à voix haute, les attache avec un ruban et les pose dans la case. Devant la case 0 : « Zéro, c’est rien. On ne met rien. »',
+round(A,lv,C){
+  const nums=lv===0?[0,1,2,3,4]:[0,1,2,3,4,5,6,7,8,9],order=lv===2?shuffle(nums):nums,total=nums.reduce((s,x)=>s+x,0),box={};nums.forEach(x=>{box[x]=0;});let basket=total;
+  C.consigne(`Touche une case pour y poser un fuseau. Mets autant de fuseaux que le chiffre ! Il y en a ${total} dans le panier.`,`Mets dans chaque case autant de fuseaux que le chiffre. Attention au zéro !`);
+  A.innerHTML=`<div class="fz"><div class="fz-basket">🧺 Panier : <span class="fz-lab"></span><div class="fz-pile"></div></div>
+    <div class="fz-box">${order.map(x=>`<div class="fz-c" data-n="${x}"><span class="fz-num">${x}</span><button class="fz-in" data-add="${x}" aria-label="Poser un fuseau dans la case ${x}"></button><button class="fz-rm" data-rm="${x}" aria-label="Retirer un fuseau de la case ${x}">−</button></div>`).join('')}</div>
+    <button class="btn primary big" data-a="check">✔️ Vérifier</button></div>`;
+  const upd=()=>{$('.fz-lab',A).textContent=`${basket} fuseau${basket>1?'x':''}`;$('.fz-pile',A).innerHTML='<i></i>'.repeat(basket);nums.forEach(x=>{$(`[data-add="${x}"]`,A).innerHTML='<i></i>'.repeat(box[x]);});};upd();
+  A.onclick=e=>{if(cur.locked)return;const ad=e.target.closest('[data-add]'),rm=e.target.closest('[data-rm]');
+    if(ad){const x=+ad.dataset.add;if(basket<=0)return C.fail($('.fz-basket',A),'Le panier est vide ! Vérifie tes cases.');if(box[x]>=12)return;
+      box[x]++;basket--;C.pop();ad.parentElement.classList.remove('bad','good');upd();if(basket===0)say('Le panier est vide. Vérifie !');return;}
+    if(rm){const x=+rm.dataset.rm;if(box[x]>0){box[x]--;basket++;C.pop();rm.parentElement.classList.remove('bad','good');upd();}return;}
+    if(e.target.closest('[data-a="check"]')){const bad=[];nums.forEach(x=>{const c=$(`.fz-c[data-n="${x}"]`,A),ok=box[x]===x;c.classList.toggle('good',ok);c.classList.toggle('bad',!ok);if(!ok)bad.push(c);});
+      if(!bad.length)C.win(`Parfait ! Les ${total} fuseaux sont rangés, et la case 0 reste vide : zéro, c’est rien du tout !`);
+      else if(box[0]>0)C.fail(bad,'Attention : zéro, c’est « rien ». La case 0 doit rester vide !');
+      else C.fail(bad,'Certaines cases ne sont pas justes. Recompte les fuseaux des cases orange.');}};
+}});
+
+game({id:'jetons',dom:'math',icon:'🔴',name:'Cartes et jetons',sub:'Pair ou impair ? Les jetons te le montrent.',age:'5 – 7 ans',rounds:5,
+levels:['Nombres de 1 à 6','Nombres de 1 à 10','Nombres jusqu’à 20'],
+materiel:'Les cartes chiffres de 1 à 10 et 55 jetons rouges identiques.',
+but:'Consolider la suite des nombres et découvrir de façon visuelle les notions de pair et d’impair.',
+controle:'Il y a exactement 55 jetons pour aller de 1 à 10. Pour un nombre impair, un jeton reste tout seul en bas.',
+presentation:'Sous chaque carte, l’enfant pose les jetons deux par deux, côte à côte. Puis on fait glisser le doigt entre les deux colonnes : s’il ne bute sur aucun jeton seul, le nombre est pair.',
+round(A,lv,C){
+  const n=rnd(1,[6,10,20][lv]);let k=0;
+  C.consigne(`Pose autant de jetons rouges que le nombre <b>${n}</b>, deux par deux.`,`Pose ${n} jetons, deux par deux.`);
+  A.innerHTML=`<div class="cj"><div class="numcard big">${n}</div><div class="cj-tok"></div>
+    <div class="row cj-ctl"><button class="btn big" data-a="add">🔴 Poser un jeton</button><button class="btn" data-a="rem" aria-label="Retirer un jeton">↩️</button></div>
+    <div class="row cj-ctl"><button class="btn primary" data-a="done">J’ai fini ✓</button></div>
+    <div class="cj-q" hidden><p>Regarde : chaque jeton a-t-il un copain ?</p><div class="row"><button class="btn big" data-a="pair">👯 Pair</button><button class="btn big" data-a="impair">🙋 Impair</button></div></div></div>`;
+  const tok=$('.cj-tok',A),draw=()=>{tok.innerHTML='<i></i>'.repeat(k);};
+  A.onclick=e=>{if(cur.locked)return;const a=e.target.closest('[data-a]');if(!a)return;const act=a.dataset.a;
+    if(act==='add'){if(k<30){k++;C.pop();draw();}}
+    else if(act==='rem'){if(k>0){k--;draw();}}
+    else if(act==='done'){if(k!==n)return C.fail(tok,k<n?'Il manque des jetons. Recompte !':'Il y a trop de jetons. Recompte !');
+      $$('.cj-ctl',A).forEach(x=>x.hidden=true);$('.cj-q',A).hidden=false;say('Bien compté ! Chaque jeton a-t-il un copain ? Pair ou impair ?');}
+    else{const good=n%2===0?'pair':'impair';
+      if(act===good)C.win(n%2===0?`Oui ! ${n} est pair : chaque jeton a un copain.`:`Oui ! ${n} est impair : un jeton reste tout seul.`);
+      else C.fail(a,'Regarde bien la dernière rangée de jetons.');}};
+}});
+
+const PV={1:['unité','unités','perle','perles','#2e9e4f','Unités'],10:['dizaine','dizaines','barre','barres','#2f6fd0','Dizaines'],100:['centaine','centaines','plaque','plaques','#d63b3b','Centaines'],1000:['millier','milliers','cube','cubes','#2e9e4f','Milliers']};
+const PIECE={1:'<i class="bd"></i>',10:'<i class="br"></i>',100:'<i class="pl"></i>',1000:'<i class="cb"></i>'};
+const XCH={1:'une barre de dix',10:'une plaque de cent',100:'un cube de mille',1000:'dix mille'};
+const joinEt=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' et '+a[a.length-1];
+
+game({id:'perles',dom:'math',icon:'🟡',name:'Les perles dorées',sub:'Unités, dizaines, centaines et milliers.',age:'5 – 8 ans',rounds:5,
+levels:['Jusqu’à 99','Jusqu’à 999','Jusqu’à 9 999'],
+materiel:'Le système décimal en perles dorées : la perle (1), la barre de 10 perles, la plaque de 100, le cube de 1 000. Avec les cartes de numération superposables : <b>unités en vert, dizaines en bleu, centaines en rouge, milliers en vert</b>.',
+but:'Rendre concrète la valeur de position : l’enfant « porte » les quantités et sent qu’un cube de mille est bien plus lourd qu’une perle.',
+controle:'Le nombre construit doit correspondre aux cartes. On ne peut pas mettre 10 pièces de la même sorte : on les échange contre une pièce plus grande, comme à la banque.',
+presentation:'L’adulte tient la « banque ». L’enfant reçoit une commande (des cartes superposées, par exemple 2 000 + 300 + 40 + 5 = 2 345), va chercher les perles sur un plateau et les rapporte pour vérifier.',
+round(A,lv,C){
+  const n=lv===0?rnd(11,99):lv===1?rnd(101,999):rnd(1001,9999),pls=lv===0?[10,1]:lv===1?[100,10,1]:[1000,100,10,1],want={},have={};
+  pls.forEach(p=>{want[p]=Math.floor(n/p)%10;have[p]=0;});
+  C.consigne(`Va chercher le nombre <b>${fmt(n)}</b> avec les perles dorées.`,`Va chercher le nombre ${n} avec les perles dorées.`);
+  A.innerHTML=`<div class="pd"><div class="pd-num">${String(n).split('').map((d,i)=>`<span style="color:${PV[pls[i]][4]}">${d}</span>`).join('')}</div>
+    <div class="pd-cards">${pls.filter(p=>want[p]).map(p=>`<span class="pd-card" style="color:${PV[p][4]}">${fmt(want[p]*p)}</span>`).join('<b>+</b>')}</div>
+    <div class="pd-tray">${pls.map(p=>`<button class="pd-take" data-p="${p}"><span class="pd-ic">${PIECE[p]}</span><span>+ 1 ${PV[p][2]}</span></button>`).join('')}</div>
+    <div class="pd-mat" style="grid-template-columns:repeat(${pls.length},1fr)">${pls.map(p=>`<div class="pd-col" data-col="${p}"><div class="pd-h" style="color:${PV[p][4]}">${PV[p][5]}</div><button class="pd-stack" data-s="${p}" aria-label="Retirer une pièce"></button><div class="pd-cnt" style="color:${PV[p][4]}" data-c="${p}">0</div></div>`).join('')}</div>
+    <p class="pd-help">Touche une pièce sur le tapis pour la rendre à la banque.</p><button class="btn primary big" data-a="check">✔️ Vérifier</button></div>`;
+  const upd=p=>{$(`[data-s="${p}"]`,A).innerHTML=PIECE[p].repeat(have[p]);$(`[data-c="${p}"]`,A).textContent=have[p];$(`[data-col="${p}"]`,A).classList.remove('bad');};
+  A.onclick=e=>{if(cur.locked)return;const t=e.target.closest('.pd-take');
+    if(t){const p=+t.dataset.p;if(have[p]>=9)return C.fail(t,`Stop ! 10 ${PV[p][3]}, c’est ${XCH[p]}. En Montessori, on échange !`);have[p]++;C.pop();upd(p);return;}
+    const s=e.target.closest('.pd-stack');if(s){const p=+s.dataset.s;if(have[p]>0){have[p]--;C.pop();upd(p);}return;}
+    if(e.target.closest('[data-a="check"]')){const wrong=pls.filter(p=>have[p]!==want[p]);
+      if(!wrong.length)C.win(`Bravo ! ${fmt(n)}, c’est ${joinEt(pls.filter(p=>want[p]).map(p=>`${want[p]} ${PV[p][want[p]>1?1:0]}`))}.`);
+      else{wrong.forEach(p=>$(`[data-col="${p}"]`,A).classList.add('bad'));C.fail(wrong.map(p=>$(`[data-col="${p}"]`,A)),`Presque ! Recompte les ${joinEt(wrong.map(p=>PV[p][1]))}.`);}}};
+}});
+
+const BC={1:'#d93636',2:'#35a852',3:'#f39ac0',4:'#f3d21b',5:'#7cc8ef',6:'#8f5cc9',7:'#f7f7f2',8:'#8b5a2b',9:'#243f94',10:'#e2a70b'};
+const beads=n=>`<span class="bbar" style="--bc:${BC[n]}">${'<i></i>'.repeat(n)}</span>`;
+const beadsNum=(t,u,cls)=>`<span class="bgrp ${cls||''}"><span class="tens">${beads(10).repeat(t)}</span>${u?beads(u):''}</span>`;
+const pl=(x,w)=>`${x} ${w}${x>1?'s':''}`;
+
+game({id:'seguin',dom:'math',icon:'🧮',name:'Les tableaux de Seguin',sub:'Les nombres de 11 à 99 avec les perles.',age:'5 – 7 ans',rounds:5,
+levels:['Tableau 1 : de 11 à 19','Tableau 2 : de 10 à 99','Du nombre aux perles'],
+materiel:'Deux planches de Seguin : sur la première (11 à 19), on glisse une carte chiffre sur le 0 du « 10 » ; la seconde va de 10 à 90. Avec les barres dorées de 10 et les barres de perles colorées : <b>1 rouge, 2 vert, 3 rose, 4 jaune, 5 bleu clair, 6 violet, 7 blanc, 8 marron, 9 bleu foncé</b>.',
+but:'Comprendre les nombres de 11 à 99 comme « des dizaines et des unités », et apprendre leur nom (onze, douze… les plus difficiles en français).',
+controle:'La quantité de perles doit toujours correspondre au nombre formé sur la planche.',
+presentation:'« Dix et un, onze. » L’enfant pose une barre dorée et une perle rouge, puis glisse la carte 1 sur le 0 du 10. On continue jusqu’à 19, puis on passe aux dizaines.',
+round(A,lv,C){
+  const D=[1,2,3,4,5,6,7,8,9];
+  if(lv===0){const u=rnd(1,9),n=10+u,opts=shuffle([u,...sample(D.filter(x=>x!==u),3)]);
+    C.consigne('Une barre dorée de 10 et une barre de couleur… Pose la bonne carte sur le 0 !','Une dizaine, et combien d’unités ? Pose la bonne carte sur le zéro.');
+    A.innerHTML=`<div class="sg">${beadsNum(1,u)}<div class="sg-board"><div class="sg-slot"><span>1</span><span class="o">0</span></div></div><div class="lrow">${opts.map(d=>`<button class="sgcard" data-d="${d}">${d}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.sgcard');if(!b)return;
+      if(+b.dataset.d===u){const o=$('.o',A);o.textContent=u;o.classList.add('cov');b.classList.add('good');C.win(`Oui ! 1 dizaine et ${pl(u,'unité')} : ${n}.`,`Oui ! ${n}.`);}
+      else C.fail(b,'Compte bien les perles de la barre de couleur.');};
+  }else if(lv===1){const t=rnd(1,9),u=rnd(0,9),n=10*t+u;let step=0;
+    const tO=shuffle([t,...sample(D.filter(x=>x!==t),3)]),uO=shuffle([u||1,...sample(D.filter(x=>x!==u),3)]);
+    C.consigne('Compte les barres dorées : combien de dizaines ? Choisis la bonne carte.','Compte les barres dorées. Combien de dizaines ?');
+    A.innerHTML=`<div class="sg">${beadsNum(t,u)}<div class="sg-board"><div class="sg-slot"><span class="tt">?</span><span class="o">?</span></div></div><div class="lrow sg-opts">${tO.map(d=>`<button class="sgcard wide" data-d="${d}">${d}0</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.sgcard');if(!b)return;const d=+b.dataset.d;
+      if(step===0){if(d!==t)return C.fail(b,'Compte les barres dorées : chacune vaut 10.');
+        $('.tt',A).textContent=t;$('.o',A).textContent='0';C.pop();
+        if(u===0)return C.win(`Oui ! ${pl(t,'dizaine')} : ${n}.`,`Oui ! ${n}.`);
+        step=1;C.consigne('Maintenant, combien de perles dans la barre de couleur ? Pose la carte sur le 0.','Maintenant, combien d’unités ? Pose la carte sur le zéro.');
+        $('.sg-opts',A).innerHTML=uO.map(x=>`<button class="sgcard" data-d="${x}">${x}</button>`).join('');}
+      else{if(d===u){const o=$('.o',A);o.textContent=u;o.classList.add('cov');b.classList.add('good');C.win(`Oui ! ${pl(t,'dizaine')} et ${pl(u,'unité')} : ${n}.`,`Oui ! ${n}.`);}
+        else C.fail(b,'Compte les perles de la barre de couleur.');}};
+  }else{const t=rnd(1,9),u=rnd(1,9),n=10*t+u,cands=[[t,u]];
+    const add=(a,b)=>{if(a>=1&&a<=9&&b>=1&&b<=9&&!cands.some(c=>c[0]===a&&c[1]===b))cands.push([a,b]);};
+    add(u,t);add(t,u===9?8:u+1);add(t===9?8:t+1,u);add(t-1,u);add(t,u-1);
+    const opts=shuffle(cands.slice(0,3));
+    C.consigne(`Trouve le groupe de perles qui fait <b>${n}</b>.`,`Trouve les perles qui font ${n}.`);
+    A.innerHTML=`<div class="sg"><div class="numcard big">${n}</div><div class="sg-choices">${opts.map(([a,b])=>`<button class="sg-ch" data-k="${a}-${b}">${beadsNum(a,b,'sm')}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.sg-ch');if(!b)return;
+      if(b.dataset.k===`${t}-${u}`){b.classList.add('good');C.win(`Oui ! ${n}, c’est ${pl(t,'dizaine')} et ${pl(u,'unité')}.`,`Oui ! ${n}.`);}
+      else C.fail(b,'Compte d’abord les barres dorées, puis les perles de couleur.');};
+  }
+}});
+game({id:'multiplication',dom:'math',icon:'✖️',name:'La planche de multiplication',sub:'Construis les tables avec les perles rouges.',age:'7 – 8 ans',rounds:5,
+levels:['Tables de 2 et 3','Tables de 2 à 5','Tables de 6 à 9'],
+materiel:'Une planche perforée de 10 × 10 trous, 100 perles rouges, un petit disque rouge et des cartes chiffres. En Montessori, « 4 × 3 » se lit « 4 pris 3 fois ».',
+but:'Mémoriser les tables en construisant chaque produit, et découvrir le comptage par bonds (4, 8, 12…).',
+controle:'Le nombre de colonnes remplies est le multiplicateur ; chaque colonne contient autant de perles que le multiplicande. L’enfant vérifie ensuite avec ses tables de contrôle.',
+presentation:'On glisse la carte du multiplicande dans la fente à gauche, on pose le disque au-dessus de la colonne 1 et on y met les perles. On avance le disque d’une colonne, on recommence, puis on compte le total.',
+round(A,lv,C){
+  const a=lv===0?rnd(2,3):lv===1?rnd(2,5):rnd(6,9),b=lv===0?rnd(2,5):rnd(2,10),p=a*b;let col=0;
+  C.consigne(`<b>${a} × ${b}</b> : ${a} pris ${b} fois. Touche les colonnes une à une pour y poser ${a} perles.`,`${a} fois ${b}. ${a} pris ${b} fois. Touche les colonnes une à une.`);
+  let cells=`<span class="mb-corner">${a}</span>`;for(let c=1;c<=10;c++)cells+=`<button class="mb-top" data-c="${c}">${c}</button>`;
+  for(let r=1;r<=10;r++){cells+='<span></span>';for(let c=1;c<=10;c++)cells+=`<button class="mb-h" data-c="${c}" data-r="${r}" aria-label="trou"></button>`;}
+  const set=new Set([p]);[p+a,p-a,p+1,p-1,a+b,p+b].forEach(x=>{if(set.size<4&&x>0)set.add(x);});
+  A.innerHTML=`<div class="mb"><div class="mb-card">${a} × ${b}</div><div class="mb-board">${cells}</div><div class="mb-count"></div>
+    <div class="mb-q" hidden><p><b>Combien de perles en tout ?</b></p><div class="lrow">${shuffle([...set]).map(x=>`<button class="numcard" data-n="${x}">${x}</button>`).join('')}</div></div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const q=e.target.closest('.mb-q .numcard');
+    if(q){if(+q.dataset.n===p){q.classList.add('good');C.win(`Bravo ! ${a} × ${b} = ${p}.`,`Bravo ! ${a} fois ${b}, égale ${p}.`);}else C.fail(q,'Compte les perles rouges sur la planche.');return;}
+    const h=e.target.closest('[data-c]');if(!h||col>=b)return;const c=+h.dataset.c;if(c<=col)return;
+    if(c!==col+1)return C.fail(h,'Une colonne après l’autre, dans l’ordre !');
+    col=c;$$('.mb-top',A).forEach(x=>x.classList.toggle('on',+x.dataset.c===c));
+    for(let r=1;r<=a;r++){const cell=$(`.mb-h[data-c="${c}"][data-r="${r}"]`,A);C.later(()=>cell.classList.add('on'),r*55);}
+    C.pop();
+    if(lv===0){$('.mb-count',A).textContent=`${a} × ${col} = ${a*col}`;say(String(a*col));}else $('.mb-count',A).textContent=`${col} colonne${col>1?'s':''} sur ${b}`;
+    if(col===b)C.later(()=>{$('.mb-q',A).hidden=false;say('Combien de perles en tout ?');},a*55+350);};
+}});
+
+const DEN={2:['demi','demis'],3:['tiers','tiers'],4:['quart','quarts'],5:['cinquième','cinquièmes'],6:['sixième','sixièmes'],7:['septième','septièmes'],8:['huitième','huitièmes'],9:['neuvième','neuvièmes'],10:['dixième','dixièmes']};
+const NW=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix'];
+const fname=(k,n)=>`${NW[k]} ${DEN[n][k>1?1:0]}`+(k===n?' (un entier)':'');
+function pie(k,n){const c=100,R=78;let s='',kn='';const P=a=>`${(c+R*Math.cos(a)).toFixed(2)} ${(c+R*Math.sin(a)).toFixed(2)}`;
+  for(let i=0;i<n;i++){const a0=-Math.PI/2+i*2*Math.PI/n,a1=a0+2*Math.PI/n;s+=`<path class="${i<k?'on':'off'}" d="M${c} ${c} L${P(a0)} A${R} ${R} 0 0 1 ${P(a1)} Z"/>`;
+    if(i<k){const am=(a0+a1)/2,d=R*.55;kn+=`<circle class="fr-knob" cx="${(c+d*Math.cos(am)).toFixed(1)}" cy="${(c+d*Math.sin(am)).toFixed(1)}" r="5.5"/>`;}}
+  return `<svg viewBox="0 0 200 200" class="fr-svg" role="img" aria-label="Cercle coupé en ${n} parts, ${k} en rouge"><rect class="fr-frame" x="4" y="4" width="192" height="192" rx="12"/><circle class="fr-hole" cx="100" cy="100" r="${R+3}"/>${s}${kn}</svg>`;}
+
+game({id:'fractions',dom:'math',icon:'🥧',name:'Les cercles de fractions',sub:'Un cercle coupé en parts égales.',age:'6 – 8 ans',rounds:5,
+levels:['Un demi, un tiers, un quart','Jusqu’aux sixièmes','Jusqu’aux dixièmes'],
+materiel:'10 cercles métalliques rouges encastrés dans des cadres verts : l’entier, puis le cercle coupé en 2, 3, 4… jusqu’à 10 parts égales. Chaque part a un petit bouton pour la saisir.',
+but:'Découvrir concrètement qu’un tout se partage en parts égales, nommer les fractions et préparer leur écriture chiffrée.',
+controle:'Chaque part ne rentre que dans son propre cadre. Les parts se comparent en les superposant.',
+presentation:'« Voici l’entier. Je le coupe en deux : chaque partie est un demi. Deux demis font un entier. » On sort les parts, on les nomme, puis leçon en 3 temps.',
+round(A,lv,C){
+  let n,k;if(lv===0){n=rnd(2,4);k=1;}else if(lv===1){n=rnd(2,6);k=rnd(1,n-1);}else{n=rnd(3,10);k=rnd(1,n);}
+  const m=new Map(),add=(kk,nn)=>{if(nn>=2&&nn<=10&&kk>=1&&kk<=nn)m.set(kk+'/'+nn,[kk,nn]);};
+  add(k,n);if(lv===0){add(1,2);add(1,3);add(1,4);}else shuffle([[k,n+1],[k,n-1],[n-k,n],[k+1,n],[k-1,n],[k,n+2]]).forEach(([a,b])=>{if(m.size<3)add(a,b);});
+  const opts=shuffle([...m.values()].slice(0,3));
+  C.consigne('Quelle fraction du cercle est en rouge ?','Quelle partie du cercle est en rouge ?');
+  A.innerHTML=`<div class="fr">${pie(k,n)}<div class="lrow">${opts.map(([a,b])=>`<button class="frb" data-k="${a}-${b}"><span class="frac"><i>${a}</i><i>${b}</i></span>${lv===0?`<small>${fname(a,b)}</small>`:''}</button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.frb');if(!b)return;
+    if(b.dataset.k===`${k}-${n}`){b.classList.add('good');C.win(`Oui ! ${k}/${n} : ${fname(k,n)}.`,`Oui ! ${fname(k,n)}.`);}
+    else C.fail(b,'Compte en combien de parts le cercle est coupé, puis combien sont rouges.');};
+}});
+
+/* ================================================================
+   SENSORIEL
+   ================================================================ */
+const HUES=[['rouges',2,78],['orange',28,92],['jaunes',50,95],['vertes',135,48],['bleues',212,72],['violettes',278,48],['roses',335,78],['marron',24,50],['grises',30,4]];
+game({id:'tablettes',dom:'sens',icon:'🎨',name:'Les tablettes de couleurs',sub:'Range les nuances de la plus foncée à la plus claire.',age:'5 – 6 ans',rounds:5,
+levels:['3 nuances','5 nuances','7 nuances'],
+materiel:'La 3ᵉ boîte de couleurs : 9 couleurs déclinées en 7 nuances, sur des tablettes aux bords de bois qu’on tient sans toucher la couleur.',
+but:'Affiner la perception visuelle des nuances. Préparation indirecte au dessin, à la peinture et au sens de l’ordre.',
+controle:'Le dégradé saute aux yeux : une tablette mal placée casse la régularité.',
+presentation:'L’enfant cherche la tablette la plus foncée, la pose, puis la plus foncée de celles qui restent, et ainsi de suite. On nomme : foncé, plus foncé, le plus foncé.',
+round(A,lv,C){
+  const [nm,h,s]=C.fresh(HUES,x=>x[0]),n=[3,5,7][lv],cols=Array.from({length:n},(_,i)=>`hsl(${h},${s}%,${Math.round(24+i*(64/(n-1)))}%)`);let next=0;
+  C.consigne(`Range les tablettes ${nm} : de la plus <b>foncée</b> à la plus <b>claire</b>.`,'Range les tablettes, de la plus foncée à la plus claire.');
+  A.innerHTML=`<div class="ct"><div class="ct-lab"><span>⬅ la plus foncée</span><span>la plus claire ➡</span></div><div class="ct-row">${cols.map((_,i)=>`<span class="ct-slot" data-s="${i}"></span>`).join('')}</div>
+    <div class="ct-tray">${shuffle(cols.map((_,i)=>i)).map(i=>`<button class="tab" data-i="${i}" style="--col:${cols[i]}" aria-label="tablette"></button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const t=e.target.closest('.ct-tray .tab');if(!t||t.classList.contains('gone'))return;const i=+t.dataset.i;
+    if(i===next){$(`.ct-slot[data-s="${next}"]`,A).innerHTML=`<span class="tab" style="--col:${cols[i]}"></span>`;t.classList.add('gone');next++;C.pop();
+      if(next===n)C.win(`Magnifique ! Tes ${n} tablettes vont de la plus foncée à la plus claire.`);}
+    else C.fail(t,'Cherche la plus foncée parmi celles qui restent.');};
+}});
+
+game({id:'tour',dom:'sens',icon:'🧱',name:'La tour rose et l’escalier marron',sub:'Du plus gros au plus petit.',age:'5 – 6 ans',rounds:3,
+levels:['Tour rose (5 cubes)','Tour rose (10 cubes)','Escalier marron (10 prismes)'],
+materiel:'La tour rose : 10 cubes roses de 1 à 10 cm de côté. L’escalier marron : 10 prismes de 20 cm de long, de 1 à 10 cm d’épaisseur. Les faces des prismes ont la même taille que les cubes de la tour : les deux matériels se combinent.',
+but:'Percevoir les différences de taille, construire la notion d’ordre et préparer le système décimal (1 à 10 cm).',
+controle:'Si un cube est mal placé, la tour devient irrégulière ou bascule ; l’escalier ne forme plus de marches régulières.',
+presentation:'L’enfant porte chaque pièce jusqu’au tapis (les grosses à deux mains), puis construit en commençant par la plus grosse, lentement. Ensuite il démonte et recommence : la répétition fait partie du travail.',
+round(A,lv,C){
+  const stair=lv===2,sizes=lv===0?[2,4,6,8,10]:[1,2,3,4,5,6,7,8,9,10],u=lv===0?10:stair?5.5:6.2,rem=[...sizes].sort((a,b)=>b-a),cls=stair?'pr':'cu';
+  C.consigne(stair?'Construis l’escalier marron : du prisme le plus <b>épais</b> au plus <b>fin</b>.':'Construis la tour rose : commence par le <b>plus gros</b> cube et finis par le plus petit.',
+    stair?'Construis l’escalier marron, du plus épais au plus fin.':'Construis la tour rose. Commence par le plus gros cube.');
+  A.innerHTML=`<div class="tr"><div class="tr-build ${stair?'stair':'tower'}"></div><div class="tr-rug">${shuffle(sizes).map(s=>`<button class="tr-p" data-s="${s}" aria-label="pièce"><i class="${cls}" style="--s:${(s*u).toFixed(1)}px"></i></button>`).join('')}</div></div>`;
+  const build=$('.tr-build',A);
+  A.onclick=e=>{if(cur.locked)return;const p=e.target.closest('.tr-p');if(!p||p.classList.contains('gone'))return;const s=+p.dataset.s;
+    if(s===rem[0]){rem.shift();p.classList.add('gone');build.insertAdjacentHTML('beforeend',`<i class="${cls}" style="--s:${(s*u).toFixed(1)}px"></i>`);C.pop();
+      if(!rem.length)C.win(stair?'Bravo ! Ton escalier marron a des marches bien régulières.':`Bravo ! Ta tour rose de ${sizes.length} cubes est magnifique.`);}
+    else C.fail(p,stair?'Cherche le prisme le plus épais qui reste.':'Cherche le plus gros cube qui reste.');};
+}});
+
+const poly=(n,rot,r,cy)=>Array.from({length:n},(_,i)=>{const a=(rot+i*360/n)*Math.PI/180;return `${(50+r*Math.cos(a)).toFixed(1)},${((cy||50)+r*Math.sin(a)).toFixed(1)}`;}).join(' ');
+const SH={'cercle':['<circle cx="50" cy="50" r="42"/>',50,50],'carré':['<rect x="13" y="13" width="74" height="74"/>',50,50],'rectangle':['<rect x="6" y="27" width="88" height="46"/>',50,50],
+  'triangle':['<polygon points="50,9 93,84 7,84"/>',50,59],'ovale':['<ellipse cx="50" cy="50" rx="44" ry="27"/>',50,50],'losange':['<polygon points="50,5 80,50 50,95 20,50"/>',50,50],
+  'trapèze':['<polygon points="30,24 70,24 94,76 6,76"/>',50,52],'parallélogramme':['<polygon points="28,25 95,25 72,75 5,75"/>',50,50],
+  'pentagone':[`<polygon points="${poly(5,-90,44,53)}"/>`,50,53],'hexagone':[`<polygon points="${poly(6,0,44)}"/>`,50,50],'octogone':[`<polygon points="${poly(8,22.5,44)}"/>`,50,50],
+  'triangle rectangle':['<polygon points="12,10 12,88 88,88"/>',37,62]};
+const gPiece=k=>`<svg viewBox="0 0 100 100"><g class="gc-blue">${SH[k][0]}</g><circle class="gc-knob" cx="${SH[k][1]}" cy="${SH[k][2]}" r="5"/></svg>`;
+const gFrame=(k,full)=>`<svg viewBox="0 0 100 100"><rect class="gc-wood" width="100" height="100"/><g class="${full?'gc-blue':'gc-hole'}">${SH[k][0]}</g>${full?`<circle class="gc-knob" cx="${SH[k][1]}" cy="${SH[k][2]}" r="5"/>`:''}</svg>`;
+
+game({id:'cabinet',dom:'sens',icon:'🔷',name:'Le cabinet géométrique',sub:'Remets chaque forme dans son cadre.',age:'5 – 7 ans',rounds:5,
+levels:['4 formes de base','12 formes','Nommer les formes'],
+materiel:'Un meuble à tiroirs contenant des cadres en bois naturel et des formes bleues à petit bouton : cercles, carrés, rectangles, triangles, polygones et figures courbes. Avec trois séries de cartes de contours.',
+but:'Reconnaître et nommer les figures planes. Le contour du trou guide le doigt : c’est aussi une préparation à l’écriture.',
+controle:'Une forme n’entre que dans son propre cadre.',
+presentation:'L’enfant fait le tour du trou avec l’index et le majeur, puis le bord de la pièce, et replace la pièce. Plus tard, on apprend les noms avec la leçon en 3 temps.',
+round(A,lv,C){
+  const pool=lv===0?['cercle','carré','triangle','rectangle']:Object.keys(SH),k=C.fresh(pool),opts=shuffle([k,...sample(pool.filter(x=>x!==k),lv===0?2:3)]);
+  if(lv<2){C.consigne('Dans quel cadre va cette pièce bleue ? Touche le bon trou.');
+    A.innerHTML=`<div class="gc"><div class="gc-piece">${gPiece(k)}</div><div class="gc-frames">${opts.map(x=>`<button class="gc-f" data-k="${x}" aria-label="cadre">${gFrame(x,false)}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const f=e.target.closest('.gc-f');if(!f)return;
+      if(f.dataset.k===k){f.innerHTML=gFrame(k,true);$('.gc-piece',A).style.visibility='hidden';C.win(`Oui ! C’est un ${k}.`);}
+      else C.fail(f,'Regarde bien les bords : la pièce ne rentre pas dans ce trou.');};
+  }else{C.consigne('Comment s’appelle cette forme ?');
+    A.innerHTML=`<div class="gc"><div class="gc-piece">${gPiece(k)}</div><div class="gc-names">${opts.map(x=>`<button class="btn big" data-k="${x}">${x}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+      if(b.dataset.k===k){b.classList.add('good');C.win(`Oui ! C’est un ${k}.`);}else C.fail(b,'Regarde bien sa forme : compte ses côtés et ses coins, s’il en a !');};
+  }
+}});
+
+game({id:'sons',dom:'sens',icon:'🥁',name:'Les boîtes à sons',sub:'Trouve les cylindres jumeaux à l’oreille.',age:'5 – 6 ans',rounds:3,
+levels:['3 paires','4 paires','6 paires'],
+materiel:'Deux boîtes de 6 cylindres en bois fermés : couvercles rouges et couvercles bleus. Chaque cylindre rouge a un jumeau bleu qui fait exactement le même bruit, du plus fort au plus doux.',
+but:'Affiner l’ouïe et l’attention auditive. Préparation à la musique et à la discrimination des sons de la langue.',
+controle:'Sous chaque cylindre, une pastille de couleur permet de vérifier les paires. Ici, les jumeaux se marquent d’un même numéro.',
+presentation:'L’enfant secoue lentement un cylindre près de son oreille, puis cherche son jumeau dans l’autre boîte. Extension : ranger les cylindres du plus fort au plus doux.',
+round(A,lv,C){
+  const n=[3,4,6][lv],lvls=n===3?[0,2,5]:n===4?[0,2,3,5]:[0,1,2,3,4,5],reds=shuffle(lvls),blues=shuffle(lvls);let sel=null,busy=false,found=0;
+  C.consigne('Secoue un cylindre <b class="tc">rouge</b>, puis cherche le cylindre <b class="tv">bleu</b> qui fait exactement le même bruit. 🔈 Monte le son !','Secoue un cylindre rouge, puis cherche le cylindre bleu qui fait le même bruit.');
+  const cyl=(c,i)=>`<button class="cyl ${c}" data-i="${i}" aria-label="cylindre ${c==='red'?'rouge':'bleu'} ${i+1}"><span class="lid"></span><span class="body"></span></button>`;
+  A.innerHTML=`<div class="bs"><div class="bs-lab">Boîte rouge</div><div class="bs-row">${reds.map((_,i)=>cyl('red',i)).join('')}</div><div class="bs-lab">Boîte bleue</div><div class="bs-row">${blues.map((_,i)=>cyl('blue',i)).join('')}</div></div>`;
+  const anim=el=>{el.classList.remove('play');void el.offsetWidth;el.classList.add('play');};
+  A.onclick=e=>{if(cur.locked||busy)return;const c=e.target.closest('.cyl');if(!c||c.classList.contains('done'))return;const i=+c.dataset.i;
+    if(c.classList.contains('red')){$$('.cyl.red',A).forEach(x=>x.classList.remove('sel'));c.classList.add('sel');sel=i;shaker(reds[i]);anim(c);return;}
+    shaker(blues[i]);anim(c);if(sel===null)return;
+    busy=true;const rc=$(`.cyl.red[data-i="${sel}"]`,A);
+    C.later(()=>{busy=false;rc.classList.remove('sel');
+      if(reds[sel]===blues[i]){found++;rc.classList.add('done');c.classList.add('done');rc.dataset.p=c.dataset.p=found;C.pop();
+        if(found===n)C.win('Bravo ! Tes oreilles sont très fines : toutes les paires sont trouvées.');}
+      else C.fail([rc,c],'Ce n’est pas le même bruit. Écoute encore !');
+      sel=null;},950);};
+}});
+
+/* ================================================================
+   LE MONDE ET LA VIE PRATIQUE
+   ================================================================ */
+const CT={af:['Afrique','#3aa655','#fff'],as:['Asie','#f2c200','#33291f'],eu:['Europe','#d93a3a','#fff'],amn:['Amérique du Nord','#f08a24','#fff'],ams:['Amérique du Sud','#f28ab2','#33291f'],oc:['Océanie','#8b5a2b','#fff'],ant:['Antarctique','#ffffff','#33291f']};
+const CI=[['af','🦁','le lion',0],['af','🦒','la girafe',0],['af','🦓','le zèbre',0],['af','🦛','l’hippopotame',0],['af','🦍','le gorille',1],['af','🦏','le rhinocéros blanc',2],['af','🐘','l’éléphant d’Afrique',2],
+ ['as','🐼','le panda géant',0],['as','🐯','le tigre du Bengale',0],['as','🐫','le chameau de Bactriane (2 bosses)',1],['as','🦧','l’orang-outan',1],['as','🍣','les sushis du Japon',2],['as','🏯','le château japonais',2],
+ ['oc','🦘','le kangourou',0],['oc','🐨','le koala',0],['oc','🐠','la Grande Barrière de corail',2],
+ ['ant','🐧','le manchot empereur',0],['ant','🦭','le phoque de Weddell',1],['ant','🧊','la plus grande calotte de glace du monde',2],
+ ['eu','🦔','le hérisson d’Europe',1],['eu','🥐','le croissant de France',2],['eu','🍕','la pizza d’Italie',2],
+ ['amn','🦬','le bison d’Amérique',1],['amn','🦝','le raton laveur',1],['amn','🗽','la statue de la Liberté',2],['amn','🌮','le taco du Mexique',2],
+ ['ams','🦙','le lama',1],['ams','🦥','le paresseux',1],['ams','🦜','l’ara d’Amazonie',1],['ams','🐍','l’anaconda',2]];
+
+game({id:'continents',dom:'monde',icon:'🌍',name:'Les continents',sub:'Qui vit où sur la Terre ?',age:'5 – 8 ans',rounds:5,
+levels:['4 continents','Les 7 continents','Animaux, monuments et spécialités'],
+materiel:'Le globe des continents aux couleurs Montessori : <b>Afrique verte, Asie jaune, Europe rouge, Amérique du Nord orange, Amérique du Sud rose, Océanie marron, Antarctique blanc</b>. Puis la carte-puzzle du monde avec les mêmes couleurs.',
+but:'Découvrir le monde, situer les animaux et les cultures sur les continents, développer l’intérêt pour les autres peuples.',
+controle:'Chaque image a une seule bonne réponse ; les couleurs, identiques à celles du globe, aident à mémoriser.',
+presentation:'On fait tourner le globe, on touche et on nomme chaque continent. Ensuite l’enfant classe des figurines ou des images d’animaux sur la carte-puzzle.',
+round(A,lv,C){
+  const conts=lv===0?['af','as','oc','ant']:['af','as','eu','amn','ams','oc','ant'],pool=CI.filter(x=>conts.includes(x[0])&&x[3]<=lv),[ck,emo,lab]=C.fresh(pool,x=>x[2]);
+  C.consigne(`Sur quel continent trouve-t-on <b>${lab}</b> ?`);
+  A.innerHTML=`<div class="co"><div class="co-pic"><div class="emo">${emo}</div><div class="co-lab">${lab}</div></div>
+    <div class="co-btns">${conts.map(k=>`<button class="co-b" data-k="${k}" style="--cb:${CT[k][1]};--ct:${CT[k][2]}">${CT[k][0]}</button>`).join('')}</div><p class="co-note">Les couleurs sont celles du globe Montessori.</p></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.co-b');if(!b)return;
+    if(b.dataset.k===ck){b.classList.add('good');C.win(`Oui ! On trouve ${lab} en ${CT[ck][0]}.`);}else C.fail(b,`Pas en ${CT[b.dataset.k][0]}. Essaie encore !`);};
+}});
+
+function clock(h,m){let s='<svg viewBox="0 0 200 200" class="ck" role="img" aria-label="horloge"><circle cx="100" cy="100" r="96" class="ck-rim"/><circle cx="100" cy="100" r="88" class="ck-face"/>';
+  const X=(r,a)=>(100+r*Math.sin(a)).toFixed(1),Y=(r,a)=>(100-r*Math.cos(a)).toFixed(1);
+  for(let i=0;i<60;i++){const a=i*Math.PI/30,r1=i%5?80:73;s+=`<line x1="${X(r1,a)}" y1="${Y(r1,a)}" x2="${X(85,a)}" y2="${Y(85,a)}" class="${i%5?'tk':'tk5'}"/>`;}
+  for(let i=1;i<=12;i++){const a=i*Math.PI/6;s+=`<text x="${X(60,a)}" y="${(100-60*Math.cos(a)+7).toFixed(1)}" class="ck-n">${i}</text>`;}
+  const ha=((h%12)+m/60)*Math.PI/6,ma=m*Math.PI/30;
+  return s+`<line x1="100" y1="100" x2="${X(42,ha)}" y2="${Y(42,ha)}" class="ck-h"/><line x1="100" y1="100" x2="${X(70,ma)}" y2="${Y(70,ma)}" class="ck-m"/><circle cx="100" cy="100" r="6" class="ck-c"/></svg>`;}
+const HW=h=>h===1?'une heure':`${h} heures`;
+function tphrase(h,m){if(m===0)return HW(h)+' pile';if(m===15)return HW(h)+' et quart';if(m===30)return HW(h)+' et demie';if(m===45)return `${HW(h%12+1)} moins le quart`;return `${HW(h)} ${m}`;}
+
+game({id:'horloge',dom:'monde',icon:'🕰️',name:'L’horloge',sub:'Lis l’heure sur le cadran.',age:'6 – 8 ans',rounds:5,
+levels:['Les heures pile','Et demie','Toutes les 5 minutes'],
+materiel:'Une horloge en bois à aiguilles mobiles et des cartes d’heures. En Montessori, on commence par la petite aiguille seule, puis on ajoute la grande.',
+but:'Lire l’heure sur un cadran : heures pile, demies, quarts, puis de 5 en 5 minutes. Comprendre que les deux aiguilles avancent ensemble.',
+controle:'Au dos de chaque carte, l’heure affichée permet de vérifier. Ici, la bonne réponse est confirmée et lue à voix haute.',
+presentation:'On fait faire un tour complet à la grande aiguille : pendant ce temps, la petite n’avance que d’une heure. L’enfant règle ensuite l’horloge selon des cartes.',
+round(A,lv,C){
+  const h=rnd(1,12),m=lv===0?0:lv===1?pick([0,30,30]):5*rnd(0,11),mp=new Map([[h+':'+m,[h,m]]]);
+  const add=(a,b)=>{if(a>=1&&a<=12&&mp.size<3&&!mp.has(a+':'+b))mp.set(a+':'+b,[a,b]);};
+  shuffle([[h%12+1,m],[(m/5)||12,(h%12)*5],[h,(m+30)%60],[(h+5)%12+1,m],[h===1?12:h-1,m]]).forEach(([a,b])=>{if(lv===0&&b!==0)return;if(lv===1&&b%30)return;add(a,b);});
+  const lab=(a,b)=>`${a} h ${String(b).padStart(2,'0')}`;
+  C.consigne('Quelle heure est-il ? La petite aiguille bleue montre l’heure, la grande aiguille rouge montre les minutes.','Quelle heure est-il ?');
+  A.innerHTML=`<div class="hk">${clock(h,m)}<div class="hk-leg"><span><i style="background:#1f3f8f"></i>heures</span><span><i style="background:#d62828"></i>minutes</span></div>
+    <div class="hc">${shuffle([...mp.values()]).map(([a,b])=>`<button class="btn big" data-k="${a}-${b}">${lab(a,b)}</button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+    if(b.dataset.k===`${h}-${m}`){b.classList.add('good');C.win(`Oui ! Il est ${lab(h,m)} : ${tphrase(h,m)}.`,`Oui ! Il est ${tphrase(h,m)}.`);}
+    else C.fail(b,'Regarde d’abord la petite aiguille : elle montre l’heure.');};
+}});
+
+const TB={
+ serviette:{pos:[10.5,30.8,12,38.4],art:'la serviette',rule:'La serviette se pose tout à gauche, à côté de la fourchette.',
+   svg:'<svg viewBox="0 0 50 100"><rect x="3" y="3" width="44" height="94" rx="4" fill="#f5c3d2" stroke="#d98aa3" stroke-width="2"/><path d="M13 3v94M25 3v94M37 3v94M3 25h44M3 50h44M3 75h44" stroke="#fff" stroke-width="3" opacity=".55"/></svg>'},
+ fourchette:{pos:[25,21.2,6,57.6],art:'la fourchette',rule:'La fourchette se pose à gauche de l’assiette.',
+   svg:'<svg viewBox="0 0 20 120" fill="#a3aeb7"><rect x="2.5" y="3" width="2.4" height="24" rx="1.2"/><rect x="6.7" y="3" width="2.4" height="24" rx="1.2"/><rect x="10.9" y="3" width="2.4" height="24" rx="1.2"/><rect x="15.1" y="3" width="2.4" height="24" rx="1.2"/><path d="M2.5 24h15v4q0 10-6 12h-3q-6-2-6-12z"/><rect x="8" y="38" width="4" height="79" rx="2"/></svg>'},
+ assiette:{pos:[33,22.8,34,54.4],art:'l’assiette',rule:'L’assiette se pose au milieu, bien devant toi.',
+   svg:'<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fdfdfb" stroke="#9db6c8" stroke-width="3"/><circle cx="50" cy="50" r="30" fill="none" stroke="#cfdbe4" stroke-width="3"/></svg>'},
+ couteau:{pos:[69,21.2,6,57.6],art:'le couteau',rule:'Le couteau se pose à droite de l’assiette, la lame tournée vers l’assiette.',
+   svg:'<svg viewBox="0 0 20 120"><path d="M13 3C6 8 5 22 5 50h8z" fill="#c1c9d0"/><rect x="6" y="50" width="8" height="67" rx="4" fill="#8a6a48"/></svg>'},
+ 'cuillère':{pos:[77,21.2,6,57.6],art:'la cuillère',rule:'La cuillère se pose à droite du couteau.',
+   svg:'<svg viewBox="0 0 20 120" fill="#a3aeb7"><ellipse cx="10" cy="18" rx="8" ry="14"/><rect x="8" y="30" width="4" height="87" rx="2"/></svg>'},
+ verre:{pos:[67.5,2.5,9,16.8],art:'le verre',rule:'Le verre se pose en haut, juste au-dessus du couteau.',
+   svg:'<svg viewBox="0 0 60 70"><path d="M8 4h44l-5 58q-1 5-6 5H19q-5 0-6-5z" fill="#e3f3fc" stroke="#86bddb" stroke-width="2.5"/><path d="M12 30h36l-3 30q-1 3-4 3H19q-3 0-4-3z" fill="#9fd4f0" opacity=".85"/></svg>'}};
+
+game({id:'table',dom:'monde',icon:'🍽️',name:'Mettre la table',sub:'Chaque objet à sa place sur le set.',age:'5 – 6 ans',rounds:1,
+levels:['3 objets, avec les dessins','6 objets, avec les dessins','6 objets, sans les dessins'],
+materiel:'Un set de table sur lequel sont dessinés les contours de l’assiette, des couverts et du verre, et de vrais objets à la taille de l’enfant (en verre et en porcelaine : l’enfant apprend à en prendre soin).',
+but:'Vie pratique : autonomie, ordre, coordination des gestes et sens du service aux autres.',
+controle:'Chaque objet se pose sur son contour dessiné. Au niveau 3, sans les dessins, l’enfant se souvient des règles.',
+presentation:'L’adulte montre lentement, presque sans parler, en posant chaque objet sur son dessin : fourchette à gauche, couteau à droite (lame vers l’assiette), cuillère à droite du couteau, verre au-dessus du couteau, serviette tout à gauche.',
+round(A,lv,C){
+  const keys=lv===0?['assiette','fourchette','couteau']:Object.keys(TB);let sel=null,placed=0;
+  C.consigne(lv<2?'Choisis un objet sur le plateau, puis touche sa place sur le set.':'Sans les dessins ! Choisis un objet, puis touche sa place sur le set.','Mets la table. Choisis un objet, puis touche sa place sur le set.');
+  A.innerHTML=`<div class="tb"><div class="tb-mat">${keys.map(k=>{const [l,t,w,h]=TB[k].pos;return `<button class="tb-spot ${lv<2?'ghost':'hide'}" data-k="${k}" style="left:${l}%;top:${t}%;width:${w}%;height:${h}%" aria-label="place">${TB[k].svg}</button>`;}).join('')}</div>
+    <div class="tb-tray">${shuffle(keys).map(k=>`<button class="tb-it" data-k="${k}">${TB[k].svg}<span>${k}</span></button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const it=e.target.closest('.tb-it');
+    if(it){if(it.classList.contains('used'))return;$$('.tb-it',A).forEach(x=>x.classList.remove('sel'));it.classList.add('sel');sel=it.dataset.k;say(TB[sel].art);return;}
+    const sp=e.target.closest('.tb-spot');if(!sp||sp.classList.contains('placed'))return;
+    if(!sel)return C.fail(sp,'Choisis d’abord un objet sur le plateau.');
+    if(sp.dataset.k===sel){sp.classList.add('placed');$(`.tb-it[data-k="${sel}"]`,A).classList.add('used');C.pop();say(TB[sel].rule);sel=null;placed++;
+      if(placed===keys.length)C.win('Bravo ! La table est mise. Bon appétit !');}
+    else C.fail(sp,TB[sel].rule);};
+}});
+
+/* ================================================================
+   NOUVEAUX JEUX
+   ================================================================ */
+C.skip=function(ms){const rid=cur&&cur.rid;setTimeout(()=>{if(cur&&cur.rid===rid)newRound();},ms);};
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const range=(a,b)=>Array.from({length:b-a+1},(_,i)=>a+i);
+const choicesAround=(ans,deltas,n)=>{const s=new Set([ans]);shuffle(deltas).forEach(d=>{if(s.size<n&&ans+d>0)s.add(ans+d);});return shuffle([...s]);};
+
+/* ---------- Langage : sons composés ---------- */
+const PH=[['ou','on','an','ch'],['ou','on','an','ch','in','oi','au','gn'],['ou','on','an','ch','in','oi','au','gn','eau','eu','ai','ph']];
+const PHC=['ch','gn','ph'];
+const PHW=[['loup','🐺','ou'],['poule','🐔','ou'],['soupe','🍲','ou'],['ours','🐻','ou'],['hibou','🦉','ou'],['bouche','👄','ou'],
+ ['ballon','🎈','on'],['bonbon','🍬','on'],['citron','🍋','on'],['lion','🦁','on'],['violon','🎻','on'],['savon','🧼','on'],
+ ['éléphant','🐘','an'],['orange','🍊','an'],['ange','👼','an'],['gant','🧤','an'],['mangue','🥭','an'],['pantalon','👖','an'],
+ ['chat','🐱','ch'],['cheval','🐴','ch'],['vache','🐄','ch'],['chemise','👔','ch'],['chien','🐕','ch'],['cochon','🐷','ch'],
+ ['lapin','🐰','in'],['sapin','🎄','in'],['raisin','🍇','in'],['singe','🐒','in'],['poussin','🐣','in'],
+ ['oiseau','🐦','oi'],['poisson','🐟','oi'],['étoile','⭐','oi'],['roi','🤴','oi'],['poire','🍐','oi'],['voiture','🚗','oi'],
+ ['saucisse','🌭','au'],['jaune','💛','au'],['chaussette','🧦','au'],
+ ['montagne','⛰️','gn'],['champignon','🍄','gn'],['araignée','🕷️','gn'],
+ ['bateau','⛵','eau'],['gâteau','🎂','eau'],['chapeau','🎩','eau'],['marteau','🔨','eau'],['cadeau','🎁','eau'],['château','🏰','eau'],
+ ['feu','🔥','eu'],['fleur','🌸','eu'],['bleu','💙','eu'],['neuf','9️⃣','eu'],['heure','⌚','eu'],
+ ['lait','🥛','ai'],['fraise','🍓','ai'],['balai','🧹','ai'],['maison','🏠','ai'],
+ ['téléphone','📞','ph'],['phoque','🦭','ph'],['photo','📷','ph'],['dauphin','🐬','ph']];
+
+game({id:'phonogrammes',dom:'lang',icon:'🔠',name:'Les sons composés',sub:'Quand deux lettres chantent un seul son.',age:'6 – 7 ans',rounds:5,
+levels:['ou, on, an, ch','+ in, oi, au, gn','+ eau, eu, ai, ph'],
+materiel:'Les lettres rugueuses doubles : chaque son composé (ou, on, an, ch, oi…) est découpé dans du papier de verre sur une même planchette, pour que l’enfant le touche comme <b>un seul son</b>.',
+but:'Comprendre que deux ou trois lettres peuvent écrire un seul son. C’est l’étape clé entre le déchiffrage lettre à lettre et la vraie lecture.',
+controle:'Un seul son composé convient. Les sons déjà présents ailleurs dans le mot ne sont jamais proposés, pour éviter toute ambiguïté.',
+presentation:'On présente trois sons composés à la fois avec la leçon en 3 temps, puis on cherche des objets qui les contiennent : « Dans loup, j’entends ou. »',
+round(A,lv,C){
+  const [w,emo,t]=C.fresh(PHW.filter(x=>PH[lv].includes(x[2])),x=>x[0]);
+  const others=PH[lv].filter(p=>p!==t&&!w.includes(p)&&!(t==='eau'&&p==='au')),opts=shuffle([t,...sample(others,lv===0?2:3)]);
+  const shown=w.split(t).join(`<span class="blank">${'·'.repeat(t.length)}</span>`);
+  C.consigne('Écoute le mot : quel son composé se cache dedans ?',`Écoute bien : ${w}. Quel son composé entends-tu ?`);
+  A.innerHTML=`<div class="sn"><button class="sn-pic" data-a="hear"><span class="emo xl">${emo}</span><span class="read sn-w">${shown}</span><span class="hp">🔊 Réécouter</span></button>
+    <div class="lrow">${opts.map(p=>`<button class="lcard ph ${PHC.includes(p)?'c':'v'}" data-l="${p}">${p}</button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(e.target.closest('[data-a="hear"]'))return say(w);const b=e.target.closest('.lcard');if(!b||cur.locked)return;
+    if(b.dataset.l===t){b.classList.add('good');$$('.blank',A).forEach(x=>{x.outerHTML=`<b class="${PHC.includes(t)?'tc':'tv'}">${t}</b>`;});C.win(`Oui ! Dans « ${w} », on entend « ${t} ».`,`Oui ! ${w}.`);}
+    else C.fail(b,`Écoute encore : ${w}…`);};
+}});
+
+/* ---------- Langage : étiquettes et objets ---------- */
+const ETQ=[AM[0],AM[1].concat(AM[2].slice(0,6)),PHW.map(x=>[x[0],x[1]])];
+game({id:'etiquettes',dom:'lang',icon:'🏷️',name:'Étiquettes et objets',sub:'Lis le mot tout seul et trouve l’objet.',age:'5 – 7 ans',rounds:5,
+levels:['Mots courts','Mots plus longs','Mots avec des sons composés'],
+materiel:'Une boîte de petits objets et des étiquettes écrites à la main. L’enfant lit une étiquette et la pose à côté du bon objet.',
+but:'Passer de l’écriture (l’alphabet mobile) à la lecture : découvrir qu’un mot écrit transmet un message.',
+controle:'Chaque étiquette correspond à un seul objet. L’adulte ne lit jamais l’étiquette à la place de l’enfant : ici, la voix ne dit le mot qu’une fois trouvé.',
+presentation:'L’adulte pose trois objets, écrit une étiquette devant l’enfant et la lui tend sans rien dire. L’enfant la déchiffre à voix basse, puis la pose près de l’objet.',
+round(A,lv,C){
+  const pool=ETQ[lv],[w,emo]=C.fresh(pool,x=>x[0]),n=lv===0?2:3;let cand=shuffle(pool.filter(x=>x[1]!==emo&&x[0]!==w));
+  if(lv>0)cand=[...cand.filter(x=>x[0][0]===w[0]).slice(0,2),...cand];
+  const seen=new Set([emo]),opts=[];for(const x of cand){if(opts.length>=n)break;if(!seen.has(x[1])){seen.add(x[1]);opts.push(x);}}
+  C.consigne('Lis l’étiquette tout seul, puis touche l’objet qui correspond.');
+  A.innerHTML=`<div class="et"><div class="et-label read">${w}</div><div class="et-objs">${shuffle([[w,emo],...opts]).map(([x,e])=>`<button class="et-o" data-w="${x}" aria-label="objet">${e}</button>`).join('')}</div>
+    <p class="co-note">Lis d’abord dans ta tête, en suivant les lettres avec ton doigt.</p></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.et-o');if(!b)return;
+    if(b.dataset.w===w){b.classList.add('good');C.win(`Oui ! Tu as lu « ${w} ».`,`Oui ! ${w}.`);}else C.fail(b,'Relis l’étiquette, lettre par lettre.');};
+}});
+
+/* ---------- Langage : cartes de commandes ---------- */
+const CMD=[[['Cours !','🏃'],['Dors !','😴'],['Danse !','💃'],['Nage !','🏊'],['Lis !','📖'],['Chante !','🎤'],['Dessine !','🎨'],['Fais la roue !','🤸'],['Ris !','😂'],['Applaudis !','👏'],['Écris !','✍️'],['Grimpe !','🧗'],['Bois !','🥤'],['Mange !','🍽️']],
+ [['Joue du piano.','🎹'],['Joue du violon.','🎻'],['Joue du tambour.','🥁'],['Joue de la guitare.','🎸'],['Joue de la trompette.','🎺'],['Fais du vélo.','🚴'],['Fais du ski.','⛷️'],['Fais du surf.','🏄'],['Fais du patin.','⛸️'],['Fais de la pêche.','🎣'],['Fais du cheval.','🏇']],
+ [['Lève les deux mains.','🙌'],['Tape dans tes mains.','👏'],['Montre ton pouce levé.','👍'],['Fais coucou de la main.','👋'],['Croise les doigts.','🤞'],['Fais le signe de la victoire.','✌️'],['Montre le ciel avec un doigt.','☝️'],['Serre le poing.','✊'],['Fais un gros bisou.','😘'],['Fais un clin d’œil.','😉']]];
+game({id:'commandes',dom:'lang',icon:'🏃',name:'Les cartes de commandes',sub:'Lis l’action… puis fais-la pour de vrai !',age:'6 – 8 ans',rounds:5,
+levels:['Un seul verbe','Jouer d’un instrument, faire un sport','Les commandes du corps'],
+materiel:'Des cartes rouges (comme le symbole du verbe) où est écrite une action : « Cours ! », « Chante ! ». L’enfant lit la carte en silence, puis fait l’action.',
+but:'Lire pour comprendre : la lecture devient un message à exécuter. Première rencontre avec le verbe, le mot de l’action.',
+controle:'Si l’action ne correspond pas à la carte, l’adulte ou les autres enfants le voient tout de suite. Ici, seule la bonne image est acceptée.',
+presentation:'L’adulte tend une carte sans rien dire. L’enfant la lit sans la prononcer, fait l’action, et les autres devinent ce qui était écrit.',
+round(A,lv,C){
+  const pool=CMD[lv],[t,emo]=C.fresh(pool,x=>x[0]),opts=shuffle([[t,emo],...sample(pool.filter(x=>x[1]!==emo),lv===0?2:3)]);
+  C.consigne('Lis la carte rouge tout seul, puis touche l’image qui correspond.');
+  A.innerHTML=`<div class="et"><div class="et-label read red">${t}</div><div class="et-objs">${opts.map(([x,e])=>`<button class="et-o" data-t="${x}" aria-label="image">${e}</button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.et-o');if(!b)return;
+    if(b.dataset.t===t){b.classList.add('good');C.win(`Oui ! « ${t} » Maintenant, fais-le pour de vrai !`,'Bravo ! Et maintenant, fais-le pour de vrai !');}
+    else C.fail(b,'Relis bien la carte jusqu’au bout.');};
+}});
+
+/* ---------- Maths : le jeu du serpent ---------- */
+const bwbar=n=>`<span class="bbar">${Array.from({length:n},(_,i)=>`<i style="--bc:${i<5?'#1d1d1d':'#f4f4f4'}"></i>`).join('')}</span>`;
+game({id:'serpent',dom:'math',icon:'🐍',name:'Le jeu du serpent',sub:'Compte, échange par 10 et découvre l’addition.',age:'6 – 7 ans',rounds:5,
+levels:['3 barres','4 à 5 barres','6 à 7 barres'],
+materiel:'Des barres de perles colorées (1 à 9) posées en serpent, des barres dorées de 10 et l’escalier de perles noires et blanches (5 perles noires, puis des blanches). On compte avec un petit marqueur.',
+but:'Découvrir l’addition et mémoriser les compléments à 10 : à chaque dizaine, on échange les perles comptées contre une barre dorée.',
+controle:'À la fin, on replace les barres colorées côte à côte sous le serpent doré pour vérifier que le compte est juste.',
+presentation:'L’enfant compte les perles depuis la tête. Arrivé à 10, il remplace les perles comptées par une barre dorée et le reste par une barre noire et blanche, puis recommence à compter à partir de celle-ci.',
+round(A,lv,C){
+  const cnt=lv===0?3:lv===1?rnd(4,5):rnd(6,7),max=[20,32,48][lv];let bars,tot;
+  do{bars=Array.from({length:cnt},()=>rnd(lv===0?2:1,9));tot=bars.reduce((s,x)=>s+x,0);}while(tot<11||tot>max);
+  let idx=0,acc=0,tens=0;
+  C.consigne('Touche les barres une par une, depuis la tête du serpent 🐍. À chaque dizaine, on l’échange contre une barre dorée !','Touche les barres une par une, depuis la tête. À chaque dizaine, on échange contre une barre dorée.');
+  A.innerHTML=`<div class="sp"><div class="sp-snake"><span class="sp-head">🐍</span>${bars.map((v,i)=>`<button class="sp-bar ${i===0?'next':''}" data-i="${i}" aria-label="barre de ${v}">${beads(v)}</button>`).join('')}</div>
+    <div class="sp-lab">Après les échanges</div><div class="sp-new"><span class="tens sp-tens"></span><span class="sp-rest"></span></div><div class="sp-info"></div>
+    <div class="mb-q" hidden><p><b>Combien de perles dans tout le serpent ?</b></p><div class="lrow">${choicesAround(tot,[1,-1,10,-10],3).map(x=>`<button class="numcard" data-n="${x}">${x}</button>`).join('')}</div></div></div>`;
+  const info=()=>{$('.sp-info',A).textContent=`${tens>1?tens+' barres dorées':tens+' barre dorée'}${acc?` et ${acc} perle${acc>1?'s':''} noire${acc>1?'s':''} et blanche${acc>1?'s':''}`:''}`;$('.sp-rest',A).innerHTML=acc?bwbar(acc):'';};
+  A.onclick=e=>{if(cur.locked)return;const q=e.target.closest('.mb-q .numcard');
+    if(q){if(+q.dataset.n===tot){q.classList.add('good');C.win(`Bravo ! Le serpent a ${tot} perles : ${pl(tens,'dizaine')}${acc?` et ${pl(acc,'unité')}`:''}.`,`Bravo ! ${tot} perles.`);}else C.fail(q,'Compte les barres dorées, puis les perles noires et blanches.');return;}
+    const b=e.target.closest('.sp-bar');if(!b||b.classList.contains('used'))return;const i=+b.dataset.i;
+    if(i!==idx)return C.fail(b,'On compte dans l’ordre, en partant de la tête du serpent.');
+    acc+=bars[i];b.classList.add('used');b.classList.remove('next');idx++;const nx=$(`.sp-bar[data-i="${idx}"]`,A);if(nx)nx.classList.add('next');
+    if(acc>=10){acc-=10;tens++;$('.sp-tens',A).insertAdjacentHTML('beforeend',beads(10));sfx.ok();say(lv===0?`Dix ! On échange contre une barre dorée. Il reste ${acc}.`:'Dix ! On échange contre une barre dorée.');}
+    else{C.pop();if(lv===0)say(String(tens*10+acc));}
+    info();
+    if(idx===bars.length)C.later(()=>{$('.mb-q',A).hidden=false;say('Combien de perles dans tout le serpent ?');},700);};
+}});
+
+/* ---------- Maths : le jeu des timbres ---------- */
+const ST={1:['#2e9e4f','1'],10:['#2f6fd0','10'],100:['#d63b3b','100']};
+game({id:'timbres',dom:'math',icon:'🎫',name:'Le jeu des timbres',sub:'Additionne avec les timbres et échange par 10.',age:'6 – 8 ans',rounds:5,
+levels:['Sans échange','Avec un échange','Nombres à 3 chiffres'],
+materiel:'Une boîte de petites tuiles en bois toutes de la même taille : <b>vertes marquées 1</b>, <b>bleues marquées 10</b>, <b>rouges marquées 100</b> (et vertes marquées 1 000). C’est l’étape vers l’abstraction qui suit les perles dorées.',
+but:'Faire des additions avec retenue en comprenant ce que la retenue représente vraiment : 10 unités s’échangent contre 1 dizaine.',
+controle:'On ne lit pas le résultat tant qu’une colonne contient 10 timbres ou plus. Les échanges commencent toujours par les unités, à droite.',
+presentation:'L’enfant pose le premier nombre, puis le second en dessous. Il réunit les timbres, compte en commençant par les unités, échange chaque groupe de 10, puis lit et écrit le résultat.',
+round(A,lv,C){
+  let a,b;
+  if(lv===0){const au=rnd(1,8),bu=rnd(1,9-au),at=rnd(1,8),bt=rnd(1,9-at);a=at*10+au;b=bt*10+bu;}
+  else if(lv===1){const au=rnd(2,9),bu=rnd(10-au,9),at=rnd(1,7),bt=rnd(1,8-at);a=at*10+au;b=bt*10+bu;}
+  else{do{a=rnd(125,589);b=rnd(116,398);}while((a%10)+(b%10)<10&&(Math.floor(a/10)%10)+(Math.floor(b/10)%10)<10);}
+  const pls=lv<2?[10,1]:[100,10,1],sum=a+b,dg=(n,p)=>Math.floor(n/p)%10,have={};pls.forEach(p=>{have[p]=dg(a,p)+dg(b,p);});
+  const nc=pls.reduce((s,p)=>s+((dg(a,p)+dg(b,p))%10)*p,0);let phase=0;
+  const stamp=p=>`<i class="stp" style="--sc:${ST[p][0]}">${ST[p][1]}</i>`;
+  A.innerHTML=`<div class="stg"><div class="st-op">${a} + ${b}</div><div class="st-mat" style="grid-template-columns:repeat(${pls.length},1fr)"></div><div class="st-ctl"></div></div>`;
+  const mat=$('.st-mat',A),ctl=$('.st-ctl',A),full=()=>pls.filter(p=>have[p]>=10);
+  const draw=()=>{mat.innerHTML=pls.map(p=>{const f=phase===1&&have[p]>=10;return `<div class="st-col ${f?'full':''}" data-p="${p}"><div class="pd-h" style="color:${PV[p][4]}">${PV[p][5]}</div>`+
+    (phase===0?`<div class="st-part">${stamp(p).repeat(dg(a,p))}</div><div class="st-part">${stamp(p).repeat(dg(b,p))}</div>`:`<div class="st-part">${stamp(p).repeat(have[p])}</div><div class="st-cnt">${have[p]}</div>${f?'<div class="st-hint">Touche ici : 10 timbres → 1</div>':''}`)+`</div>`;}).join('');};
+  const toQuestion=()=>{phase=2;draw();C.consigne(`Lis le résultat : combien font ${a} + ${b} ?`);
+    const s=new Set([sum]);if(nc!==sum)s.add(nc);choicesAround(sum,[10,-10,1],4).forEach(x=>{if(s.size<3)s.add(x);});
+    ctl.innerHTML=`<div class="lrow">${shuffle([...s]).map(x=>`<button class="numcard" data-n="${x}">${x}</button>`).join('')}</div>`;};
+  const afterMove=()=>{draw();if(full().length)C.consigne('Une colonne a 10 timbres ou plus : échange-les ! On commence toujours par les unités.');else toQuestion();};
+  C.consigne(`Voici ${a} et ${b} en timbres. Touche « Réunir » pour les additionner.`,`${a} plus ${b}. Touche Réunir pour additionner les timbres.`);
+  draw();ctl.innerHTML='<button class="btn primary big" data-a="join">🤝 Réunir les timbres</button>';
+  A.onclick=e=>{if(cur.locked)return;
+    if(e.target.closest('[data-a="join"]')){phase=1;ctl.innerHTML='';C.pop();afterMove();return;}
+    const q=e.target.closest('.numcard');if(q){if(+q.dataset.n===sum){q.classList.add('good');C.win(`Bravo ! ${a} + ${b} = ${sum}.`,`Bravo ! ${a} plus ${b}, égale ${sum}.`);}else C.fail(q,'Compte les timbres de chaque colonne : ils te donnent chaque chiffre.');return;}
+    const col=e.target.closest('.st-col');if(!col||phase!==1)return;const p=+col.dataset.p;if(have[p]<10)return;
+    if(pls.some(x=>x<p&&have[x]>=10))return C.fail(col,'On commence toujours par les unités, à droite !');
+    have[p]-=10;have[p*10]++;sfx.ok();say(`Dix timbres de ${p} contre un timbre de ${p*10} !`);afterMove();};
+}});
+
+/* ---------- Maths : le tableau de cent ---------- */
+game({id:'cent',dom:'math',icon:'💯',name:'Le tableau de cent',sub:'Remets les tuiles de 1 à 100 à leur place.',age:'6 – 7 ans',rounds:5,
+levels:['De 1 à 30','De 1 à 100','Presque sans repères'],
+materiel:'Une planche quadrillée de 10 × 10 cases, 100 tuiles numérotées de 1 à 100 et un tableau de contrôle.',
+but:'Voir la régularité du système décimal : chaque ligne commence par un nombre qui finit par 1, et chaque colonne garde le même chiffre des unités.',
+controle:'Le tableau de contrôle permet à l’enfant de vérifier seul. Ici, une tuile ne se pose que dans sa bonne case.',
+presentation:'L’enfant pose d’abord les tuiles dans l’ordre, puis dans le désordre. On observe ensemble : « Tous les nombres de cette colonne finissent par 7 ! »',
+round(A,lv,C){
+  const N=lv===0?30:100,hidden=new Set(lv===0?sample(range(1,30),8):lv===1?sample(range(1,100),22):range(1,100).filter(n=>n%10!==1)),tiles=sample([...hidden],4);let ti=0;
+  const ask=()=>C.consigne(`Où va la tuile <b>${tiles[ti]}</b> ? Touche sa case sur le tableau.`,`Où va le nombre ${tiles[ti]} ?`);
+  A.innerHTML=`<div class="hb"><div class="hb-tile">${tiles[0]}</div><div class="hb-grid">${range(1,N).map(n=>`<button class="hb-c ${hidden.has(n)?'hid':''}" data-n="${n}" aria-label="case">${hidden.has(n)?'':n}</button>`).join('')}</div><div class="hb-prog">Tuile <b>1</b> sur 4</div></div>`;
+  ask();
+  A.onclick=e=>{if(cur.locked)return;const c=e.target.closest('.hb-c');if(!c||c.classList.contains('placed'))return;const n=+c.dataset.n,t=tiles[ti];
+    if(n===t){c.textContent=t;c.classList.remove('hid');c.classList.add('placed');C.pop();ti++;
+      if(ti===tiles.length)return C.win('Bravo ! Les 4 tuiles sont à leur place.');
+      $('.hb-tile',A).textContent=tiles[ti];$('.hb-prog b',A).textContent=ti+1;ask();}
+    else{const start=Math.floor((t-1)/10)*10+1;C.fail(c,`Cherche la ligne qui commence par ${start}, puis avance jusqu’à ${t}.`);}};
+}});
+
+/* ---------- Sensoriel : les emboîtements cylindriques ---------- */
+game({id:'cylindres',dom:'sens',icon:'🪵',name:'Les emboîtements cylindriques',sub:'Chaque cylindre dans son trou.',age:'5 – 6 ans',rounds:3,
+levels:['Bloc 1 : 5 cylindres','Bloc 1 : 10 cylindres','Bloc 3 : fins et hauts, gros et bas'],
+materiel:'Quatre blocs de bois de 10 cylindres à bouton. <b>Bloc 1</b> : même hauteur, diamètre qui diminue. <b>Bloc 2</b> : hauteur et diamètre diminuent ensemble. <b>Bloc 3</b> : le diamètre diminue quand la hauteur augmente. <b>Bloc 4</b> : même diamètre, hauteur qui diminue.',
+but:'Affiner la perception des dimensions. Saisir le bouton avec trois doigts (pouce, index, majeur) prépare la tenue du crayon.',
+controle:'Si un cylindre est placé dans un trou trop grand, il en restera un à la fin qui ne trouvera plus sa place.',
+presentation:'L’adulte sort les cylindres un à un en les tenant par le bouton avec trois doigts, les pose en désordre, puis les remet chacun dans son trou, lentement et sans parler.',
+round(A,lv,C){
+  const idx=lv===0?[0,2,4,6,9]:range(0,9),D=i=>(8+i*3.2).toFixed(1)+'px',H=i=>(lv===2?20+(9-i)*4:40)+'px',holes=[...idx].sort((x,y)=>y-x);let sel=null,placed=0;
+  C.consigne(lv===2?'Attention : les cylindres les plus fins sont les plus hauts ! Choisis un cylindre, puis touche son trou.':'Choisis un cylindre, puis touche le trou où il rentre parfaitement.','Choisis un cylindre, puis touche son trou.');
+  A.innerHTML=`<div class="cy"><div class="cy-block">${holes.map(i=>`<button class="cy-hole" data-i="${i}" aria-label="trou"><i style="--d:${D(i)}"></i></button>`).join('')}</div>
+    <div class="cy-tray">${shuffle(idx).map(i=>`<button class="cy-c" data-i="${i}" aria-label="cylindre"><span class="kn"></span><span class="kst"></span><span class="cb2" style="--d:${D(i)};--h:${H(i)}"></span></button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const c=e.target.closest('.cy-c');
+    if(c){if(c.classList.contains('gone'))return;$$('.cy-c',A).forEach(x=>x.classList.remove('sel'));c.classList.add('sel');sel=+c.dataset.i;C.pop();return;}
+    const h=e.target.closest('.cy-hole');if(!h||h.classList.contains('full'))return;
+    if(sel===null)return C.fail(h,'Choisis d’abord un cylindre sur le plateau.');
+    const hi=+h.dataset.i;
+    if(hi===sel){h.classList.add('full');const cc=$(`.cy-c[data-i="${sel}"]`,A);cc.classList.remove('sel');cc.classList.add('gone');sel=null;placed++;C.pop();
+      if(placed===idx.length)C.win('Bravo ! Chaque cylindre est dans son trou.');}
+    else C.fail(h,sel>hi?'Trop gros pour ce trou !':'Il flotte dans ce trou : cherche un trou plus petit.');};
+}});
+
+/* ---------- Sensoriel : les solides géométriques ---------- */
+const B1='#1f4fa3',B2='#2f6fd0',B3='#6d9ee8';
+const sph=s=>`<defs><radialGradient id="solg" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#a7c6f3"/><stop offset=".55" stop-color="#2f6fd0"/><stop offset="1" stop-color="#173f86"/></radialGradient></defs>${s}`;
+const SOL={'sphère':['une sphère',sph('<circle cx="60" cy="60" r="44" fill="url(#solg)"/>'),null],
+ 'cube':['un cube',`<polygon points="25,45 75,45 75,95 25,95" fill="${B2}"/><polygon points="25,45 45,27 95,27 75,45" fill="${B3}"/><polygon points="75,45 95,27 95,77 75,95" fill="${B1}"/>`,'carré'],
+ 'pavé':['un pavé (prisme rectangulaire)',`<polygon points="12,58 82,58 82,96 12,96" fill="${B2}"/><polygon points="12,58 32,40 102,40 82,58" fill="${B3}"/><polygon points="82,58 102,40 102,78 82,96" fill="${B1}"/>`,'rectangle'],
+ 'cylindre':['un cylindre',`<path d="M30 30 L30 90 A30 10 0 0 0 90 90 L90 30 Z" fill="${B2}"/><path d="M60 30 L90 30 L90 90 A30 10 0 0 1 60 100 Z" fill="${B1}" opacity=".45"/><ellipse cx="60" cy="30" rx="30" ry="10" fill="${B3}"/>`,'cercle'],
+ 'cône':['un cône',`<path d="M60 12 L90 88 A30 10 0 0 1 30 88 Z" fill="${B2}"/><path d="M60 12 L90 88 A30 10 0 0 1 60 98 Z" fill="${B1}" opacity=".45"/>`,'cercle'],
+ 'prisme triangulaire':['un prisme triangulaire',`<polygon points="40,46 84,26 110,76 66,96" fill="${B1}"/><polygon points="14,96 40,46 66,96" fill="${B2}"/><polyline points="40,46 84,26" stroke="${B3}" stroke-width="2" fill="none"/>`,'triangle'],
+ 'pyramide à base carrée':['une pyramide à base carrée',`<polygon points="60,10 18,80 68,96" fill="${B2}"/><polygon points="60,10 68,96 104,74" fill="${B1}"/><polyline points="18,80 52,62 104,74" fill="none" stroke="${B1}" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="60" y1="10" x2="52" y2="62" stroke="${B1}" stroke-width="1.5" stroke-dasharray="4 3"/>`,'carré'],
+ 'pyramide à base triangulaire':['une pyramide à base triangulaire',`<polygon points="58,12 16,88 96,92" fill="${B2}"/><polygon points="58,12 96,92 104,70" fill="${B1}"/><line x1="16" y1="88" x2="104" y2="70" stroke="${B1}" stroke-width="1.5" stroke-dasharray="4 3"/>`,'triangle'],
+ 'ovoïde':['un ovoïde',sph('<path d="M60 12 C86 12 98 58 94 78 C90 100 30 100 26 78 C22 58 34 12 60 12 Z" fill="url(#solg)"/>'),null],
+ 'ellipsoïde':['un ellipsoïde',sph('<ellipse cx="60" cy="62" rx="50" ry="30" fill="url(#solg)"/>'),null]};
+const solSvg=k=>`<svg viewBox="0 0 120 120" role="img" aria-label="solide">${SOL[k][1]}</svg>`;
+game({id:'solides',dom:'sens',icon:'🔵',name:'Les solides géométriques',sub:'Sphère, cube, cône… et la forme de leur base.',age:'5 – 8 ans',rounds:5,
+levels:['4 solides','Les 10 solides','La forme de la base'],
+materiel:'Dix solides en bois peints en bleu : sphère, cube, pavé, cylindre, cône, prisme triangulaire, pyramide à base carrée, pyramide à base triangulaire, ovoïde et ellipsoïde, avec leurs socles.',
+but:'Reconnaître et nommer les solides, puis relier chaque solide à la forme plane de sa base, en lien avec le cabinet géométrique.',
+controle:'On vérifie la base en posant le solide sur les formes planes du cabinet géométrique. Ici, seule la bonne réponse est acceptée.',
+presentation:'L’enfant prend le solide, le tourne dans ses mains, si possible les yeux fermés (le sens stéréognostique), puis leçon en 3 temps. On observe : « Est-ce qu’il roule ? Est-ce qu’il tient debout ? »',
+round(A,lv,C){
+  if(lv<2){const pool=lv===0?['sphère','cube','cylindre','cône']:Object.keys(SOL),k=C.fresh(pool),opts=shuffle([k,...sample(pool.filter(x=>x!==k),lv===0?2:3)]);
+    C.consigne('Comment s’appelle ce solide bleu ?');
+    A.innerHTML=`<div class="so"><div class="so-pic">${solSvg(k)}</div><div class="so-opts">${opts.map(x=>`<button class="btn big" data-k="${x}">${x}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+      if(b.dataset.k===k){b.classList.add('good');C.win(`Oui ! C’est ${SOL[k][0]}.`);}else C.fail(b,'Regarde bien : a-t-il des faces plates, des pointes, peut-il rouler ?');};
+  }else{const k=C.fresh(Object.keys(SOL).filter(x=>SOL[x][2])),base=SOL[k][2];
+    C.consigne(`Si on pose ${SOL[k][0]} sur du sable, quelle forme laisse sa base ?`,`Quelle est la forme de la base de ${SOL[k][0]} ?`);
+    A.innerHTML=`<div class="so"><div class="so-pic">${solSvg(k)}</div><div class="so-bases">${shuffle(['cercle','carré','triangle','rectangle']).map(x=>`<button class="so-b" data-k="${x}" aria-label="${x}">${gPiece(x)}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+      if(b.dataset.k===base){b.classList.add('good');C.win(`Oui ! La base ${k.startsWith('pyramide')||k==='sphère'?'de la':'du'} ${k} est un ${base}.`);}else C.fail(b,'Imagine le solide posé sur la table : quelle face touche la table ?');};
+  }
+}});
+
+/* ---------- Sensoriel : les clochettes ---------- */
+const NOTES={'do':261.63,'ré':293.66,'mi':329.63,'fa':349.23,'sol':392,'la':440,'do aigu':523.25};
+function bell(f){const c=ac();if(!c)return;const t=c.currentTime+.01;
+  [[1,.55,1.9],[2,.16,1.2],[3,.07,.8],[2.76,.05,.6]].forEach(([r,v,d])=>{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=f*r;
+    g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(v*.5,t+.008);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.05);});}
+const bellSvg=base=>`<svg viewBox="0 0 50 88"><rect x="23" y="6" width="4" height="12" rx="2" fill="#8d8d8d"/><circle cx="25" cy="6" r="4" fill="#6f6f6f"/><path d="M8 56 Q7 20 25 17 Q43 20 42 56 L46 61 H4 Z" fill="#d8b85a" stroke="#9c7d24" stroke-width="1.5"/><path d="M14 52 Q13 29 23 24" stroke="#fff3c4" stroke-width="3" fill="none" opacity=".7"/><rect x="23" y="61" width="4" height="12" fill="#8d8d8d"/><rect x="5" y="73" width="40" height="13" rx="3" fill="${base}" stroke="rgba(0,0,0,.3)"/></svg>`;
+game({id:'clochettes',dom:'sens',icon:'🔔',name:'Les clochettes',sub:'Trouve les notes jumelles à l’oreille.',age:'5 – 8 ans',rounds:3,
+levels:['3 paires (notes éloignées)','4 paires','6 paires (notes voisines)'],
+materiel:'Deux séries de clochettes en métal qui se ressemblent toutes : la série de contrôle sur socles blancs et noirs (comme les touches d’un piano), la série de travail sur socles bruns. On les frappe avec un petit maillet.',
+but:'Éduquer l’oreille musicale : reconnaître la hauteur d’une note, puis nommer les notes de la gamme (do, ré, mi…).',
+controle:'La série de contrôle, rangée dans l’ordre de la gamme, permet de vérifier chaque paire. Ici, le nom de la note apparaît quand la paire est trouvée.',
+presentation:'On frappe une clochette de contrôle, on écoute le son jusqu’au bout, puis on cherche sa jumelle dans la série de travail. Au début, on ne propose que des notes très éloignées.',
+round(A,lv,C){
+  const set=lv===0?['do','sol','do aigu']:lv===1?['do','mi','sol','do aigu']:['do','ré','mi','fa','sol','la'],top=shuffle(set),bot=shuffle(set);let sel=null,busy=false,found=0;
+  C.consigne('Fais sonner une clochette du haut, puis trouve en bas celle qui chante exactement la même note. 🔈 Monte le son !','Fais sonner une clochette du haut, puis trouve en bas celle qui chante la même note.');
+  const bl=(r,i,base)=>`<button class="bell" data-r="${r}" data-i="${i}" aria-label="clochette">${bellSvg(base)}</button>`;
+  A.innerHTML=`<div class="bs"><div class="bs-lab">Série de contrôle (socles blancs)</div><div class="bs-row">${top.map((_,i)=>bl('t',i,'#f7f7f2')).join('')}</div><div class="bs-lab">Série de travail (socles bruns)</div><div class="bs-row">${bot.map((_,i)=>bl('b',i,'#8b5a2b')).join('')}</div></div>`;
+  const anim=el=>{el.classList.remove('play');void el.offsetWidth;el.classList.add('play');};
+  A.onclick=e=>{if(cur.locked||busy)return;const c=e.target.closest('.bell');if(!c||c.classList.contains('done'))return;const i=+c.dataset.i;
+    if(c.dataset.r==='t'){$$('.bell[data-r="t"]',A).forEach(x=>x.classList.remove('sel'));c.classList.add('sel');sel=i;bell(NOTES[top[i]]);anim(c);return;}
+    bell(NOTES[bot[i]]);anim(c);if(sel===null)return;busy=true;const tc=$(`.bell[data-r="t"][data-i="${sel}"]`,A);
+    C.later(()=>{busy=false;tc.classList.remove('sel');
+      if(top[sel]===bot[i]){found++;tc.classList.add('done');c.classList.add('done');tc.dataset.p=c.dataset.p=top[sel];C.pop();say(top[sel]);
+        if(found===set.length)C.win('Bravo ! Chaque note a retrouvé sa jumelle.');}
+      else C.fail([tc,c],'Ce n’est pas la même note. Écoute encore !');
+      sel=null;},1100);};
+}});
+
+/* ---------- Monde : classer le vivant ---------- */
+const KL=[{cats:[['viv','Vivant','🌱'],['non','Non vivant','⚙️']],q:'vivant ou non vivant ?',items:[['🐶','le chien','viv'],['🌳','l’arbre','viv'],['🌷','la tulipe','viv'],['🐝','l’abeille','viv'],['🐟','le poisson','viv'],['🌵','le cactus','viv'],['👶','le bébé','viv'],['🍄','le champignon','viv'],['🚗','la voiture','non'],['⚽','le ballon','non'],['🧸','l’ours en peluche','non'],['🤖','le robot','non'],['☁️','le nuage','non'],['🔥','le feu','non'],['✏️','le crayon','non'],['🪨','le caillou','non']]},
+ {cats:[['ani','Animal','🐾'],['veg','Végétal','🌿'],['min','Minéral','⛏️']],q:'animal, végétal ou minéral ?',items:[['🐸','la grenouille','ani'],['🦋','le papillon','ani'],['🐌','l’escargot','ani'],['🐘','l’éléphant','ani'],['🦀','le crabe','ani'],['🌻','le tournesol','veg'],['🌽','le maïs','veg'],['🍎','la pomme','veg'],['🌲','le sapin','veg'],['🥕','la carotte','veg'],['🌾','le blé','veg'],['🪨','le caillou','min'],['💎','le diamant','min'],['🧂','le sel','min'],['⛰️','la roche de la montagne','min']]},
+ {cats:[['poi','Poisson','🌊'],['amp','Amphibien','💧'],['rep','Reptile','🦖'],['ois','Oiseau','🪶'],['mam','Mammifère','🍼']],q:'dans quelle classe de vertébrés ?',items:[['🦈','le requin','poi'],['🐠','le poisson-clown','poi'],['🐡','le poisson-globe','poi'],['🐸','la grenouille','amp'],['🐍','le serpent','rep'],['🐢','la tortue','rep'],['🐊','le crocodile','rep'],['🦎','le lézard','rep'],['🦉','la chouette','ois'],['🐧','le manchot','ois'],['🦆','le canard','ois'],['🦅','l’aigle','ois'],['🐬','le dauphin','mam'],['🦇','la chauve-souris','mam'],['🐋','la baleine','mam'],['🐘','l’éléphant','mam'],['🐶','le chien','mam']]}];
+const KH={viv:'Un être vivant naît, se nourrit, grandit, se reproduit et meurt.',non:'Il ne naît pas, ne se nourrit pas et ne grandit pas tout seul.',ani:'Un animal se déplace et se nourrit d’autres êtres vivants.',veg:'Une plante fabrique sa nourriture grâce à la lumière du soleil.',min:'Un minéral n’a jamais été vivant : c’est de la pierre, du métal ou du sel.',poi:'Il vit dans l’eau, a des nageoires et respire avec des branchies.',amp:'Il a la peau nue et humide, et naît dans l’eau sous forme de têtard.',rep:'Il a la peau couverte d’écailles sèches et pond des œufs.',ois:'Il a des plumes, un bec, et pond des œufs.',mam:'Il respire de l’air et ses bébés boivent le lait de leur maman.'};
+game({id:'classer',dom:'monde',icon:'🐾',name:'Classer le vivant',sub:'Vivant ou non ? Animal, végétal ou minéral ?',age:'5 – 8 ans',rounds:5,
+levels:['Vivant ou non vivant','Animal, végétal, minéral','Les 5 classes de vertébrés'],
+materiel:'Des cartes images à trier sur des tapis ou dans des paniers : vivant / non vivant, puis le jeu des trois règnes (animal, végétal, minéral), puis les cinq classes de vertébrés.',
+but:'Observer, comparer et classer : les premiers pas vers les sciences naturelles, dans l’esprit de l’éducation cosmique de Montessori.',
+controle:'Chaque carte n’a qu’une famille. En cas d’erreur, un rappel sur les caractères (plumes, poils, écailles…) aide l’enfant à réfléchir.',
+presentation:'On commence avec du concret : une plante, un caillou, le poisson de la classe. « Est-ce qu’il grandit ? Est-ce qu’il se nourrit ? » Ensuite seulement, on trie les cartes.',
+round(A,lv,C){
+  const K=KL[lv],[emo,lab,cat]=C.fresh(K.items,x=>x[1]),nameOf=k=>K.cats.find(x=>x[0]===k)[1];
+  C.consigne(`${cap(lab)} : ${K.q}`);
+  A.innerHTML=`<div class="kl"><div class="co-pic"><div class="emo">${emo}</div><div class="co-lab">${lab}</div></div><div class="kl-cats">${K.cats.map(([k,n,e])=>`<button class="kl-b" data-k="${k}"><span>${e}</span>${n}</button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.kl-b');if(!b)return;const k=b.dataset.k;
+    if(k===cat){b.classList.add('good');C.win(`Oui ! ${cap(lab)} : ${nameOf(cat).toLowerCase()}. ${KH[cat]}`,`Oui ! ${nameOf(cat)}.`);}
+    else C.fail(b,`${nameOf(k)} ? ${KH[k]} Est-ce le cas ici ?`);};
+}});
+
+/* ---------- Monde : flotte ou coule ---------- */
+const FL=[[['🪶','la plume','f'],['🎈','le ballon gonflé','f'],['🪵','le morceau de bois','f'],['🏓','la balle de ping-pong','f'],['🍂','la feuille morte','f'],['🔑','la clé','c'],['🪨','le caillou','c'],['🔨','le marteau','c'],['🪙','la pièce de monnaie','c'],['⚓','l’ancre','c']],
+ [['🍎','la pomme','f'],['🍋','le citron','f'],['🍌','la banane','f'],['🧊','le glaçon','f','La glace est plus légère que l’eau liquide.'],['🥥','la noix de coco','f'],['🧽','l’éponge','f','Elle est pleine de petits trous remplis d’air.'],['🥔','la pomme de terre','c'],['🍇','le grain de raisin','c'],['🥚','l’œuf frais','c'],['🥄','la cuillère en métal','c'],['💍','la bague','c']],
+ [['🍊','l’orange avec sa peau','f','Sa peau est pleine de minuscules bulles d’air.'],['🍊','l’orange épluchée','c','Sans sa peau pleine d’air, elle coule !'],['🥚','l’œuf dans de l’eau très salée','f','L’eau très salée porte mieux les objets.'],['🚢','le grand bateau en métal','f','Sa coque creuse est remplie d’air.'],['🕯️','la bougie','f','La cire est un peu plus légère que l’eau.'],['🔩','la petite vis','c','Même toute petite, elle est en métal plein.'],['🧲','l’aimant','c'],['🧊','le glaçon','f','La glace est plus légère que l’eau liquide.']]];
+game({id:'flotte',dom:'monde',icon:'💧',name:'Flotte ou coule ?',sub:'Devine, puis regarde l’expérience.',age:'5 – 8 ans',rounds:5,
+levels:['Objets du quotidien','Fruits et aliments','Les surprises !'],
+materiel:'Une bassine d’eau transparente, un plateau d’objets variés et deux étiquettes : « flotte » et « coule ».',
+but:'Faire une hypothèse puis la vérifier : c’est la démarche scientifique. Découvrir que ce n’est pas seulement le poids qui compte, mais aussi la matière et la forme.',
+controle:'L’expérience donne la réponse : on pose l’objet dans l’eau et on regarde. Si l’enfant s’est trompé, il voit pourquoi, et un nouvel objet arrive (sans étoile).',
+presentation:'L’enfant prend un objet, dit ce qu’il pense (« Je crois qu’elle va couler »), le pose doucement dans l’eau, observe, puis le range du côté de la bonne étiquette.',
+round(A,lv,C){
+  const [emo,lab,res,why]=C.fresh(FL[lv],x=>x[1]);let done=false;
+  const expl=why||(res==='f'?'Pour sa taille, il est plus léger que l’eau.':'Pour sa taille, il est plus lourd que l’eau.'),verb=res==='f'?'flotte':'coule';
+  C.consigne(`Si on pose <b>${lab}</b> dans l’eau… ça flotte ou ça coule ?`);
+  A.innerHTML=`<div class="fl"><div class="fl-tank"><span class="fl-it">${emo}</span></div><div class="fl-name">${lab}</div><div class="row"><button class="btn big" data-r="f">🌊 Ça flotte</button><button class="btn big" data-r="c">⬇️ Ça coule</button></div></div>`;
+  A.onclick=e=>{if(cur.locked||done)return;const b=e.target.closest('[data-r]');if(!b)return;done=true;
+    C.later(()=>$('.fl-it',A).classList.add(res==='f'?'float':'sink'),60);
+    if(b.dataset.r===res){b.classList.add('good');C.later(()=>C.win(`Oui ! ${cap(lab)} ${verb}. ${expl}`),1300);}
+    else C.later(()=>{C.fail(null,`Regarde : ${lab} ${verb} ! ${expl}`);C.skip(4300);},1300);};
+}});
+
+/* ---------- Monde : le calendrier ---------- */
+const JOURS=['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+const MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+const SAIS=[['🎄','Noël','hiver'],['☃️','le bonhomme de neige','hiver'],['🧤','les gants et le grand froid','hiver'],['🌸','les arbres en fleurs','printemps'],['🐣','les poussins de Pâques','printemps'],['🌷','les tulipes','printemps'],['🏖️','les vacances à la plage','été'],['🍉','la pastèque bien fraîche','été'],['🌻','les champs de tournesols','été'],['🍂','les feuilles qui tombent','automne'],['🎃','les citrouilles d’Halloween','automne'],['🌰','les châtaignes','automne']];
+const SEA={printemps:['#b9e08a','🌱','au printemps'],'été':['#ffd54f','☀️','en été'],automne:['#f0a266','🍂','en automne'],hiver:['#bfe3f7','❄️','en hiver']};
+game({id:'calendrier',dom:'monde',icon:'📅',name:'Le calendrier',sub:'Les jours, les mois et les saisons.',age:'5 – 7 ans',rounds:5,
+levels:['Les jours de la semaine','Les mois de l’année','Les saisons'],
+materiel:'La frise des jours de la semaine, l’anneau des 12 mois et le cercle des 4 saisons, que l’enfant manipule chaque matin.',
+but:'Se repérer dans le temps qui passe, et comprendre que jours, mois et saisons reviennent en cycle.',
+controle:'L’ordre ne change jamais : l’enfant vérifie en récitant la suite depuis le début.',
+presentation:'Chaque matin, on déplace le repère du jour et on chante la suite des jours, puis des mois. Les saisons sont celles de l’hémisphère Nord (France, Belgique, Suisse, Québec).',
+round(A,lv,C){
+  if(lv<2){const L=lv===0?JOURS:MOIS,n=L.length,s=rnd(0,n-1),seq=[0,1,2,3].map(i=>L[(s+i)%n]),gap=rnd(0,3),ans=seq[gap],opts=shuffle([ans,...sample(L.filter(x=>x!==ans),2)]);
+    C.consigne(lv===0?'Quel jour manque dans la frise ?':'Quel mois manque dans la frise ?',`${seq.map((x,i)=>i===gap?'…':x).join(', ')}. Qu’est-ce qui manque ?`);
+    A.innerHTML=`<div class="cal"><div class="cal-strip">${seq.map((x,i)=>`<span class="cal-c ${i===gap?'gap':''}">${i===gap?'?':x}</span>`).join('<b>›</b>')}</div><div class="hc">${opts.map(x=>`<button class="btn big" data-k="${x}">${x}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+      if(b.dataset.k===ans){const g=$('.cal-c.gap',A);g.textContent=ans;g.classList.add('fill');b.classList.add('good');C.win(`Oui ! ${cap(seq.join(', '))}.`);}
+      else C.fail(b,`Récite la suite depuis le début : ${L.slice(0,3).join(', ')}…`);};
+  }else{const [emo,lab,sea]=C.fresh(SAIS,x=>x[1]);
+    C.consigne(`En quelle saison voit-on <b>${lab}</b> ?`);
+    A.innerHTML=`<div class="cal"><div class="co-pic"><div class="emo">${emo}</div><div class="co-lab">${lab}</div></div><div class="cal-seasons">${Object.keys(SEA).map(k=>`<button class="cal-s" data-k="${k}" style="--sc:${SEA[k][0]}">${SEA[k][1]} ${k}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+      if(b.dataset.k===sea){b.classList.add('good');C.win(`Oui ! ${cap(lab)}, c’est ${SEA[sea][2]}.`);}else C.fail(b,'Pense au temps qu’il fait : chaud, froid, les fleurs, les feuilles…');};
+  }
+}});
+
+/* ================= Démarrage ================= */
+(function tiles(){const words=['l’atelier','montessori'];
+  $('#tiles').innerHTML=words.map(w=>`<span class="word" aria-hidden="true">${[...w].map(ch=>`<span class="tile ${ch==='’'?'p':isV(ch)?'v':'c'}" style="--r:${(Math.random()*6-3).toFixed(1)}deg">${ch}</span>`).join('')}</span>`).join('');})();
+$('#shelves').onclick=e=>{const c=e.target.closest('.card');if(c){ac();openGame(c.dataset.id);}};
+$('#levels').onclick=e=>{const b=e.target.closest('.lvl');if(b&&cur)openGame(cur.g.id,+b.dataset.l);};
+$('#consigne .speak').onclick=()=>{if(cur)say(cur.spoken);};
+$('#back').onclick=leave;
+$('#modal').onclick=e=>{const b=e.target.closest('[data-m]');if(!b||!cur)return;const m=b.dataset.m;
+  if(m==='next')openGame(cur.g.id,cur.lv+1);else if(m==='again')openGame(cur.g.id,cur.lv);else leave();};
+window.addEventListener('popstate',()=>{pushed=false;if(cur)goHome();});
+const mb=$('#muteBtn');const setMute=()=>{mb.textContent=state.mute?'🔇':'🔊';mb.setAttribute('aria-pressed',String(state.mute));};setMute();
+mb.onclick=()=>{state.mute=!state.mute;store.set('mute',state.mute);setMute();if(state.mute){try{speechSynthesis.cancel();}catch(e){}}else say('La voix est activée.');};
+renderHome();
+
+/* ================= Installation (appli Chrome / PWA) ================= */
+let installEvt=null;const ib=$('#installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvt=e;ib.hidden=false;});
+ib.onclick=async()=>{if(!installEvt)return;installEvt.prompt();try{await installEvt.userChoice;}catch(_){}installEvt=null;ib.hidden=true;};
+window.addEventListener('appinstalled',()=>{ib.hidden=true;toast('✅ L’atelier est installé !');});
+if('serviceWorker' in navigator&&/^https:|^http:\/\/localhost/.test(location.href)){
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});}
+})();
+</script>
+</body>
+</html>
