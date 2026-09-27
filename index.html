@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>L’atelier Montessori — 30 jeux pour les 5-8 ans</title>
-<meta name="description" content="30 jeux inspirés du vrai matériel Montessori, pour les enfants de 5 à 8 ans.">
+<title>L’atelier Montessori — 45 jeux pour les 5-8 ans</title>
+<meta name="description" content="45 jeux inspirés de la pédagogie Montessori, pour les enfants de 5 à 8 ans.">
 <meta name="theme-color" content="#eef1e4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1b2019" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
@@ -409,6 +409,86 @@ font-family:var(--read);font-weight:700;font-size:clamp(1.6rem,7vw,3.4rem);box-s
 .cal-c.gap.fill{background:var(--ok);color:#fff;border-style:solid;border-color:var(--ok)}
 .cal-seasons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:min(100%,400px)}
 .cal-s{background:var(--sc);color:#33291f;border-radius:16px;padding:14px;font-weight:800;font-size:1.15rem;box-shadow:var(--shadow)}
+/* ---------- encore plus de jeux ---------- */
+.syl-clap{font-size:1.9rem;padding:10px 28px;border-radius:999px;background:var(--c);color:#fff;font-weight:800;box-shadow:var(--shadow)}
+.syl-clap.hit{animation:bump .3s}
+.syl-w i{font-style:normal}.syl-w i:nth-child(odd){color:#d12b3c}.syl-w i:nth-child(even){color:#2463c9}
+.rim-opts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.rim-o{display:flex;flex-direction:column;align-items:center;gap:4px;width:98px;padding:10px 6px;background:var(--paper);border-radius:18px;box-shadow:var(--shadow)}
+.rim-o span{font-size:2.8rem;line-height:1}.rim-o small{font-size:1rem;font-weight:700}
+.big-emo{font-size:4rem;letter-spacing:.08em;text-align:center}
+.eq{font-size:2.3rem;font-weight:800;background:#fffdf6;color:#33291f;padding:8px 20px;border-radius:14px;box-shadow:var(--shadow);text-align:center}
+.gapn{display:inline-block;min-width:1.4em;border-bottom:4px dashed var(--c);color:var(--c)}
+.sb{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.sb-board{display:grid;grid-template-columns:repeat(18,1fr);width:min(100%,560px);background:#f6ecd8;border:6px solid var(--wood2);border-radius:10px;padding:6px 4px;row-gap:3px}
+.sb-n{font-weight:800;font-size:clamp(.56rem,2.5vw,.95rem);color:#33291f;padding:5px 0;border-radius:4px}
+.sb-n.tgt{background:var(--gold);color:#fff}
+.sb-c{height:30px;background:#fffaf0;border-right:1px solid rgba(0,0,0,.08)}
+.sb-n.ten,.sb-c.ten{border-right:3px solid #d62828}
+.sb-c.bl{background:#2f6fd0}.sb-c.rd{background:#d93636}
+.sb-c.bl,.sb-c.rd{border-right:1px solid rgba(255,255,255,.55);animation:popin .2s}
+.sb-c.ten.bl,.sb-c.ten.rd{border-right:3px solid #d62828}
+.sb-pal{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:10px}
+.sb-s{display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:12px;background:var(--paper);box-shadow:var(--shadow);font-weight:800}
+.sb-s i{display:block;height:14px;width:calc(var(--k)*7px);border-radius:3px;background:var(--sc);background-image:repeating-linear-gradient(90deg,transparent 0 6px,rgba(255,255,255,.65) 6px 7px)}
+.tf{display:grid;grid-template-columns:repeat(5,44px);gap:6px;padding:10px;background:var(--paper);border-radius:14px;box-shadow:var(--shadow)}
+.tf i{width:44px;height:44px;border-radius:8px;border:2px dashed #c6b89e;display:grid;place-items:center}
+.tf i.on::after{content:'';width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff8a80,#d32f2f 60%,#9a1c1c)}
+.cmp{display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap}
+.cmp-box{min-width:100px;min-height:100px;padding:8px 12px;background:#fffdf6;color:#33291f;border-radius:16px;box-shadow:var(--shadow);display:grid;place-items:center;font-size:2rem;font-weight:800}
+.cmp-dots{display:grid;grid-template-columns:repeat(5,16px);gap:4px}.cmp-dots i{width:16px;height:16px;border-radius:50%;background:#d32f2f}
+.cmp-mid{width:64px;height:64px;border:3px dashed var(--c);border-radius:14px;display:grid;place-items:center;font-size:2.4rem;font-weight:800;color:var(--c)}
+.cmp-b{width:80px;height:80px;font-size:2.6rem;font-weight:800;background:var(--paper);border-radius:18px;box-shadow:var(--shadow)}
+.croco{margin:0;font-size:.95rem;color:var(--muted);font-weight:700;text-align:center}
+.sq{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;padding:12px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow);max-width:100%}
+.sq span{font-size:2rem;min-width:42px;text-align:center;line-height:1.3}
+.sq span.num{font-size:1.4rem;font-weight:800;background:#fffdf6;color:#33291f;border-radius:10px;padding:6px 8px;box-shadow:0 2px 0 rgba(0,0,0,.1)}
+.sq span.q{border:3px dashed var(--c);border-radius:12px;color:var(--c);font-weight:800}
+.sq-o{font-size:2.4rem;width:80px;height:80px;background:var(--paper);border-radius:18px;box-shadow:var(--shadow)}
+.mo{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
+.mo-tag{display:flex;align-items:center;gap:12px;background:#fffdf6;color:#33291f;border-radius:16px;padding:8px 20px;box-shadow:var(--shadow);font-size:1.7rem;font-weight:800}
+.mo-tag .emo{font-size:3rem}
+.mo-purse,.mo-paid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;padding:12px;border-radius:16px;width:min(100%,520px);min-height:66px}
+.mo-purse{background:var(--wood)}.mo-paid{background:#dfe8d0}
+.coin{display:grid;place-items:center;border-radius:50%;font-weight:800;font-size:.7rem;color:#3a2e10;box-shadow:0 3px 0 rgba(0,0,0,.25);text-align:center;line-height:1}
+.c10,.c20,.c50{background:radial-gradient(circle at 35% 30%,#f7df90,#c89d33)}
+.c10{width:36px;height:36px}.c20{width:40px;height:40px}.c50{width:45px;height:45px}
+.c100{width:44px;height:44px;background:radial-gradient(circle,#e6e6e6 0 52%,#d1a93c 55%)}
+.c200{width:48px;height:48px;background:radial-gradient(circle,#d8b04a 0 52%,#d9d9d9 55%)}
+.bill{display:grid;place-items:center;width:74px;height:40px;border-radius:6px;font-weight:800;font-size:.95rem;box-shadow:0 3px 0 rgba(0,0,0,.25);color:#fff;border:2px solid rgba(255,255,255,.5)}
+.b500{background:#8e9a8c}.b1000{background:#cf6b5f}.b2000{background:#5d82cf}
+.mo-sum{color:var(--ink)}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(100%,420px)}
+.mc{aspect-ratio:1;border-radius:14px;box-shadow:var(--shadow);background:linear-gradient(135deg,var(--wood),var(--wood2));display:grid;place-items:center;font-size:2.2rem;overflow:hidden;padding:4px}
+.mc .f{display:none}.mc .bk{font-size:1.5rem;opacity:.75}
+.mc.open,.mc.ok{background:#fffdf6;color:#33291f}
+.mc.open .f,.mc.ok .f{display:grid;place-items:center;animation:popin .2s}
+.mc.open .bk,.mc.ok .bk{display:none}
+.mc.ok{box-shadow:inset 0 0 0 3px var(--ok)}
+.mem-w{font-size:1rem;font-weight:800}.mem-n{font-size:2rem}
+.mc .bbar{flex-wrap:wrap;justify-content:center;max-width:100%;background:none}.mc .bbar i{width:7px;height:7px}
+.mix{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.pot{display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:800}
+.blob{display:block;width:74px;height:74px;background:var(--bc);border-radius:58% 42% 55% 45%/52% 58% 42% 48%;box-shadow:inset -6px -8px 0 rgba(0,0,0,.12),0 3px 0 rgba(0,0,0,.15);border:2px solid rgba(0,0,0,.12)}
+.blob.q{background:repeating-linear-gradient(45deg,#eee 0 8px,#ddd 8px 16px);display:grid;place-items:center;font-size:2rem;color:#999}
+.mix-sign{font-size:2rem;font-weight:800}
+.mix-opts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.mix-o{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow);font-weight:800;min-width:92px}
+.mix-o .blob{width:46px;height:46px}
+.mix-o.mix-pair{flex-direction:row;flex-wrap:wrap;justify-content:center;width:100%}
+.mix-pair span{width:100%;text-align:center}
+.rn-slot{min-width:54px;height:56px;padding:0 6px;border:2px dashed var(--line);border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:1.3rem;color:#33291f}
+.rn-slot.full{background:#fffdf6;border:2px solid transparent;animation:popin .2s}
+.pl{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.pl-row,.pl-tray{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;padding:12px;border-radius:16px;width:min(100%,560px);background:#16213a radial-gradient(circle,rgba(255,255,255,.5) 0 1px,transparent 1.5px) 0 0/34px 34px}
+.pl-row{min-height:84px}
+.pl-sun{font-size:2.6rem}
+.pl-slot{width:54px;height:70px;border:2px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pl-slot small{color:#fff;font-size:.62rem;font-weight:700}
+.pl-svg{width:44px;height:44px;display:block}
+.pl-b{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px;border-radius:12px;background:#223358;color:#fff;font-weight:700;font-size:.8rem;min-width:72px}
+.pl-b .pl-svg{width:54px;height:54px}
+.kl-b small{font-weight:600;font-size:.78rem;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -421,7 +501,7 @@ font-family:var(--read);font-weight:700;font-size:clamp(1.6rem,7vw,3.4rem);box-s
       <div class="starpill" aria-label="Étoiles gagnées">⭐ <b class="starCount">0</b></div>
     </div>
     <h1 class="tiles" id="tiles" aria-label="L’atelier Montessori"></h1>
-    <p class="lead">30 jeux fidèles au vrai matériel Montessori, pour les enfants de 5 à 8 ans. Chaque jeu a 3 niveaux, une voix qui guide l’enfant et une fiche pour l’adulte.</p>
+    <p class="lead">45 jeux inspirés de la pédagogie Montessori, pour les enfants de 5 à 8 ans. Chaque jeu a 3 niveaux, une voix qui guide l’enfant et une fiche pour l’adulte.</p>
   </header>
   <main id="shelves"></main>
   <footer class="tips"><div>
@@ -1385,6 +1465,390 @@ round(A,lv,C){
     A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
       if(b.dataset.k===sea){b.classList.add('good');C.win(`Oui ! ${cap(lab)}, c’est ${SEA[sea][2]}.`);}else C.fail(b,'Pense au temps qu’il fait : chaud, froid, les fleurs, les feuilles…');};
   }
+}});
+
+/* ================================================================
+   ENCORE PLUS DE JEUX
+   ================================================================ */
+const deOf=l=>l.startsWith('le ')?'du '+l.slice(3):l.startsWith('les ')?'des '+l.slice(4):'de '+l;
+const hcBtns=opts=>`<div class="hc">${opts.map(o=>`<button class="btn big" data-k="${o}">${o}</button>`).join('')}</div>`;
+
+/* ---------- Langage : frappe les syllabes ---------- */
+const SYL=[['chat','🐱'],['pain','🍞'],['train','🚆'],['fleur','🌸'],['chien','🐕'],['main','✋'],['loup','🐺'],['ours','🐻'],['lune','🌙'],['pomme','🍎'],['feu','🔥'],
+ ['la-pin','🐰'],['vé-lo','🚲'],['ro-bot','🤖'],['fu-sée','🚀'],['so-leil','☀️'],['gi-rafe','🦒'],['tor-tue','🐢'],['che-val','🐴'],['bal-lon','🎈'],['mou-ton','🐑'],['ba-nane','🍌'],['to-mate','🍅'],['a-beille','🐝'],['ci-trouille','🎃'],
+ ['cro-co-dile','🐊'],['pa-pil-lon','🦋'],['é-lé-phant','🐘'],['coc-ci-nelle','🐞'],['di-no-saure','🦕'],['kan-gou-rou','🦘'],['cho-co-lat','🍫'],['es-car-got','🐌'],['a-na-nas','🍍'],['a-rai-gnée','🕷️'],['pan-ta-lon','👖'],['pa-ra-pluie','☂️'],['hé-ris-son','🦔'],
+ ['hip-po-po-tame','🦛'],['or-di-na-teur','💻'],['té-lé-vi-sion','📺'],['hé-li-cop-tère','🚁'],['ty-ran-no-saure','🦖']];
+game({id:'syllabes',dom:'lang',icon:'👏',name:'Frappe les syllabes',sub:'Tape dans tes mains à chaque syllabe.',age:'5 – 6 ans',rounds:5,
+levels:['Mots de 1 ou 2 syllabes','Jusqu’à 3 syllabes','Jusqu’à 4 syllabes'],
+materiel:'Un jeu oral : on dit le mot en tapant dans ses mains à chaque syllabe. Ensuite, des cartes où chaque syllabe est écrite d’une couleur différente.',
+but:'Conscience phonologique : découper un mot en syllabes, une étape indispensable avant la lecture.',
+controle:'On recompte ensemble en frappant. Une fois trouvé, le mot s’affiche découpé en couleurs.',
+presentation:'L’adulte dit le mot lentement en tapant dans ses mains, l’enfant l’imite. On peut aussi sauter ou poser un jeton à chaque syllabe. Le « e » muet de la fin ne se frappe pas : « to-mate ».',
+round(A,lv,C){
+  const max=lv+2,pool=SYL.filter(x=>x[0].split('-').length<=max),[sp,emo]=C.fresh(pool,x=>x[0]),parts=sp.split('-'),w=parts.join(''),n=parts.length;let claps=0;
+  C.consigne('Dis le mot en tapant dans tes mains à chaque syllabe. Combien de fois as-tu tapé ?',`Dis le mot en tapant dans tes mains : ${w}. Combien de syllabes ?`);
+  A.innerHTML=`<div class="sn"><button class="sn-pic" data-a="hear"><span class="emo xl">${emo}</span><span class="read sn-w syl-w">${w}</span><span class="hp">🔊 Réécouter</span></button>
+    <button class="syl-clap" data-a="clap">👏 <b>0</b></button><div class="lrow">${range(1,Math.min(4,max+1)).map(k=>`<button class="numcard" data-n="${k}">${k}</button>`).join('')}</div></div>`;
+  const reset=()=>{claps=0;$('.syl-clap b',A).textContent=0;};
+  A.onclick=e=>{if(cur.locked)return;const a=e.target.closest('[data-a]');
+    if(a){if(a.dataset.a==='hear'){reset();say(w);}else{claps++;$('b',a).textContent=claps;a.classList.remove('hit');void a.offsetWidth;a.classList.add('hit');C.pop();}return;}
+    const b=e.target.closest('.numcard');if(!b)return;
+    if(+b.dataset.n===n){b.classList.add('good');$('.syl-w',A).innerHTML=parts.map(p=>`<i>${p}</i>`).join('·');C.win(`Oui ! ${parts.join(' · ')} : ${n} syllabe${n>1?'s':''}.`,`Oui ! ${n} syllabe${n>1?'s':''}.`);}
+    else{reset();C.fail(b,'Recommence en tapant dans tes mains à chaque morceau du mot.');}};
+}});
+
+/* ---------- Langage : les rimes ---------- */
+const RIM={o:[['bateau','⛵'],['gâteau','🎂'],['chapeau','🎩'],['vélo','🚲'],['moto','🏍️'],['château','🏰'],['cadeau','🎁'],['piano','🎹']],
+ in:[['lapin','🐰'],['sapin','🎄'],['raisin','🍇'],['train','🚆'],['main','✋'],['pain','🍞'],['poussin','🐣']],
+ on:[['ballon','🎈'],['citron','🍋'],['camion','🚚'],['poisson','🐟'],['savon','🧼'],['cochon','🐷'],['mouton','🐑'],['lion','🦁']],
+ a:[['chat','🐱'],['rat','🐀'],['chocolat','🍫'],['panda','🐼'],['lama','🦙'],['koala','🐨'],['pizza','🍕']],
+ ou:[['loup','🐺'],['chou','🥬'],['genou','🦵'],['kangourou','🦘'],['hibou','🦉']],
+ i:[['souris','🐭'],['lit','🛏️'],['riz','🍚'],['fourmi','🐜'],['kiwi','🥝'],['ski','🎿'],['parapluie','☂️']],
+ e:[['fusée','🚀'],['clé','🔑'],['café','☕'],['bébé','👶'],['dé','🎲'],['thé','🍵'],['épée','🗡️']],
+ eur:[['fleur','🌸'],['cœur','❤️'],['tracteur','🚜'],['ordinateur','💻'],['beurre','🧈']]};
+const RK=Object.keys(RIM);
+game({id:'rimes',dom:'lang',icon:'🎵',name:'Les rimes',sub:'Trouve les mots qui finissent pareil.',age:'5 – 6 ans',rounds:5,
+levels:['Qu’est-ce qui rime ? (3 images)','Qu’est-ce qui rime ? (4 images)','Trouve l’intrus'],
+materiel:'Des paires d’objets ou d’images qui riment (bateau / gâteau), rangées dans une boîte, et des comptines.',
+but:'Entendre la fin des mots : une compétence clé de la conscience phonologique, et une porte d’entrée vers la poésie.',
+controle:'Deux mots riment quand ils finissent par le même son. L’intrus est le seul à finir autrement.',
+presentation:'On dit les deux mots en appuyant sur la fin : « bat-EAU, gât-EAU ». Puis on cherche d’autres mots qui riment, pour rire, même inventés !',
+round(A,lv,C){
+  const g=pick(RK),card=([w,e])=>`<button class="rim-o" data-w="${w}"><span>${e}</span><small class="read">${w}</small></button>`;
+  if(lv<2){const [t,te]=C.fresh(RIM[g],x=>x[0]),ans=pick(RIM[g].filter(x=>x[0]!==t)),opts=shuffle([ans,...sample(RK.filter(k=>k!==g),lv===0?2:3).map(k=>pick(RIM[k]))]);
+    C.consigne(`Qu’est-ce qui rime avec « ${t} » ?`,`Qu’est-ce qui rime avec ${t} ? ${opts.map(x=>x[0]).join(', ')} ?`);
+    A.innerHTML=`<div class="sn"><button class="sn-pic" data-a="hear"><span class="emo xl">${te}</span><span class="read sn-w">${t}</span><span class="hp">🔊</span></button><div class="rim-opts">${opts.map(card).join('')}</div></div>`;
+    A.onclick=e=>{if(e.target.closest('[data-a="hear"]'))return say(t);const b=e.target.closest('.rim-o');if(!b||cur.locked)return;const w=b.dataset.w;
+      if(w===ans[0]){b.classList.add('good');C.win(`Oui ! « ${t} » et « ${w} » riment : ils finissent par le même son.`);}else C.fail(b,`Écoute bien la fin : ${t}… ${w}…`);};
+  }else{const same=sample(RIM[g],3),intr=pick(RIM[pick(RK.filter(k=>k!==g))]),opts=shuffle([...same,intr]);
+    C.consigne('Trois mots riment ensemble. Trouve l’intrus !',`Trouve l’intrus : ${opts.map(x=>x[0]).join(', ')}.`);
+    A.innerHTML=`<div class="sn"><div class="rim-opts">${opts.map(card).join('')}</div><button class="btn small" data-a="hear">🔊 Réécouter les mots</button></div>`;
+    A.onclick=e=>{if(e.target.closest('[data-a="hear"]'))return say(opts.map(x=>x[0]).join(', '));const b=e.target.closest('.rim-o');if(!b||cur.locked)return;
+      if(b.dataset.w===intr[0]){b.classList.add('good');C.win(`Oui ! « ${intr[0]} » ne rime pas avec ${same.map(x=>'« '+x[0]+' »').join(', ')}.`,`Oui ! ${intr[0]} ne rime pas.`);}
+      else C.fail(b,`« ${b.dataset.w} » rime avec d’autres mots. Cherche celui qui finit autrement.`);};
+  }
+}});
+
+/* ---------- Langage : un ou une ? ---------- */
+const NOM=[['chat','chats','m','🐱'],['pomme','pommes','f','🍎'],['ballon','ballons','m','🎈'],['fleur','fleurs','f','🌸'],['vélo','vélos','m','🚲'],['voiture','voitures','f','🚗'],['avion','avions','m','✈️'],['étoile','étoiles','f','⭐'],['arbre','arbres','m','🌳'],['orange','oranges','f','🍊'],['ours','ours','m','🐻'],['abeille','abeilles','f','🐝'],['livre','livres','m','📖'],['maison','maisons','f','🏠'],['train','trains','m','🚆'],['fusée','fusées','f','🚀'],['gâteau','gâteaux','m','🎂'],['tortue','tortues','f','🐢'],['lapin','lapins','m','🐰'],['souris','souris','f','🐭'],['bateau','bateaux','m','⛵'],['lune','lunes','f','🌙'],['oiseau','oiseaux','m','🐦'],['clé','clés','f','🔑'],['escargot','escargots','m','🐌'],['araignée','araignées','f','🕷️'],['éléphant','éléphants','m','🐘'],['horloge','horloges','f','🕰️']];
+const elide=w=>/^[aeiouyéèêàâîôûh]/i.test(w);
+game({id:'articles',dom:'lang',icon:'📝',name:'Un ou une ? Le ou la ?',sub:'Masculin, féminin, singulier, pluriel.',age:'5 – 7 ans',rounds:5,
+levels:['un ou une','le, la ou l’','Singulier ou pluriel'],
+materiel:'Le jeu de l’article Montessori : des objets et des étiquettes « un / une », « le / la / l’ » posées devant chaque objet, puis les étiquettes du pluriel.',
+but:'Sentir le genre des noms (masculin, féminin) et découvrir le pluriel et ses marques : -s, -x.',
+controle:'L’oreille est le premier contrôle : l’enfant dit les deux à voix haute et entend ce qui sonne juste.',
+presentation:'On pose un objet : « un crayon ». Puis un autre : « une gomme ». L’enfant pose les étiquettes. Pour le pluriel, on ajoute des objets identiques et on change l’étiquette.',
+round(A,lv,C){
+  const pool=lv===2?NOM.filter(x=>x[1]!==x[0]):NOM,[s,p,g,e]=C.fresh(pool,x=>x[0]),el=elide(s),def=el?'l’'+s:(g==='m'?'le ':'la ')+s;
+  if(lv<2){const ans=lv===0?(g==='m'?'un':'une'):(el?'l’':(g==='m'?'le':'la')),opts=lv===0?['un','une']:['le','la','l’'];
+    C.consigne(lv===0?'Dit-on « un » ou « une » ?':'Dit-on « le », « la » ou « l’ » ?',`Quel petit mot va devant : ${s} ?`);
+    A.innerHTML=`<div class="co"><div class="co-pic"><div class="emo">${e}</div><div class="co-lab read">… ${s}</div></div><div class="row">${opts.map(o=>`<button class="btn big" data-k="${o}">${o}</button>`).join('')}</div></div>`;
+    A.onclick=ev=>{if(cur.locked)return;const b=ev.target.closest('[data-k]');if(!b)return;
+      if(b.dataset.k===ans){b.classList.add('good');const ph=lv===0?`${ans} ${s}`:def;C.win(`Oui ! On dit « ${ph} ».`,`Oui ! ${ph}.`);}
+      else C.fail(b,lv===1&&el?'Devant une voyelle, « le » et « la » deviennent « l’ ».':'Dis les deux à voix haute et écoute ce qui sonne juste.');};
+  }else{const many=Math.random()<.5,ans=many?'les '+p:def,opts=shuffle([def,'les '+p,'les '+s]);
+    C.consigne(many?'Il y en a plusieurs : quelle étiquette va avec l’image ?':'Il n’y en a qu’un : quelle étiquette va avec l’image ?');
+    A.innerHTML=`<div class="co"><div class="co-pic"><div class="big-emo">${many?e+e+e:e}</div></div>${hcBtns(opts)}</div>`;
+    A.onclick=ev=>{if(cur.locked)return;const b=ev.target.closest('[data-k]');if(!b)return;const k=b.dataset.k;
+      if(k===ans){b.classList.add('good');C.win(many?`Oui ! « ${ans} » : au pluriel, on ajoute ${p.endsWith('x')?'un x':'un s'} à la fin.`:`Oui ! « ${ans} ».`);}
+      else if(!many)C.fail(b,'Il n’y en a qu’un : c’est le singulier.');
+      else if(k==='les '+s)C.fail(b,'Au pluriel, le mot change aussi : regarde bien la fin !');
+      else C.fail(b,'Il y en a plusieurs : c’est le pluriel.');};
+  }
+}});
+
+/* ---------- Langage : les contraires ---------- */
+const CT0=[['chaud','🔥','froid','❄️'],['jour','☀️','nuit','🌙'],['content','😀','triste','😢'],['rapide','🐇','lent','🐢'],['grand','🦒','petit','🐭'],['haut','⬆️','bas','⬇️'],['ouvert','🔓','fermé','🔒'],['jeune','👶','vieux','👴'],['bruyant','🔊','silencieux','🔇'],['rire','😂','pleurer','😭']];
+const CT1=[['propre','sale'],['lourd','léger'],['dur','mou'],['plein','vide'],['dessus','dessous'],['devant','derrière'],['entrer','sortir'],['monter','descendre'],['gagner','perdre'],['allumer','éteindre'],['acheter','vendre'],['commencer','finir'],['beaucoup','peu'],['toujours','jamais'],['clair','foncé'],['court','long'],['facile','difficile'],['premier','dernier'],['loin','près'],['large','étroit']];
+const CT2=[['possible','impossible'],['content','mécontent'],['heureux','malheureux'],['faire','défaire'],['monter','démonter'],['poli','impoli'],['visible','invisible'],['habiller','déshabiller'],['coller','décoller'],['prudent','imprudent'],['patient','impatient'],['boucher','déboucher'],['connu','inconnu'],['honnête','malhonnête']];
+game({id:'contraires',dom:'lang',icon:'🔄',name:'Les contraires',sub:'Chaud ou froid ? Plein ou vide ?',age:'5 – 7 ans',rounds:5,
+levels:['Avec des images','Des mots plus difficiles','Les préfixes (im-, dé-, mal-…)'],
+materiel:'Des paires de cartes ou d’objets opposés (chaud / froid, plein / vide), puis des étiquettes de mots pour les plus grands.',
+but:'Enrichir le vocabulaire, comprendre un mot par son opposé et découvrir les préfixes qui changent le sens : im-, in-, dé-, mal-.',
+controle:'Chaque mot n’a qu’un seul contraire parmi les choix proposés.',
+presentation:'On mime les contraires (grand / petit avec les bras, content / triste avec le visage), puis on associe les cartes deux par deux.',
+round(A,lv,C){
+  let w,a,opts,html;
+  if(lv===0){const pr=C.fresh(CT0,x=>x[0]),fl=Math.random()<.5,[x0,e0,x1,e1]=fl?[pr[2],pr[3],pr[0],pr[1]]:pr;w=x0;a=x1;
+    opts=shuffle([[x1,e1],...sample(CT0.filter(x=>x!==pr),2).map(x=>Math.random()<.5?[x[0],x[1]]:[x[2],x[3]])]);
+    html=`<div class="co-pic"><div class="emo">${e0}</div><div class="co-lab">${x0}</div></div><div class="rim-opts">${opts.map(([t,em])=>`<button class="rim-o" data-k="${t}"><span>${em}</span><small>${t}</small></button>`).join('')}</div>`;}
+  else{const P=lv===1?CT1:CT2,pr=C.fresh(P,x=>x[0]),fl=Math.random()<.5;w=fl?pr[1]:pr[0];a=fl?pr[0]:pr[1];
+    opts=shuffle([a,...sample(P.filter(x=>x!==pr),3).map(x=>x[Math.random()<.5?0:1])]);
+    html=`<div class="eq read">${w}</div>${hcBtns(opts)}`;}
+  C.consigne(`Quel est le contraire de « ${w} » ?`);
+  A.innerHTML=`<div class="co">${html}</div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+    if(b.dataset.k===a){b.classList.add('good');C.win(`Oui ! Le contraire de « ${w} », c’est « ${a} ».`);}else C.fail(b,'Cherche le mot qui veut dire tout l’inverse.');};
+}});
+
+/* ---------- Maths : la planche des bandes d'addition ---------- */
+game({id:'bandes',dom:'math',icon:'🟦',name:'La planche des bandes d’addition',sub:'Bande bleue + bande rouge : lis le résultat.',age:'6 – 7 ans',rounds:5,
+levels:['Sommes jusqu’à 10','Sommes jusqu’à 18','Le nombre qui manque'],
+materiel:'Une planche quadrillée numérotée de 1 à 18 avec une ligne rouge après le 10, 9 bandes bleues (1 à 9) et 9 bandes rouges (1 à 9) découpées en cases.',
+but:'Découvrir puis mémoriser les tables d’addition jusqu’à 9 + 9, et comprendre les décompositions d’un nombre.',
+controle:'Le nombre écrit au-dessus de la dernière case rouge donne le résultat ; une table de contrôle permet de vérifier.',
+presentation:'L’enfant pose la bande bleue du premier nombre, puis la bande rouge juste après, et lit le nombre au-dessus. On fait toutes les additions d’un même nombre : 1 + 1, 1 + 2, 1 + 3…',
+round(A,lv,C){
+  let a,b;if(lv===0){a=rnd(1,8);b=rnd(1,10-a);}else{a=rnd(2,9);b=rnd(2,9);}const c=a+b;let step=lv===2?1:0;
+  const pal=col=>range(1,9).map(k=>`<button class="sb-s" data-k="${k}" style="--k:${k};--sc:${col}"><i></i>${k}</button>`).join('');
+  const paint=(f,t,cls)=>{for(let n=f;n<=t;n++)$(`.sb-c[data-c="${n}"]`,A).classList.add(cls);};
+  A.innerHTML=`<div class="sb"><div class="eq">${lv===2?`${a} + <span class="gapn">?</span> = ${c}`:`${a} + ${b} = <span class="gapn">?</span>`}</div>
+    <div class="sb-board">${range(1,18).map(n=>`<button class="sb-n ${n===10?'ten':''} ${lv===2&&n===c?'tgt':''}" data-n="${n}">${n}</button>`).join('')}${range(1,18).map(n=>`<span class="sb-c ${n===10?'ten':''}" data-c="${n}"></span>`).join('')}</div>
+    <div class="sb-pal"></div></div>`;
+  const P=$('.sb-pal',A);
+  if(lv===2){paint(1,a,'bl');P.innerHTML=pal('#d93636');C.consigne(`La bande bleue de ${a} est posée. Quelle bande rouge faut-il pour arriver jusqu’à ${c} ?`,`${a} plus combien égale ${c} ?`);}
+  else{P.innerHTML=pal('#2f6fd0');C.consigne(`${a} + ${b} : pose d’abord la bande bleue de ${a}.`,`${a} plus ${b}. Pose d’abord la bande bleue de ${a}.`);}
+  A.onclick=e=>{if(cur.locked)return;const s=e.target.closest('.sb-s'),nb=e.target.closest('.sb-n');
+    if(s){const k=+s.dataset.k;
+      if(step===0){if(k!==a)return C.fail(s,`Cette bande vaut ${k}. Il faut la bande bleue de ${a}.`);paint(1,a,'bl');C.pop();step=1;P.innerHTML=pal('#d93636');C.consigne(`Maintenant, pose la bande rouge de ${b} juste après.`);}
+      else if(step===1){
+        if(lv===2){if(a+k===c){paint(a+1,c,'rd');s.classList.add('good');$('.gapn',A).textContent=k;C.win(`Bravo ! ${a} + ${k} = ${c}.`,`Bravo ! ${a} plus ${k}, égale ${c}.`);}
+          else C.fail(s,a+k>c?'Trop longue : la bande dépasse le nombre.':'Trop courte : il manque des cases.');return;}
+        if(k!==b)return C.fail(s,`Cette bande vaut ${k}. Il faut la bande rouge de ${b}.`);
+        paint(a+1,c,'rd');C.pop();step=2;P.innerHTML='';C.consigne('Lis le nombre écrit juste au-dessus de la dernière case rouge.');}
+      return;}
+    if(nb&&step===2){if(+nb.dataset.n===c){nb.classList.add('tgt');$('.gapn',A).textContent=c;C.win(`Bravo ! ${a} + ${b} = ${c}.`,`Bravo ! ${a} plus ${b}, égale ${c}.`);}
+      else C.fail(nb,'Regarde le nombre juste au-dessus de la dernière case rouge.');}};
+}});
+
+/* ---------- Maths : les amis de 10 ---------- */
+game({id:'amis10',dom:'math',icon:'🤝',name:'Les amis de 10',sub:'Combien manque-t-il pour faire 10 ?',age:'5 – 7 ans',rounds:5,
+levels:['La boîte de 10 cases','Calculs jusqu’à 10','Les amis de 100'],
+materiel:'Les barres de perles colorées posées deux par deux pour égaler une barre dorée de 10, et une boîte de dix cases pour les jetons.',
+but:'Connaître par cœur les compléments à 10, puis à 100 : la clé du calcul mental et des retenues.',
+controle:'La boîte de dix cases doit être pleine : les cases vides montrent ce qui manque.',
+presentation:'On pose la barre de 7 à côté d’une barre dorée de 10 et on cherche quelle barre la complète. On recommence avec toutes les paires : 1 + 9, 2 + 8…',
+round(A,lv,C){
+  const tot=lv===2?100:10,st=lv===2?10:1,k=lv===2?10*rnd(1,9):rnd(1,9),ans=tot-k,cand=shuffle([1,-1,2,-2,3,-3].map(d=>ans+d*st)).filter(x=>x>0&&x<tot),opts=shuffle([ans,...cand.slice(0,lv===0?2:3)]);
+  C.consigne(lv===0?'Combien de jetons manque-t-il pour remplir la boîte de 10 ?':`Quel est l’ami de ${k} pour faire ${tot} ?`,lv===0?'Combien de jetons manque-t-il pour faire 10 ?':`${k} plus combien égale ${tot} ?`);
+  A.innerHTML=`<div class="co">${lv===0?`<div class="tf">${range(1,10).map(i=>`<i class="${i<=k?'on':''}"></i>`).join('')}</div>`:`<div class="eq">${k} + <span class="gapn">?</span> = ${tot}</div>`}<div class="lrow">${opts.map(x=>`<button class="numcard" data-n="${x}">${x}</button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.numcard');if(!b)return;
+    if(+b.dataset.n===ans){b.classList.add('good');if(lv===0)$$('.tf i',A).forEach(x=>x.classList.add('on'));else $('.gapn',A).textContent=ans;C.win(`Oui ! ${k} + ${ans} = ${tot} : ${k} et ${ans} sont des amis de ${tot}.`);}
+    else C.fail(b,lv===0?'Compte les cases vides.':`Essaie : ${k} + ${b.dataset.n}, est-ce que ça fait ${tot} ?`);};
+}});
+
+/* ---------- Maths : le crocodile gourmand ---------- */
+game({id:'comparer',dom:'math',icon:'🐊',name:'Le crocodile gourmand',sub:'Plus petit, plus grand ou égal ?',age:'6 – 8 ans',rounds:5,
+levels:['Compter des jetons','Nombres jusqu’à 99','Calculs à comparer'],
+materiel:'Des cartes de nombres, des jetons et les trois signes : « plus petit que » (<), « plus grand que » (>) et « égal » (=).',
+but:'Comparer des quantités puis des nombres, et apprendre à écrire les signes <, > et =.',
+controle:'La bouche ouverte du crocodile se tourne toujours vers le plus grand (il est gourmand !) et la pointe montre le plus petit.',
+presentation:'On compare d’abord deux tas de jetons en les alignant un à un pour voir lequel en a le plus. Ensuite seulement, on remplace les jetons par des nombres.',
+round(A,lv,C){
+  let L,R,lt,rt,lh,rh;const dots=n=>`<span class="cmp-dots">${'<i></i>'.repeat(n)}</span>`;
+  if(lv===0){L=rnd(1,10);R=Math.random()<.2?L:rnd(1,10);lh=dots(L);rh=dots(R);lt=String(L);rt=String(R);}
+  else if(lv===1){L=rnd(10,99);const sw=+String(L).split('').reverse().join('');R=Math.random()<.2?L:(Math.random()<.35&&sw>=10&&sw!==L?sw:rnd(10,99));lh=lt=String(L);rh=rt=String(R);}
+  else{const a=rnd(1,9),b=rnd(1,9);L=a+b;R=Math.random()<.25?L:clamp(L+rnd(-3,3),2,18);lh=lt=`${a} + ${b}`;rh=rt=String(R);}
+  const ans=L<R?'<':L>R?'>':'=',word={'<':'plus petit que','>':'plus grand que','=':'égal à'};
+  C.consigne('Le crocodile gourmand ouvre la bouche vers le plus grand ! Choisis le bon signe.');
+  A.innerHTML=`<div class="co"><div class="cmp"><div class="cmp-box">${lh}</div><div class="cmp-mid">?</div><div class="cmp-box">${rh}</div></div>
+    <div class="row">${['<','=','>'].map(s=>`<button class="cmp-b" data-k="${s}">${s==='<'?'&lt;':s==='>'?'&gt;':'='}</button>`).join('')}</div><p class="croco">🐊 La bouche ouverte mange le plus grand.</p></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.cmp-b');if(!b)return;
+    if(b.dataset.k===ans){b.classList.add('good');$('.cmp-mid',A).textContent=ans;C.win(`Oui ! ${lt} ${ans} ${rt}.`,`Oui ! ${lt.replace('+','plus')} est ${word[ans]} ${rt}.`);}
+    else C.fail(b,L===R?'Regarde bien : les deux côtés valent la même chose.':'Le crocodile ouvre sa bouche vers le côté le plus grand.');};
+}});
+
+/* ---------- Maths : les suites logiques ---------- */
+const SSET=[['🔴','🔵','🟡','🟢'],['🍎','🍌','🍇','🍓'],['🐱','🐶','🐭','🐰'],['⭐','🌙','☀️','☁️'],['🔺','🟦','⚫','🟩']];
+const SRULE=[['On ajoute 2 à chaque fois.',()=>rnd(0,10),n=>n+2],['On ajoute 5 à chaque fois.',()=>5*rnd(0,4),n=>n+5],['On ajoute 10 à chaque fois.',()=>rnd(1,9),n=>n+10],
+ ['On enlève 1 à chaque fois.',()=>rnd(12,20),n=>n-1],['On enlève 2 à chaque fois.',()=>2*rnd(8,12),n=>n-2],['On double à chaque fois.',()=>pick([1,3]),n=>n*2]];
+game({id:'suites',dom:'math',icon:'🔁',name:'Les suites logiques',sub:'Trouve ce qui vient après.',age:'5 – 8 ans',rounds:5,
+levels:['Motifs simples','Motifs plus longs','Suites de nombres'],
+materiel:'Des perles, des formes ou des objets de couleur à enfiler ou à aligner en suivant un motif, puis des bandes de nombres.',
+but:'Repérer une régularité et la prolonger : c’est la logique qui prépare à l’algèbre et aux tables.',
+controle:'Le motif se répète toujours de la même façon : en le récitant à voix haute, l’erreur s’entend.',
+presentation:'L’adulte commence un collier « rouge, bleu, rouge, bleu… » et demande : « Et après ? ». Puis l’enfant invente ses propres motifs.',
+round(A,lv,C){
+  let ans,msg,html;
+  if(lv<2){const T=pick(lv===0?['AB','ABB','AAB','ABC']:['AABB','ABCD','ABBC','ABAC','AABC']),S=shuffle(pick(SSET)),m=ch=>S['ABCD'.indexOf(ch)],len=lv===0?7:9;
+    const seq=range(0,len-1).map(i=>m(T[i%T.length]));ans=m(T[len%T.length]);
+    const used=[...new Set([...T].map(m))],pool=[...used.filter(x=>x!==ans),...S.filter(x=>!used.includes(x))],opts=shuffle([ans,...pool.slice(0,lv===0?2:3)]);
+    html=`<div class="sq">${seq.map(x=>`<span>${x}</span>`).join('')}<span class="q">?</span></div><div class="row">${opts.map(x=>`<button class="sq-o" data-k="${x}">${x}</button>`).join('')}</div>`;msg='Oui ! Le motif continue.';
+    C.consigne('Observe le motif. Qu’est-ce qui vient après ?');}
+  else{const [txt,st,f]=pick(SRULE);let x=st();const seq=[];for(let i=0;i<5;i++){seq.push(x);x=f(x);}ans=x;const d=Math.abs(seq[1]-seq[0])||1;
+    html=`<div class="sq">${seq.map(v=>`<span class="num">${v}</span>`).join('')}<span class="num q">?</span></div><div class="lrow">${choicesAround(ans,[1,-1,d,-d,2],3).map(v=>`<button class="numcard" data-k="${v}">${v}</button>`).join('')}</div>`;msg=`Oui ! ${txt}`;
+    C.consigne('Trouve la règle de la suite. Quel nombre vient après ?',`${seq.join(', ')}. Quel nombre vient après ?`);}
+  A.innerHTML=`<div class="co">${html}</div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+    if(b.dataset.k===String(ans)){b.classList.add('good');$('.sq .q',A).textContent=ans;C.win(msg);}else C.fail(b,lv<2?'Récite le motif à voix haute depuis le début.':'Regarde ce qui change d’un nombre au suivant.');};
+}});
+
+/* ---------- Maths : ranger les nombres ---------- */
+game({id:'ranger',dom:'math',icon:'🔢',name:'Ranger les nombres',sub:'Du plus petit au plus grand.',age:'5 – 8 ans',rounds:5,
+levels:['De 1 à 10','Jusqu’à 99','Du plus grand au plus petit (jusqu’à 999)'],
+materiel:'Des cartes de nombres à ranger en ligne sur un tapis, comme les cartes chiffres des tableaux de Seguin.',
+but:'Comprendre l’ordre et la valeur des nombres : la base de la comparaison et de la droite numérique.',
+controle:'Une carte ne peut se poser que si c’est la bonne suivante.',
+presentation:'L’enfant cherche la plus petite carte et la pose à gauche, puis la plus petite de celles qui restent… exactement comme avec les tablettes de couleurs.',
+round(A,lv,C){
+  const n=lv===2?6:5,nums=sample(lv===0?range(1,10):lv===1?range(10,99):range(100,999),n),desc=lv===2,order=[...nums].sort((x,y)=>desc?y-x:x-y);let next=0;
+  C.consigne(desc?'Range les nombres du plus <b>grand</b> au plus <b>petit</b>.':'Range les nombres du plus <b>petit</b> au plus <b>grand</b>.');
+  A.innerHTML=`<div class="ct"><div class="ct-row">${order.map((_,i)=>`<span class="rn-slot" data-s="${i}"></span>`).join('')}</div><div class="ct-tray">${shuffle(nums).map(x=>`<button class="numcard" data-n="${x}">${x}</button>`).join('')}</div></div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.ct-tray .numcard');if(!b||b.classList.contains('gone'))return;const x=+b.dataset.n;
+    if(x===order[next]){const sl=$(`.rn-slot[data-s="${next}"]`,A);sl.textContent=x;sl.classList.add('full');b.classList.add('gone');next++;C.pop();
+      if(next===n)C.win(`Bravo ! ${order.join(desc?' > ':' < ')}`,'Bravo ! Les nombres sont bien rangés.');}
+    else C.fail(b,desc?'Cherche le plus grand nombre qui reste.':'Cherche le plus petit nombre qui reste.');};
+}});
+
+/* ---------- Sensoriel : le mémory ---------- */
+const MEMO=['🐶','🐱','🦊','🐸','🐵','🦁','🐼','🐙','🦋','🐢','🐬','🦄'];
+game({id:'memory',dom:'sens',icon:'🃏',name:'Le mémory',sub:'Retourne les cartes et trouve les paires.',age:'5 – 8 ans',rounds:2,
+levels:['Images identiques','Image et mot','Chiffre et perles'],
+materiel:'Des paires de cartes posées face cachée : images identiques, puis image et mot, puis chiffre et barre de perles colorées.',
+but:'Exercer la mémoire et l’attention visuelle, tout en révisant la lecture et la numération.',
+controle:'Deux cartes qui ne vont pas ensemble se retournent toutes seules.',
+presentation:'On étale les cartes face cachée. L’enfant en retourne deux : si elles vont ensemble, il les garde ; sinon, il les repose au même endroit et essaie de s’en souvenir.',
+round(A,lv,C){
+  let pairs;
+  if(lv===0)pairs=sample(MEMO,6).map((e,i)=>[i,e,e]);
+  else if(lv===1)pairs=sample(AM[0].concat(AM[1]),8).map(([w,e],i)=>[i,e,`<span class="read mem-w">${w}</span>`]);
+  else pairs=sample(range(1,9),8).map(k=>[k,`<b class="mem-n">${k}</b>`,beads(k)]);
+  const cards=shuffle(pairs.flatMap(([id,a,b])=>[{id,h:a},{id,h:b}]));let open=[],busy=false,found=0,moves=0;
+  C.consigne(lv===0?'Retourne deux cartes à la fois et trouve les paires identiques.':lv===1?'Trouve chaque image et son mot.':'Trouve chaque chiffre et sa barre de perles.');
+  A.innerHTML=`<div class="co"><div class="mem">${cards.map((c,i)=>`<button class="mc" data-i="${i}" aria-label="carte"><span class="bk">🌿</span><span class="f">${c.h}</span></button>`).join('')}</div><div class="sp-info">Coups : <b class="mv">0</b></div></div>`;
+  A.onclick=e=>{if(cur.locked||busy)return;const b=e.target.closest('.mc');if(!b||b.classList.contains('open')||b.classList.contains('ok'))return;
+    b.classList.add('open');open.push(+b.dataset.i);C.pop();if(open.length<2)return;
+    moves++;$('.mv',A).textContent=moves;const [x,y]=open;open=[];const bx=$(`.mc[data-i="${x}"]`,A),by=$(`.mc[data-i="${y}"]`,A);
+    if(cards[x].id===cards[y].id){[bx,by].forEach(z=>{z.classList.remove('open');z.classList.add('ok');});found++;if(found===pairs.length)C.win(`Bravo ! Toutes les paires en ${moves} coups.`);}
+    else{busy=true;C.later(()=>{bx.classList.remove('open');by.classList.remove('open');busy=false;},900);}};
+}});
+
+/* ---------- Sensoriel : le mélange des couleurs ---------- */
+const PAINT={rouge:'#e53935',jaune:'#fdd835',bleu:'#1e88e5',blanc:'#ffffff',noir:'#212121',orange:'#fb8c00',vert:'#43a047',violet:'#8e24aa',rose:'#f48fb1',gris:'#9e9e9e','bleu ciel':'#81d4fa',marron:'#795548'};
+const MIX=[['rouge','jaune','orange'],['bleu','jaune','vert'],['rouge','bleu','violet'],['rouge','blanc','rose'],['noir','blanc','gris'],['bleu','blanc','bleu ciel'],['rouge','vert','marron']];
+const duC=c=>/^[aeiouy]/.test(c)?'de l’'+c:'du '+c;
+const blob=c=>`<span class="blob" style="--bc:${PAINT[c]}"></span>`;
+game({id:'couleurs',dom:'sens',icon:'🖌️',name:'Le mélange des couleurs',sub:'Rouge + jaune = ?',age:'5 – 7 ans',rounds:5,
+levels:['Les couleurs primaires','Toutes les recettes','Quelles couleurs mélanger ?'],
+materiel:'Des pots de peinture ou des pipettes d’eau colorée : les trois couleurs primaires (rouge, jaune, bleu), le blanc et le noir.',
+but:'Découvrir par l’expérience comment naissent les couleurs secondaires et les nuances, dans la continuité des tablettes de couleurs.',
+controle:'L’expérience donne la réponse : on mélange et on regarde.',
+presentation:'L’enfant verse quelques gouttes de deux couleurs dans un pot transparent, remue, et nomme la couleur obtenue. Il note ses découvertes sur une fiche.',
+round(A,lv,C){
+  const pool=lv===0?MIX.slice(0,3):MIX,[a,b,r]=C.fresh(pool,x=>x[2]);
+  if(lv<2){const opts=shuffle([r,...sample(pool.map(x=>x[2]).filter(x=>x!==r),lv===0?2:3)]);
+    C.consigne(`Si on mélange ${duC(a)} et ${duC(b)}, quelle couleur obtient-on ?`);
+    A.innerHTML=`<div class="co"><div class="mix"><span class="pot">${blob(a)}${a}</span><span class="mix-sign">+</span><span class="pot">${blob(b)}${b}</span><span class="mix-sign">=</span><span class="pot res"><span class="blob q">?</span>&nbsp;</span></div>
+      <div class="mix-opts">${opts.map(x=>`<button class="mix-o" data-k="${x}">${blob(x)}${x}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const o=e.target.closest('.mix-o');if(!o)return;
+      if(o.dataset.k===r){o.classList.add('good');$('.pot.res',A).innerHTML=blob(r)+r;C.win(`Oui ! ${cap(a)} + ${b} = ${r}.`,`Oui ! On obtient ${duC(r)}.`);}
+      else C.fail(o,'Imagine les deux peintures qui se mélangent dans le pot…');};
+  }else{const opts=shuffle([[a,b,r],...sample(MIX.filter(x=>x[2]!==r),2)]);
+    C.consigne(`Pour obtenir ${duC(r)}, quelles couleurs faut-il mélanger ?`);
+    A.innerHTML=`<div class="co"><div class="pot">${blob(r)}${r}</div><div class="hc">${opts.map(([x,y])=>`<button class="mix-o mix-pair" data-k="${x}+${y}">${blob(x)}<b>+</b>${blob(y)}<span>${x} et ${y}</span></button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const o=e.target.closest('.mix-o');if(!o)return;
+      if(o.dataset.k===`${a}+${b}`){o.classList.add('good');C.win(`Oui ! Pour faire ${duC(r)}, on mélange ${duC(a)} et ${duC(b)}.`);}else C.fail(o,'Pense aux recettes de couleurs que tu connais.');};
+  }
+}});
+
+/* ---------- Monde : la marchande ---------- */
+const COINS={10:'10 c',20:'20 c',50:'50 c',100:'1 €',200:'2 €',500:'5 €',1000:'10 €',2000:'20 €'};
+const euro=c=>c%100===0?`${c/100} €`:`${Math.floor(c/100)},${String(c%100).padStart(2,'0')} €`;
+const euroSay=c=>`${Math.floor(c/100)} euro${c>=200?'s':''}${c%100?' '+(c%100):''}`;
+const money=c=>c>=500?`<span class="bill b${c}">${COINS[c]}</span>`:`<span class="coin c${c}">${COINS[c].replace(' ','&nbsp;')}</span>`;
+const MITEMS=[['🍎','une pomme'],['🥖','une baguette'],['🧃','un jus de fruits'],['📘','un cahier'],['🧸','un ours en peluche'],['⚽','un ballon'],['🍦','une glace'],['🎈','un ballon de fête'],['🖍️','des crayons'],['🍫','une tablette de chocolat'],['🪁','un cerf-volant'],['🧁','un petit gâteau']];
+game({id:'monnaie',dom:'monde',icon:'💶',name:'La marchande',sub:'Paie le compte juste en euros.',age:'6 – 8 ans',rounds:5,
+levels:['Pièces de 1 € et 2 €','Avec les billets','Avec les centimes'],
+materiel:'Une petite marchande avec de vraies pièces et de vrais billets en euros, et des objets étiquetés avec leur prix.',
+but:'Vie pratique : reconnaître les pièces et les billets, composer une somme et donner le compte juste.',
+controle:'La somme posée sur le comptoir s’affiche : elle doit être exactement égale au prix.',
+presentation:'On trie d’abord les pièces par valeur. La pièce de 1 € est argentée au centre et dorée autour ; celle de 2 €, l’inverse. Puis l’enfant « achète » un objet en donnant le compte juste.',
+round(A,lv,C){
+  const [emo,lab]=C.fresh(MITEMS,x=>x[1]),price=lv===0?100*rnd(1,10):lv===1?100*rnd(5,20):10*rnd(15,99),purse=lv===0?[100,200]:lv===1?[100,200,500,1000]:[10,20,50,100,200,500],paid=[],verb=lab.startsWith('des ')?'coûtent':'coûte';
+  C.consigne(`${cap(lab)} ${verb} <b>${euro(price)}</b>. Touche les pièces pour payer le compte juste.`,`${lab} ${verb} ${euroSay(price)}. Paie le compte juste.`);
+  A.innerHTML=`<div class="mo"><div class="mo-tag"><span class="emo">${emo}</span><span>${euro(price)}</span></div><div class="sp-lab">Ton porte-monnaie</div>
+    <div class="mo-purse">${purse.map(c=>`<button class="mo-add" data-c="${c}" aria-label="${COINS[c]}">${money(c)}</button>`).join('')}</div>
+    <div class="sp-lab">Sur le comptoir : <b class="mo-sum">0 €</b></div><div class="mo-paid"></div><button class="btn primary big" data-a="pay">✅ Payer</button></div>`;
+  const total=()=>paid.reduce((s,c)=>s+c,0),draw=()=>{$('.mo-paid',A).innerHTML=paid.map((c,i)=>`<button class="mo-rm" data-i="${i}" aria-label="Reprendre">${money(c)}</button>`).join('');$('.mo-sum',A).textContent=euro(total());};
+  A.onclick=e=>{if(cur.locked)return;const ad=e.target.closest('.mo-add'),rm=e.target.closest('.mo-rm');
+    if(ad){if(paid.length>=24)return;paid.push(+ad.dataset.c);paid.sort((x,y)=>y-x);C.pop();draw();return;}
+    if(rm){paid.splice(+rm.dataset.i,1);draw();return;}
+    if(e.target.closest('[data-a="pay"]')){const s=total();
+      if(s===price)C.win(`Bravo ! Tu as payé ${euro(price)} tout juste.`,'Bravo ! Tu as payé le compte juste.');
+      else if(s>price)C.fail($('.mo-paid',A),`Tu as donné ${euro(s)} : c’est trop ! Reprends une pièce en la touchant.`);
+      else C.fail($('.mo-paid',A),`Il manque encore ${euro(price-s)}.`);}};
+}});
+
+/* ---------- Monde : le corps humain ---------- */
+const SENS=[['vue','👁️','la vue'],['ouie','👂','l’ouïe'],['odorat','👃','l’odorat'],['gout','👅','le goût'],['toucher','✋','le toucher']];
+const SENSQ=[['🌈','Regarder l’arc-en-ciel','vue'],['📖','Lire une histoire','vue'],['🌟','Voir les étoiles la nuit','vue'],['🎶','Écouter de la musique','ouie'],['🔔','Entendre la cloche sonner','ouie'],['🥁','Le bruit du tambour','ouie'],
+ ['🌹','Sentir le parfum d’une rose','odorat'],['🍞','L’odeur du pain chaud','odorat'],['🍦','Goûter une glace','gout'],['🍋','Le citron est acide !','gout'],['🧸','Caresser son doudou tout doux','toucher'],['🧊','Le glaçon est froid dans la main','toucher']];
+const PARTS=[['👁️','l’œil'],['👂','l’oreille'],['👃','le nez'],['👄','la bouche'],['🦷','la dent'],['👅','la langue'],['✋','la main'],['🦶','le pied'],['🦵','la jambe'],['💪','le bras']];
+const ORG=[['🫀','le cœur','Il pompe le sang et l’envoie dans tout le corps.'],['🫁','les poumons','Ils font entrer l’air quand on respire.'],['🧠','le cerveau','Il commande tout le corps : c’est lui qui pense et qui se souvient.'],['🦴','les os','Ensemble, ils forment le squelette qui nous tient debout.'],['💪','les muscles','Ils tirent sur les os pour nous faire bouger.'],['🦷','les dents','Elles coupent et écrasent les aliments.']];
+game({id:'corps',dom:'monde',icon:'👂',name:'Le corps humain',sub:'Les 5 sens, les parties du corps, les organes.',age:'5 – 8 ans',rounds:5,
+levels:['Les 5 sens','Les parties du corps','Les organes et leur rôle'],
+materiel:'Des cartes de nomenclature du corps humain (les parties, puis les organes) et un jeu des cinq sens : boîtes à odeurs, à goûts et à toucher.',
+but:'Connaître son corps, nommer ses parties et comprendre à quoi servent les sens et les organes.',
+controle:'Chaque image n’a qu’une bonne réponse parmi les choix.',
+presentation:'On montre sur soi : « Voici mon nez. Avec mon nez, je sens. » Puis on fait deviner une odeur ou un objet caché, les yeux fermés.',
+round(A,lv,C){
+  let ans,html,msg;
+  if(lv===0){const [e,t,k]=C.fresh(SENSQ,x=>x[1]);ans=k;msg=`Oui ! C’est ${SENS.find(x=>x[0]===k)[2]}.`;C.consigne(`${t} : avec quel sens ?`);
+    html=`<div class="co-pic"><div class="emo">${e}</div><div class="co-lab">${t}</div></div><div class="kl-cats">${SENS.map(([id,em,n])=>`<button class="kl-b" data-k="${id}"><span>${em}</span>${n}</button>`).join('')}</div>`;}
+  else if(lv===1){const [e,n]=C.fresh(PARTS,x=>x[1]);ans=n;msg=`Oui ! C’est ${n}.`;C.consigne('Comment s’appelle cette partie du corps ?');
+    html=`<div class="co-pic"><div class="emo">${e}</div></div>${hcBtns(shuffle([n,...sample(PARTS.filter(x=>x[1]!==n).map(x=>x[1]),3)]))}`;}
+  else{const o=C.fresh(ORG,x=>x[1]);ans=o[1];msg=`Oui ! C’est ${o[1]}.`;C.consigne(`Devinette : ${o[2]} Qui est-ce ?`);
+    html=`<div class="kl-cats">${shuffle([o,...sample(ORG.filter(x=>x!==o),3)]).map(([em,n])=>`<button class="kl-b" data-k="${n}"><span>${em}</span>${n}</button>`).join('')}</div>`;}
+  A.innerHTML=`<div class="kl">${html}</div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+    if(b.dataset.k===ans){b.classList.add('good');C.win(msg);}else C.fail(b,lv===0?'Quelle partie de ton corps utilises-tu pour ça ?':'Regarde bien et essaie encore !');};
+}});
+
+/* ---------- Monde : le système solaire ---------- */
+const PLAN=[['Mercure','#a8a29a',7],['Vénus','#e3c07b',12],['Terre','#3d8bd6',13],['Mars','#d2552f',9],['Jupiter','#d9a066',28],['Saturne','#e3c77f',21],['Uranus','#8fd8e3',17],['Neptune','#3f5fd6',16]];
+const PFACT=[['C’est la plus proche du Soleil','Mercure'],['C’est la plus chaude, à cause de ses nuages épais','Vénus'],['C’est notre planète, la seule où l’on connaît la vie','Terre'],['On l’appelle la planète rouge','Mars'],['C’est la plus grosse de toutes','Jupiter'],['Elle a de grands anneaux bien visibles','Saturne'],['Elle tourne couchée sur le côté','Uranus'],['C’est la plus lointaine du Soleil','Neptune']];
+const pName=k=>k==='Terre'?'la Terre':k;
+function planetSvg(name,col,r){const rx=r+12,ry=(r+12)*.3,ring=d=>`<g transform="rotate(-18 40 40)">${d}</g>`;let s='<svg viewBox="0 0 80 80" class="pl-svg" aria-hidden="true">';
+  if(name==='Saturne')s+=ring(`<ellipse cx="40" cy="40" rx="${rx}" ry="${ry}" fill="none" stroke="#cdb57d" stroke-width="4"/>`);
+  s+=`<circle cx="40" cy="40" r="${r}" fill="${col}"/>`;
+  if(name==='Terre')s+='<path d="M33 31q6-5 10 1q-1 6-8 6zM43 44q6-1 7 5q-5 3-8-1z" fill="#4caf50"/>';
+  if(name==='Jupiter')s+=`<defs><clipPath id="jupc"><circle cx="40" cy="40" r="${r}"/></clipPath></defs><g clip-path="url(#jupc)" fill="#a8672e" opacity=".55"><rect x="0" y="32" width="80" height="5"/><rect x="0" y="44" width="80" height="4"/><rect x="0" y="54" width="80" height="3"/></g><ellipse cx="50" cy="47" rx="5" ry="3" fill="#b8502c"/>`;
+  if(name==='Saturne')s+=ring(`<path d="M${40-rx} 40A${rx} ${ry} 0 0 0 ${40+rx} 40" fill="none" stroke="#cdb57d" stroke-width="4"/>`);
+  return s+`<circle cx="${(40-r*.35).toFixed(1)}" cy="${(40-r*.35).toFixed(1)}" r="${(r*.35).toFixed(1)}" fill="#fff" opacity=".2"/></svg>`;}
+game({id:'planetes',dom:'monde',icon:'🪐',name:'Le système solaire',sub:'Les planètes dans l’ordre depuis le Soleil.',age:'6 – 8 ans',rounds:3,
+levels:['Les 4 planètes rocheuses','Les 8 planètes','Devinettes des planètes'],
+materiel:'Le système solaire en images ou en maquette, planètes rangées depuis le Soleil. Dans l’éducation cosmique Montessori, on raconte d’abord la grande histoire de la naissance de l’univers.',
+but:'Situer la Terre dans l’univers, connaître l’ordre des huit planètes et leurs particularités.',
+controle:'Une planète ne se pose que si c’est la bonne suivante. La phrase « Me Voici Tout Mouillé, J’ai Suivi Un Nuage » aide à retrouver l’ordre. Attention : ici, les tailles ne sont pas à l’échelle.',
+presentation:'On place un Soleil au centre du tapis, puis on pose les planètes une à une en racontant chacune : sa couleur, sa taille, sa distance.',
+round(A,lv,C){
+  if(lv<2){const list=lv===0?PLAN.slice(0,4):PLAN;let next=0;
+    C.consigne('Range les planètes dans l’ordre, en partant du Soleil ☀️.','Range les planètes dans l’ordre, en partant du Soleil.');
+    A.innerHTML=`<div class="pl"><div class="pl-row"><span class="pl-sun">☀️</span>${list.map((_,i)=>`<span class="pl-slot" data-s="${i}"></span>`).join('')}</div><div class="pl-tray">${shuffle(list).map(p=>`<button class="pl-b" data-k="${p[0]}">${planetSvg(...p)}${p[0]}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.pl-b');if(!b||b.classList.contains('gone'))return;const k=b.dataset.k;
+      if(k===list[next][0]){$(`.pl-slot[data-s="${next}"]`,A).innerHTML=planetSvg(...list[next])+`<small>${k}</small>`;b.classList.add('gone');next++;C.pop();say(pName(k));
+        if(next===list.length)C.win('Bravo ! Les planètes sont dans l’ordre depuis le Soleil.');}
+      else C.fail(b,lv===0?'Aide-toi de la phrase « Me Voici Tout Mouillé » : Mercure, Vénus, Terre, Mars.':'Aide-toi de la phrase « Me Voici Tout Mouillé, J’ai Suivi Un Nuage ».');};
+  }else{const [q,ans]=C.fresh(PFACT,x=>x[0]),opts=shuffle([ans,...sample(PLAN.map(p=>p[0]).filter(x=>x!==ans),3)]);
+    C.consigne(`Devinette : ${q}. Qui est-ce ?`);
+    A.innerHTML=`<div class="pl"><div class="pl-tray">${opts.map(k=>`<button class="pl-b" data-k="${k}">${planetSvg(...PLAN.find(x=>x[0]===k))}${k}</button>`).join('')}</div></div>`;
+    A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('.pl-b');if(!b)return;
+      if(b.dataset.k===ans){b.classList.add('good');C.win(`Oui ! C’est ${pName(ans)}.`);}else C.fail(b,'Relis bien la devinette et essaie encore.');};
+  }
+}});
+
+/* ---------- Monde : les animaux ---------- */
+const PETITS=[['🐄','la vache','le veau'],['🐐','la chèvre','le chevreau'],['🐴','le cheval','le poulain'],['🐑','la brebis','l’agneau'],['🐔','la poule','le poussin'],['🐱','la chatte','le chaton'],['🐶','la chienne','le chiot'],['🐰','la lapine','le lapereau'],['🦆','la cane','le caneton'],['🐷','la truie','le porcelet'],['🦁','la lionne','le lionceau'],['🐻','l’ourse','l’ourson'],['🐸','la grenouille','le têtard'],['🦌','la biche','le faon']];
+const CRIS=[['🐄','la vache','meugle'],['🐶','le chien','aboie'],['🐱','le chat','miaule'],['🐴','le cheval','hennit'],['🐑','le mouton','bêle'],['🐓','le coq','chante cocorico'],['🦁','le lion','rugit'],['🐺','le loup','hurle'],['🐷','le cochon','grogne'],['🐍','le serpent','siffle'],['🐸','la grenouille','coasse'],['🐘','l’éléphant','barrit'],['🦉','le hibou','hulule'],['🐝','l’abeille','bourdonne']];
+const REG=[['🐄','la vache','h'],['🐰','le lapin','h'],['🦒','la girafe','h'],['🦓','le zèbre','h'],['🐘','l’éléphant','h'],['🦁','le lion','c'],['🐺','le loup','c'],['🦈','le requin','c'],['🦅','l’aigle','c'],['🐊','le crocodile','c'],['🐱','le chat','c'],['🐻','l’ours brun','o'],['🐷','le cochon','o'],['🐔','la poule','o'],['🐭','la souris','o'],['🧒','l’enfant','o']];
+const REGN={h:['Herbivore','🌿','mange des plantes'],c:['Carnivore','🥩','mange de la viande'],o:['Omnivore','🍽️','mange de tout']};
+game({id:'animaux',dom:'monde',icon:'🐣',name:'Les animaux',sub:'Leurs petits, leurs cris, leur nourriture.',age:'5 – 7 ans',rounds:5,
+levels:['Les petits des animaux','Les cris des animaux','Herbivore, carnivore ou omnivore'],
+materiel:'Des cartes de nomenclature des animaux : les parents et leurs petits, puis les cris et les régimes alimentaires. Avec des figurines pour les plus jeunes.',
+but:'Enrichir le vocabulaire (les noms des petits, les verbes des cris) et découvrir ce que mangent les animaux.',
+controle:'Chaque animal a une seule bonne réponse parmi les choix.',
+presentation:'On associe les figurines d’un parent et de son petit, on imite les cris ensemble, puis on classe les animaux selon ce qu’ils mangent.',
+round(A,lv,C){
+  let ans,msg,html;
+  if(lv===0){const [e,l,b]=C.fresh(PETITS,x=>x[1]);ans=b;msg=`Oui ! Le petit ${deOf(l)}, c’est ${b}.`;C.consigne(`Comment s’appelle le petit ${deOf(l)} ?`);
+    html=`<div class="co-pic"><div class="emo">${e}</div><div class="co-lab">${l}</div></div>${hcBtns(shuffle([b,...sample(PETITS.filter(x=>x[2]!==b).map(x=>x[2]),2)]))}`;}
+  else if(lv===1){const [e,l,v]=C.fresh(CRIS,x=>x[1]);ans=v;msg=`Oui ! ${cap(l)} ${v}.`;C.consigne(`Que fait ${l} ?`);
+    html=`<div class="co-pic"><div class="emo">${e}</div><div class="co-lab">${l}</div></div>${hcBtns(shuffle([v,...sample(CRIS.filter(x=>x[2]!==v).map(x=>x[2]),3)]))}`;}
+  else{const [e,l,k]=C.fresh(REG,x=>x[1]);ans=k;msg=`Oui ! ${cap(l)} est ${REGN[k][0].toLowerCase()}.`;C.consigne(`Que mange ${l} ?`);
+    html=`<div class="co-pic"><div class="emo">${e}</div><div class="co-lab">${l}</div></div><div class="kl-cats">${Object.entries(REGN).map(([id,[n,em,d]])=>`<button class="kl-b" data-k="${id}"><span>${em}</span>${n}<small>${d}</small></button>`).join('')}</div>`;}
+  A.innerHTML=`<div class="kl">${html}</div>`;
+  A.onclick=e=>{if(cur.locked)return;const b=e.target.closest('[data-k]');if(!b)return;
+    if(b.dataset.k===ans){b.classList.add('good');C.win(msg);}else C.fail(b,lv===2?'Réfléchis : que trouve-t-on dans son assiette ? De la viande, des plantes, ou les deux ?':'Essaie encore !');};
 }});
 
 /* ================= Démarrage ================= */
