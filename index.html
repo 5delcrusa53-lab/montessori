@@ -17,7 +17,7 @@
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --bg:#eef1e4;--paper:#fffef9;--ink:#2f3a2b;--muted:#6f7a66;--line:#d9dfcb;--wood:#ebcd9b;--wood2:#c9955a;
---lang:#dc5b8a;--math:#2f6fd0;--sens:#e9822c;--monde:#379e52;--ok:#2d9d55;--bad:#d9534a;--gold:#e3a90f;
+--lang:#dc5b8a;--math:#2f6fd0;--sens:#e9822c;--monde:#379e52;--jeux:#7b52c7;--ok:#2d9d55;--bad:#d9534a;--gold:#e3a90f;
 --shadow:0 3px 0 rgba(70,60,30,.14),0 10px 22px rgba(70,60,30,.09);
 --font:ui-rounded,"SF Pro Rounded","Nunito","Varela Round","Segoe UI",system-ui,sans-serif;
 --read:"Andika","Comic Sans MS","Chalkboard SE","Comic Neue",ui-rounded,sans-serif;color-scheme:light}
@@ -103,9 +103,25 @@ body.has-tabs .toast{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 .tipcard h3{margin:0 0 6px;font-size:1.05rem}.tipcard p{margin:0;line-height:1.5;max-width:70ch}
 .row.left{justify-content:flex-start;margin-top:10px}
 
+
+/* ---------- coin des jeux ---------- */
+.corner.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:16px;min-height:0;padding:16px 18px}
+.corner.wide::before{width:180px;height:180px;right:-50px;top:-70px}
+.corner.wide .corner-emo{margin:0;font-size:2.7rem}
+.cw-txt{position:relative;flex:1;display:flex;flex-direction:column;min-width:0}
+.cw-txt .corner-name{margin-top:0}
+.cw-gl{position:relative;display:flex;gap:8px}
+.cw-gl span{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:1.55rem;line-height:1}
+.cw-go{position:relative;font-size:1.8rem;font-weight:800;opacity:.9}
+@media (max-width:520px){.cw-gl{display:none}}
+a.gt,a.rc{color:inherit;text-decoration:none}
+.xg-ico{background:radial-gradient(ellipse at 50% 20%,#4a3424,#1c130d)!important;overflow:hidden}
+.xg-ico svg{width:54px;height:54px;display:block}
+.xg-ico .glyph{font:2.9rem/1 "Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;background:linear-gradient(180deg,#fff8ea,#d9c29a 60%,#a88d62);-webkit-background-clip:text;background-clip:text;color:transparent}
+.xg-st{font-size:.74rem;font-weight:800;color:#fff;background:var(--c);border-radius:999px;padding:2px 9px;white-space:nowrap}
 /* barre d'onglets */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;gap:2px;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
-.tabbar button{flex:1;max-width:124px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 2px 6px;border-radius:16px;font-size:.72rem;font-weight:700;color:var(--muted);transition:background .2s,color .2s}
+.tabbar button{flex:1;max-width:124px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 1px 6px;border-radius:16px;font-size:.68rem;white-space:nowrap;font-weight:700;color:var(--muted);transition:background .2s,color .2s}
 .tabbar button span{font-size:1.35rem;line-height:1;transition:transform .2s}
 .tabbar button.on{color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent)}
 .tabbar button.on span{transform:translateY(-2px) scale(1.12)}
@@ -561,7 +577,7 @@ body.has-tabs .toast{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
   </header>
   <div class="wrap">
     <section id="recentBox" hidden><h2 class="sec">Tes derniers jeux</h2><div class="recent" id="recent"></div></section>
-    <h2 class="sec">Les quatre coins de l’atelier</h2>
+    <h2 class="sec">Les coins de l’atelier</h2>
     <div class="corners" id="corners"></div>
     <button class="parents-link" data-go="parents"><span>👪</span><span><b>Espace parents</b><small>Conseils Montessori et réglages</small></span><span>›</span></button>
   </div>
@@ -610,6 +626,7 @@ body.has-tabs .toast{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
   <button data-tab="math" style="--c:var(--math)"><span>🔢</span>Maths</button>
   <button data-tab="sens" style="--c:var(--sens)"><span>🖐️</span>Sensoriel</button>
   <button data-tab="monde" style="--c:var(--monde)"><span>🌍</span>Le monde</button>
+  <button data-tab="jeux" style="--c:var(--jeux)"><span>🎲</span>Jeux</button>
 </nav>
 
 <div class="sheet" id="sheet" hidden><div class="sheet-card" role="dialog" aria-label="Fiche Montessori"><div class="sheet-grab"></div><div id="sheetBody"></div><button class="btn wide" data-close>Fermer</button></div></div>
@@ -703,16 +720,35 @@ Object.assign(DOM.lang,{emo:'✏️',short:'Langage'});Object.assign(DOM.math,{e
 const ageMin=g=>parseInt(g.age,10)||5;
 const medals=d=>`<span class="medals" aria-label="${d} niveau${d>1?'x':''} réussi${d>1?'s':''} sur 3">${[0,1,2].map(i=>`<i class="${i<d?'on':''}"></i>`).join('')}</span>`;
 const domStats=k=>{const gs=GAMES.filter(g=>g.dom===k),d=gs.reduce((s,g)=>s+(state.done[g.id]||0),0);return{n:gs.length,d,t:gs.length*3,p:Math.round(d/(gs.length*3||1)*100)};};
+
+/* ================= Salle de jeux : jeux autonomes placés dans le même dossier ================= */
+const EXT=[
+  {id:'echecs',file:'echecs-3d.html',name:'Échecs',emo:'♟️',sec:0,save:'echecs3d.game',info:'Seul ou à deux · 6 niveaux',
+   sub:'Pièces Staunton en bois verni, règles complètes et notation française. Du débutant au maître.',ico:'<span class="glyph">♞&#xFE0E;</span>'},
+  {id:'dames',file:'dames-3d.html',name:'Dames',emo:'⚪',sec:0,save:'dames3d.game',info:'Seul ou à deux · 6 niveaux',
+   sub:'Dames internationales : prise obligatoire et majoritaire, rafles animées, dames volantes.',ico:`<svg width="120" height="110" viewBox="0 0 120 110" aria-hidden="true"><defs><linearGradient id="dw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#bfa57a"/></linearGradient><linearGradient id="dg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2e"/><stop offset=".5" stop-color="#f3d58e"/><stop offset="1" stop-color="#8a6a2e"/></linearGradient></defs><path d="M14 72v14c0 9 20.6 16 46 16s46-7 46-16V72z" fill="#a88d62"/><ellipse cx="60" cy="72" rx="46" ry="16" fill="url(#dw)"/><path d="M14 46v14c0 9 20.6 16 46 16s46-7 46-16V46z" fill="#b89c70"/><ellipse cx="60" cy="46" rx="46" ry="16" fill="url(#dw)"/><ellipse cx="60" cy="46" rx="30" ry="10" fill="none" stroke="url(#dg)" stroke-width="3"/><ellipse cx="60" cy="46" rx="38" ry="12.8" fill="none" stroke="rgba(120,90,50,.35)" stroke-width="1.2"/></svg>`},
+  {id:'bastion',file:'tower-defense.html',name:'Bastion des Héros',emo:'🏰',sec:1,info:'Seul · 24 niveaux, 4 boss',
+   sub:'Compose un deck de tours, de héros et de sorts, équipe ton héros et repousse gobelins, orcs et boss.',ico:`<svg width="110" height="132" viewBox="0 -18 110 142" aria-hidden="true"><g stroke="#2b1a10" stroke-linejoin="round"><ellipse cx="55" cy="116" rx="38" ry="7" fill="rgba(0,0,0,.35)" stroke="none"/><path d="M24 104v8c0 5 14 8 31 8s31-3 31-8v-8z" fill="#8d8478" stroke-width="3"/><ellipse cx="55" cy="104" rx="31" ry="9" fill="#b9af9f" stroke-width="3"/><rect x="33" y="50" width="8" height="54" rx="2" fill="#8a5a2e" stroke-width="3"/><rect x="69" y="50" width="8" height="54" rx="2" fill="#8a5a2e" stroke-width="3"/><path d="M40 94 70 64M70 94 40 64" stroke-width="7"/><path d="M40 94 70 64M70 94 40 64" stroke="#a8703a" stroke-width="3.5"/><rect x="25" y="44" width="60" height="12" rx="3" fill="#a8703a" stroke-width="3"/><path d="M55 4V-14" stroke-width="3"/><path d="M55-14h18l-5 5 5 5H55z" fill="#2f6fd6" stroke-width="2.5"/><path d="M19 42 55 4l36 38z" fill="#c0392b" stroke-width="3.5"/><path d="M37 24 55 4" stroke="rgba(255,255,255,.35)" stroke-width="3"/><path d="M44 70h22v12l-11 9-11-9z" fill="#3f7fd6" stroke-width="3"/></g></svg>`}];
+const EXT_SEC=['Jeux de réflexion','Aventure et stratégie'];
+function extStatus(x){
+  if(x.save){try{const v=JSON.parse(localStorage.getItem(x.save)||'null');if(v&&!v.won&&Array.isArray(v.moves)&&v.moves.length)return'Partie en cours';}catch(e){}return'';}
+  try{const pr=JSON.parse(localStorage.getItem('bastion.profil')||'null');if(pr&&pr.unlocked>1)return'Niveau '+pr.unlocked;}catch(e){}return'';}
+function renderJeux(){
+  $('#vDomain').style.setProperty('--c','var(--jeux)');
+  $('#dhero').innerHTML=`<div class="dhero-in"><button class="iconbtn" data-up aria-label="Retour à l’accueil">⬅️</button><h1><span>🎲</span>Salle de jeux</h1><p>Des jeux de réflexion et de stratégie, à faire seul contre l’ordinateur ou à deux.</p><small>${EXT.length} jeux · les parties sont enregistrées sur cet appareil</small></div>`;
+  $('#glist').innerHTML=EXT_SEC.map((t,i)=>[t,EXT.filter(x=>x.sec===i)]).filter(x=>x[1].length).map(([t,list])=>`<h2 class="sec">${t}</h2><div class="glist">${list.map(x=>{const st=extStatus(x);return `<a class="gt" href="${x.file}" data-ext="${x.id}"><span class="gt-ico xg-ico">${x.ico}</span><span class="gt-name">${x.name}</span><span class="gt-sub">${x.sub}</span><span class="gt-meta"><span class="age">${x.info}</span>${st?`<span class="xg-st">${st}</span>`:''}</span></a>`;}).join('')}</div>`).join('')+
+    `<div class="tipcard"><h3>🧭 Bon à savoir</h3><p>Chaque jeu s’ouvre en plein écran. Pour revenir à l’atelier, touche le bouton retour en haut à gauche du jeu.</p></div>`;}
 const VIEWS=['vHome','vDomain','vParents','vGame'];let curPath='';
 function showView(id,dom){VIEWS.forEach(v=>{$('#'+v).hidden=v!==id;});const el=$('#'+id);el.classList.remove('view');void el.offsetWidth;el.classList.add('view');
   const tabs=id!=='vGame';document.body.classList.toggle('has-tabs',tabs);$('#tabbar').hidden=!tabs;
   const key=id==='vHome'?'':id==='vDomain'?dom:null;$$('#tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.tab===key));
   window.scrollTo(0,0);$$('.starCount').forEach(e=>e.textContent=state.stars);}
 function renderHome(){
-  $('#lvDone').textContent=Object.values(state.done).reduce((s,x)=>s+x,0);$('#gCount').textContent=GAMES.length;
-  $('#corners').innerHTML=Object.entries(DOM).map(([k,d])=>{const s=domStats(k);return `<button class="corner" data-dom="${k}" style="--c:${d.color}"><span class="corner-emo">${d.emo}</span><span class="corner-name">${d.short}</span><span class="corner-sub">${d.sub}</span><span class="corner-meta"><span>${s.n} jeux</span><span class="bar"><i style="width:${s.p}%"></i></span></span></button>`;}).join('');
-  const rec=(store.get('recent',[])||[]).map(id=>GAMES.find(g=>g.id===id)).filter(Boolean).slice(0,6);
-  $('#recentBox').hidden=!rec.length;$('#recent').innerHTML=rec.map(g=>`<button class="rc" data-id="${g.id}" style="--c:${DOM[g.dom].color}"><span>${g.icon}</span>${g.name}</button>`).join('');}
+  $('#lvDone').textContent=Object.values(state.done).reduce((s,x)=>s+x,0);$('#gCount').textContent=GAMES.length+EXT.length;
+  $('#corners').innerHTML=Object.entries(DOM).map(([k,d])=>{const s=domStats(k);return `<button class="corner" data-dom="${k}" style="--c:${d.color}"><span class="corner-emo">${d.emo}</span><span class="corner-name">${d.short}</span><span class="corner-sub">${d.sub}</span><span class="corner-meta"><span>${s.n} jeux</span><span class="bar"><i style="width:${s.p}%"></i></span></span></button>`;}).join('')+
+    `<button class="corner wide" data-dom="jeux" style="--c:var(--jeux)"><span class="corner-emo">🎲</span><span class="cw-txt"><span class="corner-name">Salle de jeux</span><span class="corner-sub">Échecs, dames et Bastion des Héros</span></span><span class="cw-gl" aria-hidden="true">${EXT.map(x=>`<span>${x.emo}</span>`).join('')}</span><span class="cw-go" aria-hidden="true">›</span></button>`;
+  const rec=(store.get('recent',[])||[]).map(id=>String(id).startsWith('x:')?EXT.find(x=>'x:'+x.id===id):GAMES.find(g=>g.id===id)).filter(Boolean).slice(0,6);
+  $('#recentBox').hidden=!rec.length;$('#recent').innerHTML=rec.map(g=>g.file?`<a class="rc" href="${g.file}" data-ext="${g.id}" style="--c:var(--jeux)"><span>${g.emo}</span>${g.name}</a>`:`<button class="rc" data-id="${g.id}" style="--c:${DOM[g.dom].color}"><span>${g.icon}</span>${g.name}</button>`).join('');}
 function renderDomain(k){const d=DOM[k],s=domStats(k),gs=GAMES.filter(g=>g.dom===k);
   $('#vDomain').style.setProperty('--c',d.color);
   $('#dhero').innerHTML=`<div class="dhero-in"><button class="iconbtn" data-up aria-label="Retour à l’accueil">⬅️</button><h1><span>${d.emo}</span>${d.name}</h1><p>${d.sub}</p><div class="bar"><i style="width:${s.p}%"></i></div><small>${s.d} niveau${s.d>1?'x':''} réussi${s.d>1?'s':''} sur ${s.t}</small></div>`;
@@ -745,6 +781,7 @@ function route(p){curPath=p;const [a,b]=p.split('/');
   if(a==='jeu'&&GAMES.some(g=>g.id===b)){showView('vGame');if(!cur||cur.g.id!==b)openGame(b);return;}
   stopGame();
   if(a==='coin'&&DOM[b]){renderDomain(b);showView('vDomain',b);}
+  else if(a==='coin'&&b==='jeux'){renderJeux();showView('vDomain','jeux');}
   else if(a==='parents')showView('vParents');
   else{curPath='';renderHome();showView('vHome');}}
 function nav(p,mode){try{if(mode==='push')history.pushState({d:depth()+1},'','#/'+p);else history.replaceState({d:depth()},'','#/'+p);}catch(e){}route(p);}
@@ -1979,13 +2016,19 @@ $('#tabbar').onclick=e=>{const b=e.target.closest('[data-tab]');if(!b)return;con
   if(!t){const d=depth();if(d>0){try{history.go(-d);return;}catch(_){}}return nav('','replace');}
   nav(target,curPath===''?'push':'replace');};
 window.addEventListener('popstate',()=>route(readHash()));
+/* un jeu de la salle est ouvert : on le note dans « Tes derniers jeux » */
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-ext]');if(!a)return;ac();store.set('recent',['x:'+a.dataset.ext,...(store.get('recent',[])||[]).filter(x=>x!=='x:'+a.dataset.ext)].slice(0,6));},true);
+/* au retour d'un jeu (bouton retour du jeu), on revient dans la salle de jeux */
+window.addEventListener('pageshow',e=>{if(e.persisted&&curPath==='coin/jeux')renderJeux();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('#sheet').hidden)hideSheet();else if(!$('#modal').hidden)hideModal();}});
 const setMute=()=>{$$('.mute').forEach(b=>{b.textContent=b.classList.contains('iconbtn')?(state.mute?'🔇':'🔊'):(state.mute?'🔇 Voix coupée':'🔊 Voix activée');b.setAttribute('aria-pressed',String(state.mute));});};setMute();
 $$('.mute').forEach(b=>b.onclick=()=>{state.mute=!state.mute;store.set('mute',state.mute);setMute();if(state.mute){try{speechSynthesis.cancel();}catch(e){}}else say('La voix est activée.');});
 const rb=$('#resetBtn');rb.onclick=()=>{if(!rb.dataset.armed){rb.dataset.armed='1';rb.textContent='⚠️ Touche encore pour confirmer';setTimeout(()=>{delete rb.dataset.armed;rb.textContent='🗑️ Remettre les étoiles à zéro';},4000);return;}
   delete rb.dataset.armed;rb.textContent='🗑️ Remettre les étoiles à zéro';state.stars=0;state.done={};store.set('stars',0);store.set('done',{});store.set('recent',[]);$$('.starCount').forEach(e=>e.textContent=0);toast('Les étoiles sont remises à zéro.','soft');};
-try{history.replaceState({d:0},'',location.hash.length>1?location.hash:'#/');}catch(e){}
-route(readHash());
+let startHash=location.hash.length>1?location.hash:'#/';
+try{if(startHash==='#/'&&document.referrer){const r=new URL(document.referrer);if(r.origin===location.origin&&EXT.some(x=>r.pathname.endsWith('/'+x.file)))startHash='#/coin/jeux';}}catch(e){}
+try{history.replaceState({d:0},'',startHash);}catch(e){}
+route(startHash.replace(/^#\/?/,''));
 
 /* ================= Installation (appli Chrome / PWA) ================= */
 let installEvt=null;const ib=$('#installBtn');

@@ -1,7 +1,8 @@
 /* Service worker de L’atelier Montessori : l’appli fonctionne hors ligne.
    Après une modification de index.html, change le numéro de version ci-dessous. */
-const CACHE = 'atelier-montessori-v4';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png'];
+const CACHE = 'atelier-montessori-v5';
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png',
+  './echecs-3d.html', './dames-3d.html', './tower-defense.html'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
