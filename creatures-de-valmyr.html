@@ -36,10 +36,20 @@ body{background:var(--night);color:var(--ink);font-family:var(--ui);overflow:hid
 #controls{display:none;touch-action:none}
 #app[data-mode="port"] #controls{display:grid;grid-template-columns:auto 1fr auto;align-items:center;flex:1;padding:8px max(18px, env(safe-area-inset-right, 0px)) 10px max(18px, env(safe-area-inset-left, 0px));background:radial-gradient(120% 90% at 50% 0%,#1b1f42 0%,var(--night) 70%);box-shadow:inset 0 2px 0 rgba(255,255,255,.04)}
 #app[data-mode="land"] #controls{display:block;position:absolute;inset:0;pointer-events:none;z-index:60}
-#app[data-mode="land"] .dpad{position:absolute;left:max(12px, env(safe-area-inset-left, 0px));bottom:16px;pointer-events:auto;opacity:.62;transform:scale(var(--cs,1));transform-origin:left bottom}
+#app[data-mode="land"] .dpad,#app[data-mode="land"] .joy{position:absolute;left:max(12px, env(safe-area-inset-left, 0px));bottom:16px;pointer-events:auto;opacity:.62;transform:scale(var(--cs,1));transform-origin:left bottom}
 #app[data-mode="land"] .ab{position:absolute;right:max(12px, env(safe-area-inset-right, 0px));bottom:10px;pointer-events:auto;opacity:.72;transform:scale(var(--cs,1));transform-origin:right bottom}
 #app[data-mode="land"] .mid{position:absolute;right:max(16px, env(safe-area-inset-right, 0px));top:14px;pointer-events:auto;opacity:.8}
 .dpad{position:relative;width:128px;height:128px;touch-action:none;cursor:pointer}
+#app[data-pad="joy"] .dpad,#app[data-pad="dpad"] .joy{display:none}
+.joy{position:relative;width:140px;height:140px;border-radius:50%;touch-action:none;cursor:pointer;background:radial-gradient(circle at 50% 45%,#1f2450 0%,var(--pad) 62%,#11142b 100%);box-shadow:inset 0 0 0 2px var(--pad-hi),inset 0 10px 22px rgba(0,0,0,.45),0 4px 0 var(--pad-lo)}
+.joy::before{content:'';position:absolute;inset:22%;border-radius:50%;border:2px dashed rgba(154,157,200,.18)}
+.joy .tk{position:absolute;width:0;height:0;border:6px solid transparent;transition:border-color .08s}
+.joy .tk.u{left:calc(50% - 6px);top:7px;border-bottom-color:var(--muted)} .joy .tk.d{left:calc(50% - 6px);bottom:7px;border-top-color:var(--muted)}
+.joy .tk.l{top:calc(50% - 6px);left:7px;border-right-color:var(--muted)} .joy .tk.r{top:calc(50% - 6px);right:7px;border-left-color:var(--muted)}
+.joy[data-d="up"] .tk.u{border-bottom-color:var(--amber)} .joy[data-d="down"] .tk.d{border-top-color:var(--amber)}
+.joy[data-d="left"] .tk.l{border-right-color:var(--amber)} .joy[data-d="right"] .tk.r{border-left-color:var(--amber)}
+.joy-knob{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#5a63a8,#2f366e 55%,#1d2247);box-shadow:inset 0 0 0 2px #6a73b8,0 6px 10px rgba(0,0,0,.45);transition:transform .12s ease-out;will-change:transform}
+.joy.on .joy-knob{transition:none;box-shadow:inset 0 0 0 2px var(--amber),0 6px 10px rgba(0,0,0,.45)}
 .dpad::before,.dpad::after{content:'';position:absolute;background:var(--pad);border-radius:7px;box-shadow:0 4px 0 var(--pad-lo),inset 0 1px 0 var(--pad-hi)}
 .dpad::before{left:42px;top:0;width:44px;height:128px}
 .dpad::after{left:0;top:42px;width:128px;height:44px}
@@ -202,7 +212,7 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 .btn{font-family:var(--ui);font-size:4cqw;padding:1.4cqw 3cqw;border:0;border-radius:1.2cqw;background:var(--line);color:#fff;cursor:pointer;align-self:flex-end}
 @media (prefers-reduced-motion: reduce){.dnext,.press{animation:none}#banner{transition:none}}
 </style>
-<div id="app">
+<div id="app" data-pad="joy">
   <div id="screen">
     <canvas id="cv" width="240" height="160"></canvas>
     <div id="stage"><div id="hud"></div></div>
@@ -210,6 +220,7 @@ button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
     <div id="fade"></div>
   </div>
   <div id="controls">
+    <div class="joy" aria-label="Joystick"><i class="tk u"></i><i class="tk d"></i><i class="tk l"></i><i class="tk r"></i><div class="joy-knob"></div></div>
     <div class="dpad" aria-label="Croix directionnelle"><i class="ar u"></i><i class="ar d"></i><i class="ar l"></i><i class="ar r"></i><i class="hub"></i></div>
     <div class="mid"><button class="pill" data-k="start" aria-label="Menu"></button><span>Menu</span></div>
     <div class="ab"><button class="btn-r b" data-k="b" aria-label="Bouton B">B</button><button class="btn-r a" data-k="a" aria-label="Bouton A">A</button></div>
@@ -399,7 +410,40 @@ const SPECIES_RAW = [
   ['dracolet', 'Dracolet', ['Dragon'], 'quad', ['#6c8ee2', '#eaeeff', '#f2c040'], .55, ['horns', 'wingsSmall'], [46, 62, 46, 52], [30, 'draconis'], 45, 67, "Un dragonnet espiègle. Ses petites ailes ne le portent pas encore."],
   ['draconis', 'Draconis', ['Dragon'], 'quad', ['#5a72d2', '#dee5ff', '#f2c040'], .82, ['horns', 'spikes', 'wingsSmall'], [66, 86, 66, 72], [45, 'wyrmeroi'], 45, 147, "Ses écailles brillent comme des saphirs. Il défie quiconque s'approche de son nid."],
   ['wyrmeroi', 'Wyrmeroi', ['Dragon', 'Air'], 'quad', ['#4a5ac2', '#d8deff', '#f2b830'], 1, ['wings', 'horns', 'spikes', 'longTail'], [96, 128, 96, 88], null, 45, 270, "Roi des cimes. Il fait le tour du monde en une seule nuit."],
-  ['aurelion', 'Aurélion', ['Psy', 'Dragon'], 'quad', ['#f0d27a', '#fff8de', '#7a5ce8'], 1, ['wings', 'mane', 'horns', 'aura'], [106, 122, 102, 112], null, 12, 300, "Une créature de légende. On dit qu'elle veille sur Valmyr depuis l'aube des temps."]
+  ['tortilou', 'Tortilou', ['Eau'], 'turtle', ['#6cc0b0', '#f2ecc0', '#9a7440'], .56, [], [48, 46, 62, 36], [20, 'carapix'], 190, 63, "Une petite tortue placide. Elle rentre la tête au moindre bruit… puis la ressort par curiosité."],
+  ['carapix', 'Carapix', ['Eau', 'Pierre'], 'turtle', ['#4fa898', '#ece2b0', '#7a5a32'], .78, ['spikes'], [66, 64, 88, 40], [38, 'bastionne'], 90, 142, "Les pointes de sa carapace sont dures comme le granit. Il dort au fond des rivières."],
+  ['bastionne', 'Bastionne', ['Eau', 'Pierre'], 'turtle', ['#3e8a7c', '#e6d6a0', '#6a4a2a'], .98, ['spikes', 'horns', 'crystals'], [96, 82, 120, 46], null, 45, 230, "On dit qu'une île entière repose sur sa carapace. Elle avance d'un pas tous les cent ans."],
+  ['chauvelin', 'Chauvelin', ['Ombre', 'Air'], 'bat', ['#5a4a8a', '#c8b8f0', '#e85a8a'], .55, [], [40, 48, 38, 70], [22, 'noctaile'], 255, 55, "Il dort la tête en bas au fond des grottes et se réveille au coucher du soleil."],
+  ['noctaile', 'Noctaile', ['Ombre', 'Air'], 'bat', ['#3c2e6a', '#a898e0', '#ff5a8a'], .88, ['horns'], [70, 80, 64, 102], null, 90, 162, "Ses ailes ne font aucun bruit. On ne remarque sa présence que lorsqu'il est trop tard."],
+  ['meduvol', 'Méduvol', ['Eau', 'Poison'], 'jelly', ['#9ad8f0', '#ffffff', '#c88aff'], .56, [], [44, 40, 40, 62], [30, 'meduroi'], 190, 62, "Elle dérive au gré des courants. Ses filaments piquent ceux qui la frôlent."],
+  ['meduroi', 'Méduroi', ['Eau', 'Poison'], 'jelly', ['#6ab4e0', '#e8f8ff', '#a055bd'], .95, ['crest', 'aura'], [80, 72, 66, 96], null, 60, 180, "Une couronne de lumière flotte au-dessus de sa tête. Les marins la craignent et la respectent."],
+  ['pincelot', 'Pincelot', ['Eau'], 'crab', ['#ef6a4a', '#ffd8b8', '#ffffff'], .56, [], [36, 64, 72, 46], [26, 'tenaille'], 225, 62, "Il marche en crabe sur les plages et pince les orteils des promeneurs distraits."],
+  ['tenaille', 'Tenaille', ['Eau', 'Combat'], 'crab', ['#c84a3a', '#ffc8a0', '#ffffff'], .9, ['spikes'], [64, 104, 90, 66], null, 60, 170, "Ses pinces peuvent briser un rocher. Il défend sa plage contre tous les intrus."],
+  ['petalia', 'Pétalia', ['Plante'], 'flower', ['#ffe27a', '#ffffff', '#f28ab8'], .56, [], [44, 40, 48, 50], [24, 'roselie'], 190, 60, "Elle danse au soleil le matin. Ses pétales changent de couleur selon son humeur."],
+  ['roselie', 'Rosélie', ['Plante', 'Air'], 'flower', ['#ffd84a', '#ffffff', '#e8486a'], .86, ['leafArms', 'aura'], [70, 76, 70, 90], null, 75, 172, "Elle voyage de prairie en prairie, portée par le vent, et sème des fleurs sur son passage."],
+  ['gorillon', 'Gorillon', ['Combat'], 'kong', ['#7a6a5a', '#d8c0a0', '#e85a3a'], .62, ['band'], [60, 74, 58, 44], [34, 'titanor'], 120, 72, "Il frappe sa poitrine pour impressionner ses rivaux. Au fond, c'est un grand tendre."],
+  ['titanor', 'Titanor', ['Combat', 'Pierre'], 'kong', ['#5a4e44', '#c8a882', '#ffcf4a'], 1, ['spikes', 'crystals'], [100, 124, 104, 50], null, 45, 220, "Un géant aux poings de pierre. La terre tremble quand il court."],
+  ['lapinou', 'Lapinou', ['Normal'], 'blob', ['#f2e8dc', '#ffffff', '#f29ab0'], .52, ['longEars', 'cheeks'], [40, 46, 38, 70], [22, 'lievrefou'], 255, 52, "Ses longues oreilles captent le moindre bruit. Il bondit plus haut qu'un arbre."],
+  ['lievrefou', 'Lièvrefou', ['Normal', 'Combat'], 'biped', ['#e6d4c0', '#ffffff', '#e85a3a'], .86, ['longEars', 'band'], [70, 90, 64, 108], null, 90, 165, "Ses coups de pied sont si rapides qu'on ne les voit pas. Il s'entraîne en courant autour des montagnes."],
+  ['chalumot', 'Chalumot', ['Feu'], 'quad', ['#e8603a', '#ffd890', '#3a3a4a'], .56, ['spikes', 'flameTail'], [46, 58, 44, 56], [35, 'tisonrex'], 120, 66, "Il crache de petites flammèches quand il est content. Il adore se rouler dans les cendres chaudes."],
+  ['tisonrex', 'Tisonrex', ['Feu', 'Dragon'], 'quad', ['#c83a2a', '#ffc070', '#2a2a3a'], 1, ['horns', 'spikes', 'wingsSmall', 'flameTail'], [88, 116, 86, 90], null, 45, 240, "Son souffle brûlant fait fondre la roche. Il règne sur les volcans endormis."],
+  ['pingouri', 'Pingouri', ['Glace', 'Eau'], 'bird', ['#3a4a6a', '#ffffff', '#f2a03a'], .55, [], [50, 48, 50, 40], [28, 'banquisor'], 190, 64, "Il glisse sur le ventre à toute vitesse sur la banquise. Il ne vole pas, mais nage à merveille."],
+  ['banquisor', 'Banquisor', ['Glace', 'Eau'], 'bird', ['#2a3858', '#f4fbff', '#f2a03a'], .92, ['crest', 'crystals'], [90, 86, 82, 62], null, 75, 178, "Il brise la glace d'un coup de bec pour pêcher. Les icebergs lui servent de trône."],
+  ['ampoulin', 'Ampoulin', ['Foudre'], 'orb', ['#fff2a0', '#ffffff', '#f2b134'], .52, ['antenna', 'cheeks'], [40, 40, 48, 72], [26, 'magnelux'], 190, 60, "Il brille la nuit comme une lanterne et se nourrit de l'électricité des orages."],
+  ['magnelux', 'Magnélux', ['Foudre', 'Pierre'], 'orb', ['#c8c0a0', '#fff6c0', '#f2c040'], .86, ['crystals', 'gem', 'aura'], [70, 90, 86, 80], null, 75, 168, "Des cristaux électriques couvrent son corps. Il attire tout ce qui est en métal."],
+  ['hiboulune', 'Hiboulune', ['Psy', 'Air'], 'bird', ['#a07a5a', '#f4e0c0', '#6a4ad8'], .56, ['owlEars'], [56, 46, 48, 56], [30, 'strigelia'], 190, 62, "Il tourne la tête presque complètement. On dit qu'il voit les rêves des gens endormis."],
+  ['strigelia', 'Strigélia', ['Psy', 'Air'], 'bird', ['#7a5a8a', '#f0dcf0', '#ffd84a'], .92, ['owlEars', 'longTail', 'moon'], [86, 88, 72, 96], null, 60, 180, "Ses yeux brillent dans le noir et lisent l'avenir. Elle veille sur les voyageurs perdus."],
+  ['lanternis', 'Lanternis', ['Ombre', 'Feu'], 'ghost', ['#4a3a6a', '#a898d8', '#7ad0ff'], .7, ['flameHead'], [60, 80, 58, 76], null, 75, 150, "Sa flamme bleue guide les âmes égarées… ou les égare un peu plus."],
+  ['crapodo', 'Crapodo', ['Poison', 'Eau'], 'blob', ['#5aa86a', '#e8f0b0', '#e85a8a'], .55, ['spots'], [52, 48, 48, 48], [28, 'crapaulord'], 190, 64, "Ses taches colorées préviennent : ne le touchez pas ! Il chante très fort les soirs de pluie."],
+  ['crapaulord', 'Crapaulord', ['Poison', 'Eau'], 'blob', ['#3e7a4a', '#d8e8a0', '#e8483f'], .95, ['spots', 'horns', 'drip'], [92, 86, 78, 58], null, 75, 176, "Il trône au milieu des marais comme un roi. Son coassement fait vibrer l'eau."],
+  ['dragonnelle', 'Dragonnelle', ['Dragon', 'Eau'], 'serpent', ['#7ab0f0', '#eef4ff', '#f28ab8'], .82, ['fin', 'horns', 'whiskers'], [76, 80, 74, 86], null, 30, 200, "Une dragonne gracieuse qui danse sous la pluie. La croiser porte bonheur, dit-on."],
+  ['doudou', 'Doudou', ['Normal'], 'blob', ['#f4dcec', '#ffffff', '#a0c8ff'], .54, ['fluff', 'cheeks'], [64, 36, 48, 30], [25, 'peluchon'], 190, 62, "Il est tout doux et adore les câlins. Il s'endort n'importe où, n'importe quand."],
+  ['peluchon', 'Peluchon', ['Normal'], 'blob', ['#ecc8e0', '#ffffff', '#80b0ff'], .9, ['fluff', 'roundEars', 'cheeks'], [118, 70, 70, 40], null, 75, 170, "Il protège les enfants perdus dans la forêt et les ramène chez eux sur son dos."],
+  ['fossilin', 'Fossilin', ['Pierre', 'Eau'], 'fish', ['#a89a7a', '#e0d6b8', '#6a8ab0'], .7, ['spikes', 'crystals'], [66, 80, 96, 46], null, 45, 170, "Une créature venue de la préhistoire, retrouvée vivante au fond d'une grotte."],
+  ['faucoral', 'Faucoral', ['Air'], 'bird', ['#c8823a', '#f6e2c0', '#2a2a3a'], .86, ['crest', 'longTail'], [66, 88, 58, 110], null, 90, 170, "Le plus rapide des oiseaux de Valmyr. Il fond sur sa proie depuis les nuages."],
+  ['aurelion', 'Aurélion', ['Psy', 'Dragon'], 'quad', ['#f0d27a', '#fff8de', '#7a5ce8'], 1, ['wings', 'mane', 'horns', 'aura'], [106, 122, 102, 112], null, 12, 300, "Une créature de légende. On dit qu'elle veille sur Valmyr depuis l'aube des temps."],
+  ['voltaure', 'Voltaure', ['Foudre', 'Air'], 'bird', ['#f2d23c', '#fff4c0', '#3a54c8'], 1, ['crest', 'zigzagTail', 'aura'], [90, 120, 90, 118], null, 12, 290, "L'oiseau des orages. On raconte que chaque éclair est un battement de ses ailes."],
+  ['glacorne', 'Glaçorne', ['Glace', 'Dragon'], 'quad', ['#bfe6f6', '#ffffff', '#4a8ad2'], 1, ['wings', 'mane', 'horns', 'crystals'], [100, 118, 104, 96], null, 12, 290, "Gardienne des glaces éternelles. Son souffle peut figer une cascade en plein vol."]
 ];
 const SP = {};
 const SPECIES_IDS = [];
@@ -466,66 +510,66 @@ const GYMS = [
     intro: "Je suis Bastien, Champion d'Arène de Grès-Lumière. Ma volonté est aussi dure que la pierre. Voyons si la tienne tient le choc !",
     win: "Tu as fissuré ma défense… Je m'incline !", after: "Port-Azur se trouve au nord. Là-bas, Marine t'attend avec ses créatures Eau.",
     trainers: [['Montagnard', 'Paul', [['gravillon', 6]]], ['Randonneuse', 'Léa', [['ratounet', 5], ['gravillon', 6]]]] },
-  { town: 't2', leader: 'Marine', type: 'Eau', badge: 'Badge Vague', look: { skin: '#f0c8a0', hair: '#2a6ab0', shirt: '#4f8fe8', pants: '#2a4a8a', long: 1 }, team: [['clapotin', 12], ['corailin', 14]],
+  { town: 't2', leader: 'Marine', type: 'Eau', badge: 'Badge Vague', look: { skin: '#f0c8a0', hair: '#2a6ab0', shirt: '#4f8fe8', pants: '#2a4a8a', long: 1 }, team: [['clapotin', 12], ['pincelot', 13], ['corailin', 14]],
     intro: "Bienvenue à Port-Azur ! Je suis Marine. Mes créatures sont aussi imprévisibles que la marée. Prêt à te mouiller ?",
     win: "Quelle vague ! Tu m'as complètement submergée.", after: "Volterre est la ville des orages. Méfie-toi des créatures Foudre !",
-    trainers: [['Pêcheur', 'Yvon', [['clapotin', 10], ['clapotin', 11]]], ['Nageuse', 'Coralie', [['corailin', 11]]]] },
-  { town: 't3', leader: 'Volta', type: 'Foudre', badge: 'Badge Éclair', look: { skin: '#e8b890', hair: '#f2d23c', shirt: '#3a3a5a', pants: '#2a2a3a' }, team: [['zibzib', 16], ['lucioline', 17], ['voltrix', 19]],
+    trainers: [['Pêcheur', 'Yvon', [['clapotin', 10], ['tortilou', 11]]], ['Nageuse', 'Coralie', [['pincelot', 10], ['corailin', 11]]]] },
+  { town: 't3', leader: 'Volta', type: 'Foudre', badge: 'Badge Éclair', look: { skin: '#e8b890', hair: '#f2d23c', shirt: '#3a3a5a', pants: '#2a2a3a' }, team: [['ampoulin', 16], ['zibzib', 17], ['lucioline', 17], ['voltrix', 19]],
     intro: "Bzzz ! Moi, c'est Volta. Mes créatures sont chargées à bloc. Tu vas sentir le courant passer !",
     win: "Court-circuit ! Tu as été plus rapide que l'éclair.", after: "La forêt de Sylvebourg est au nord. Les créatures Plante y sont chez elles.",
     trainers: [['Ingénieur', 'Max', [['zibzib', 14], ['zibzib', 14]]], ['Scientifique', 'Ada', [['lucioline', 15]]]] },
-  { town: 't4', leader: 'Sylvie', type: 'Plante', badge: 'Badge Feuille', look: { skin: '#f0c8a0', hair: '#5a8a3a', shirt: '#4fae45', pants: '#6a4a2a', long: 1 }, team: [['chenillo', 21], ['bourgeonnet', 22], ['floribelle', 24]],
+  { town: 't4', leader: 'Sylvie', type: 'Plante', badge: 'Badge Feuille', look: { skin: '#f0c8a0', hair: '#5a8a3a', shirt: '#4fae45', pants: '#6a4a2a', long: 1 }, team: [['chenillo', 21], ['petalia', 21], ['bourgeonnet', 22], ['floribelle', 24]],
     intro: "Chut… écoute la forêt respirer. Je suis Sylvie. Mes créatures ont des racines profondes !",
     win: "Tu as su traverser ma forêt. Bravo.", after: "Au nord, les marais. Néva et ses créatures Poison t'attendent.",
     trainers: [['Jardinière', 'Rose', [['bourgeonnet', 19], ['chenillo', 19]]], ['Campeur', 'Tom', [['chenillo', 20], ['bourgeonnet', 20]]]] },
-  { town: 't5', leader: 'Néva', type: 'Poison', badge: 'Badge Venin', look: { skin: '#e0c0d0', hair: '#6a2a8a', shirt: '#a055bd', pants: '#3a2a4a', long: 1 }, team: [['moussaille', 25], ['viperine', 26], ['miasmor', 28]],
+  { town: 't5', leader: 'Néva', type: 'Poison', badge: 'Badge Venin', look: { skin: '#e0c0d0', hair: '#6a2a8a', shirt: '#a055bd', pants: '#3a2a4a', long: 1 }, team: [['moussaille', 25], ['crapodo', 25], ['viperine', 26], ['miasmor', 28]],
     intro: "Merci d'avoir chassé la Team Éclipse de mon marais ! Je m'appelle Néva. Mais en combat, pas de cadeau : un peu de poison n'a jamais tué personne… enfin, presque.",
     win: "Tu es immunisé, on dirait. Impressionnant.", after: "Céleste flotte presque dans les nuages. Ilan y lit l'avenir.",
     trainers: [['Mystique', 'Ombeline', [['moussaille', 23], ['spectrelle', 23]]], ['Chimiste', 'Igor', [['viperine', 24]]]] },
-  { town: 't6', leader: 'Ilan', type: 'Psy', badge: 'Badge Esprit', look: { skin: '#f0d0b0', hair: '#e8e8f8', shirt: '#e8689a', pants: '#4a3a6a' }, team: [['psyon', 29], ['papilume', 30], ['mentalis', 32]],
+  { town: 't6', leader: 'Ilan', type: 'Psy', badge: 'Badge Esprit', look: { skin: '#f0d0b0', hair: '#e8e8f8', shirt: '#e8689a', pants: '#4a3a6a' }, team: [['psyon', 29], ['hiboulune', 29], ['papilume', 30], ['mentalis', 32]],
     intro: "Je suis Ilan. J'ai vu ta venue dans les étoiles… mais pas l'issue de ce combat. Voyons-la ensemble.",
     win: "Les étoiles avaient raison de te faire confiance.", after: "Cendreval est bâtie au pied du volcan. Prépare des créatures Eau !",
     trainers: [['Médium', 'Ysée', [['psyon', 27], ['psyon', 27]]], ['Médium', 'Orion', [['papilume', 28]]]] },
-  { town: 't7', leader: 'Ignace', type: 'Feu', badge: 'Badge Brasier', look: { skin: '#d8a070', hair: '#c83a2a', shirt: '#ef7d3c', pants: '#3a2a2a' }, team: [['tisonnet', 33], ['fournaise', 34], ['volcanor', 36]],
+  { town: 't7', leader: 'Ignace', type: 'Feu', badge: 'Badge Brasier', look: { skin: '#d8a070', hair: '#c83a2a', shirt: '#ef7d3c', pants: '#3a2a2a' }, team: [['chalumot', 33], ['fournaise', 34], ['lanternis', 34], ['volcanor', 36]],
     intro: "Ha ! Moi, c'est Ignace ! J'ai forgé mes créatures dans la lave. Tu vas voir des étincelles !",
     win: "Ma flamme vacille… Tu brûles d'une passion plus forte que la mienne !", after: "Hautes-Cimes est le dernier sommet avant la Ligue. Drakka y règne sur les dragons.",
     trainers: [['Forgeron', 'Brice', [['tisonnet', 31], ['gravillon', 31]]], ['Cracheuse de feu', 'Flora', [['fournaise', 32]]]] },
-  { town: 't8', leader: 'Drakka', type: 'Dragon', badge: 'Badge Écaille', look: { skin: '#e8c0a0', hair: '#3a2a6a', shirt: '#6656dc', pants: '#22204a', long: 1 }, team: [['draconis', 37], ['abyssaure', 38], ['wyrmeroi', 40]],
+  { town: 't8', leader: 'Drakka', type: 'Dragon', badge: 'Badge Écaille', look: { skin: '#e8c0a0', hair: '#3a2a6a', shirt: '#6656dc', pants: '#22204a', long: 1 }, team: [['draconis', 37], ['dragonnelle', 38], ['abyssaure', 38], ['wyrmeroi', 40]],
     intro: "Je suis Drakka, gardienne des dragons. Seuls les dresseurs au cœur de feu passent ma porte. Montre-moi le tien !",
     win: "Les dragons te reconnaissent. Tu as gagné leur respect… et le mien.", after: "Avec huit badges, la Route Victoire t'est ouverte. La Ligue t'attend tout en haut.",
     trainers: [['Dompteur', 'Erwan', [['dracolet', 35], ['draconis', 36]]], ['Dresseuse', 'Ava', [['brumeleau', 36], ['draconis', 36]]]] }
 ];
 const LEAGUE = [
-  { cls: 'Conseil', name: 'Ysolde', type: 'Glace', look: { skin: '#f4dcd0', hair: '#cfeaff', shirt: '#5cc8d6', pants: '#2a4a6a', long: 1 }, team: [['frimousse', 40], ['brumeleau', 41], ['givrecroc', 43]],
+  { cls: 'Conseil', name: 'Ysolde', type: 'Glace', look: { skin: '#f4dcd0', hair: '#cfeaff', shirt: '#5cc8d6', pants: '#2a4a6a', long: 1 }, team: [['banquisor', 40], ['brumeleau', 41], ['meduroi', 41], ['givrecroc', 43]],
     intro: "Bienvenue à la Ligue. Je suis Ysolde. Ici, le froid glace même les plus braves.", win: "Ta flamme a fait fondre ma glace. Avance." },
-  { cls: 'Conseil', name: 'Corvin', type: 'Ombre', look: { skin: '#d8c0b0', hair: '#1a1a2a', shirt: '#4a3a6a', pants: '#1a1a2a' }, team: [['ombrelune', 42], ['fantomure', 43], ['marecor', 44]],
+  { cls: 'Conseil', name: 'Corvin', type: 'Ombre', look: { skin: '#d8c0b0', hair: '#1a1a2a', shirt: '#4a3a6a', pants: '#1a1a2a' }, team: [['noctaile', 42], ['ombrelune', 42], ['fantomure', 43], ['marecor', 44]],
     intro: "Je suis Corvin. Les ombres connaissent tes peurs. Voyons si tu peux les affronter.", win: "Tu as fait la lumière… Continue." },
-  { cls: 'Conseil', name: 'Taïga', type: 'Combat', look: { skin: '#c89070', hair: '#2a1a1a', shirt: '#c8483a', pants: '#2a2a3a' }, team: [['rongetout', 42], ['monolithe', 44], ['cognard', 45]],
+  { cls: 'Conseil', name: 'Taïga', type: 'Combat', look: { skin: '#c89070', hair: '#2a1a1a', shirt: '#c8483a', pants: '#2a2a3a' }, team: [['lievrefou', 42], ['tenaille', 43], ['titanor', 44], ['cognard', 45]],
     intro: "Taïga, pour te servir ! Ici, pas de ruse : seulement la force et le cœur. En garde !", win: "Quel combat ! Le Maître t'attend. Donne tout !" },
-  { cls: 'Maître', name: 'Célian', type: '', look: { skin: '#f0c8a0', hair: '#f2f2f2', shirt: '#2a2f5a', pants: '#14162c', hat: '#f2b134' }, team: [['ventelan', 44], ['voltrix', 45], ['floribelle', 45], ['mentalis', 46], ['wyrmeroi', 48]],
+  { cls: 'Maître', name: 'Célian', type: '', look: { skin: '#f0c8a0', hair: '#f2f2f2', shirt: '#2a2f5a', pants: '#14162c', hat: '#f2b134' }, team: [['faucoral', 44], ['voltrix', 45], ['floribelle', 45], ['bastionne', 45], ['mentalis', 46], ['wyrmeroi', 48]],
     intro: "Te voilà enfin. Je suis Célian, Maître de la Ligue de Valmyr. J'ai suivi ton parcours depuis Bourg-Aube. Montre-moi tout ce que tu as appris !", win: "C'est… magnifique. Tu es le nouveau Maître de Valmyr !" }
 ];
 
 /* ---------- Le monde ---------- */
 const WORLD = [
   { id: 't0', type: 'town', name: 'Bourg-Aube', theme: 'pre', custom: 'start' },
-  { id: 'r1', type: 'route', name: 'Route 1', theme: 'pre', h: 30, tr: 2, trLv: [4, 5], items: ['potion', 'capsule'], enc: [['piouret', 2, 4, 40], ['ratounet', 2, 4, 40], ['chenillo', 3, 4, 20]] },
+  { id: 'r1', type: 'route', name: 'Route 1', theme: 'pre', h: 30, tr: 2, trLv: [4, 5], items: ['potion', 'capsule'], enc: [['piouret', 2, 4, 30], ['ratounet', 2, 4, 30], ['lapinou', 2, 4, 20], ['chenillo', 3, 4, 12], ['doudou', 3, 4, 8]] },
   { id: 't1', type: 'town', name: 'Grès-Lumière', theme: 'canyon', gym: 0, flip: 0 },
-  { id: 'r2', type: 'route', name: 'Route 2', theme: 'plage', h: 34, tr: 3, trLv: [7, 10], items: ['potion', 'capsule', 'repousse'], enc: [['gravillon', 5, 8, 25], ['piouret', 5, 8, 20], ['clapotin', 6, 8, 30], ['zibzib', 6, 7, 10], ['chenillo', 5, 7, 15]] },
+  { id: 'r2', type: 'route', name: 'Route 2', theme: 'plage', h: 34, tr: 3, trLv: [7, 10], items: ['potion', 'capsule', 'repousse'], enc: [['gravillon', 5, 8, 20], ['piouret', 5, 8, 15], ['clapotin', 6, 8, 20], ['tortilou', 6, 8, 15], ['pincelot', 6, 8, 15], ['zibzib', 6, 7, 8], ['chenillo', 5, 7, 7]] },
   { id: 't2', type: 'town', name: 'Port-Azur', theme: 'plage', gym: 1, flip: 1 },
-  { id: 'r3', type: 'route', name: 'Route 3', theme: 'orage', h: 34, tr: 3, grunt: 1, trLv: [12, 15], items: ['superpotion', 'capsule'], enc: [['zibzib', 10, 13, 35], ['ratounet', 10, 12, 20], ['clapotin', 10, 12, 15], ['papilume', 11, 13, 10], ['poincon', 10, 13, 20]] },
+  { id: 'r3', type: 'route', name: 'Route 3', theme: 'orage', h: 34, tr: 3, grunt: 1, trLv: [12, 15], items: ['superpotion', 'capsule'], enc: [['zibzib', 10, 13, 25], ['ratounet', 10, 12, 15], ['ampoulin', 10, 13, 15], ['clapotin', 10, 12, 10], ['papilume', 11, 13, 10], ['poincon', 10, 13, 15], ['lapinou', 10, 12, 10]] },
   { id: 't3', type: 'town', name: 'Volterre', theme: 'orage', gym: 2, flip: 0 },
-  { id: 'r4', type: 'route', name: 'Route 4', theme: 'foret', h: 36, tr: 3, trLv: [16, 19], items: ['supercap', 'remede', 'superpotion'], enc: [['chenillo', 14, 16, 15], ['papilume', 15, 17, 15], ['spectrelle', 14, 17, 20], ['bourgeonnet', 14, 17, 25], ['moussaille', 14, 16, 15], ['lucioline', 16, 17, 10]] },
+  { id: 'r4', type: 'route', name: 'Route 4', theme: 'foret', h: 36, tr: 3, trLv: [16, 19], items: ['supercap', 'remede', 'superpotion'], enc: [['chenillo', 14, 16, 10], ['papilume', 15, 17, 10], ['spectrelle', 14, 17, 15], ['bourgeonnet', 14, 17, 15], ['petalia', 14, 17, 15], ['moussaille', 14, 16, 10], ['lucioline', 16, 17, 10], ['hiboulune', 15, 17, 8], ['doudou', 14, 16, 7]] },
   { id: 't4', type: 'town', name: 'Sylvebourg', theme: 'foret', gym: 3, flip: 1 },
-  { id: 'r5', type: 'route', name: 'Route 5', theme: 'marais', h: 36, tr: 3, grunt: 1, trLv: [21, 24], items: ['rappel', 'supercap'], enc: [['moussaille', 19, 22, 25], ['clapotin', 19, 21, 15], ['spectrelle', 19, 22, 15], ['corailin', 20, 22, 15], ['viperine', 20, 22, 15], ['ventelan', 21, 22, 15]] },
+  { id: 'r5', type: 'route', name: 'Route 5', theme: 'marais', h: 36, tr: 3, grunt: 1, trLv: [21, 24], items: ['rappel', 'supercap'], enc: [['moussaille', 19, 22, 20], ['crapodo', 19, 22, 20], ['clapotin', 19, 21, 10], ['spectrelle', 19, 22, 10], ['corailin', 20, 22, 10], ['viperine', 20, 22, 10], ['meduvol', 20, 22, 10], ['ventelan', 21, 22, 10]] },
   { id: 't5', type: 'town', name: 'Marais-Noir', theme: 'marais', gym: 4, flip: 0 },
-  { id: 'r6', type: 'route', name: 'Route 6', theme: 'ciel', h: 36, tr: 3, trLv: [25, 28], items: ['hyperpotion', 'supercap'], enc: [['psyon', 23, 26, 30], ['ventelan', 23, 26, 20], ['lucioline', 23, 26, 15], ['poincon', 23, 25, 15], ['tisonnet', 23, 25, 10], ['spectrelle', 23, 25, 10]] },
+  { id: 'r6', type: 'route', name: 'Route 6', theme: 'ciel', h: 36, tr: 3, trLv: [25, 28], items: ['hyperpotion', 'supercap'], enc: [['psyon', 23, 26, 25], ['hiboulune', 23, 26, 15], ['ventelan', 23, 26, 15], ['lucioline', 23, 26, 10], ['poincon', 23, 25, 10], ['faucoral', 24, 26, 10], ['peluchon', 25, 26, 7], ['tisonnet', 23, 25, 8]] },
   { id: 't6', type: 'town', name: 'Céleste', theme: 'ciel', gym: 5, flip: 1 },
-  { id: 'r7', type: 'route', name: 'Route 7', theme: 'volcan', h: 36, tr: 3, grunt: 1, trLv: [29, 32], items: ['hypercap', 'rappel'], enc: [['tisonnet', 27, 30, 30], ['gravillon', 27, 29, 20], ['rongetout', 27, 30, 15], ['poincon', 27, 29, 15], ['miasmor', 28, 30, 10], ['dracolet', 27, 28, 10]] },
+  { id: 'r7', type: 'route', name: 'Route 7', theme: 'volcan', h: 36, tr: 3, grunt: 1, trLv: [29, 32], items: ['hypercap', 'rappel'], enc: [['tisonnet', 27, 30, 20], ['chalumot', 27, 30, 20], ['gravillon', 27, 29, 12], ['gorillon', 28, 30, 15], ['rongetout', 27, 30, 10], ['lanternis', 28, 30, 8], ['miasmor', 28, 30, 8], ['dracolet', 27, 28, 7]] },
   { id: 't7', type: 'town', name: 'Cendreval', theme: 'volcan', gym: 6, flip: 0 },
-  { id: 'r8', type: 'route', name: 'Route 8', theme: 'neige', h: 36, tr: 3, grunt: 1, boss: 1, trLv: [33, 36], items: ['hyperpotion', 'hypercap'], enc: [['frimousse', 31, 34, 30], ['brumeleau', 32, 34, 15], ['ombrelune', 32, 34, 15], ['dracolet', 31, 33, 15], ['voltrix', 32, 34, 10], ['givrecroc', 33, 34, 15]] },
+  { id: 'r8', type: 'route', name: 'Route 8', theme: 'neige', h: 36, tr: 3, grunt: 1, boss: 1, trLv: [33, 36], items: ['hyperpotion', 'hypercap'], enc: [['frimousse', 31, 34, 20], ['pingouri', 31, 34, 20], ['brumeleau', 32, 34, 12], ['ombrelune', 32, 34, 12], ['dracolet', 31, 33, 10], ['voltrix', 32, 34, 8], ['givrecroc', 33, 34, 10], ['banquisor', 33, 34, 8]] },
   { id: 't8', type: 'town', name: 'Hautes-Cimes', theme: 'neige', gym: 7, flip: 1 },
-  { id: 'rv', type: 'route', name: 'Route Victoire', theme: 'roc', h: 44, tr: 5, trLv: [38, 42], items: ['rappel', 'hyperpotion', 'hypercap'], legend: 1, enc: [['monolithe', 36, 40, 20], ['givrecroc', 36, 39, 15], ['cognard', 36, 40, 15], ['mentalis', 36, 39, 15], ['draconis', 36, 39, 15], ['marecor', 36, 39, 10], ['ombrelune', 36, 39, 10]] },
+  { id: 'rv', type: 'route', name: 'Route Victoire', theme: 'roc', h: 44, tr: 5, trLv: [38, 42], items: ['rappel', 'hyperpotion', 'hypercap'], legend: 1, enc: [['monolithe', 36, 40, 12], ['givrecroc', 36, 39, 10], ['cognard', 36, 40, 10], ['mentalis', 36, 39, 10], ['draconis', 36, 39, 10], ['titanor', 37, 40, 10], ['noctaile', 36, 39, 10], ['bastionne', 38, 40, 8], ['meduroi', 36, 39, 8], ['tisonrex', 38, 40, 5], ['strigelia', 36, 39, 7]] },
   { id: 'lg', type: 'town', name: 'Plateau Valmyr', theme: 'ligue', custom: 'plateau' }
 ];
 const WORLD_IDX = {}; WORLD.forEach((d, i) => WORLD_IDX[d.id] = i);
@@ -599,11 +643,11 @@ const BOSS = [
 
 /* ---------- Grottes ---------- */
 const CAVES = {
-  r1: { name: 'Grotte Murmure', enc: [['gravillon', 4, 6, 40], ['spectrelle', 4, 6, 25], ['ratounet', 4, 6, 25], ['dracolet', 5, 6, 10]], items: ['potion', 'supercap', 'remede'] },
-  r3: { name: 'Caverne Tonnerre', enc: [['zibzib', 12, 15, 30], ['gravillon', 12, 15, 25], ['lucioline', 13, 15, 20], ['corailin', 13, 15, 15], ['dracolet', 13, 14, 10]], items: ['superpotion', 'rappel', 'supercap'], trainer: [12, 15] },
-  r5: { name: 'Repaire Éclipse', hideout: 1, enc: [['spectrelle', 20, 23, 30], ['moussaille', 20, 23, 30], ['viperine', 21, 23, 20], ['marecor', 22, 23, 20]], items: ['hyperpotion', 'rappel'] },
-  r6: { name: 'Grotte Céleste', enc: [['psyon', 25, 28, 30], ['fantomure', 26, 28, 15], ['ombrelune', 26, 28, 15], ['monolithe', 26, 28, 20], ['frimousse', 25, 27, 20]], items: ['hypercap', 'rappel', 'hyperpotion'], trainer: [26, 29] },
-  r8: { name: 'Caverne Gelée', enc: [['givrecroc', 34, 37, 25], ['brumeleau', 34, 37, 25], ['draconis', 35, 37, 15], ['frimousse', 33, 36, 20], ['fantomure', 34, 36, 15]], items: ['hypercap', 'hypercap', 'rappel'], trainer: [35, 38] }
+  r1: { name: 'Grotte Murmure', enc: [['gravillon', 4, 6, 30], ['chauvelin', 4, 6, 25], ['spectrelle', 4, 6, 15], ['ratounet', 4, 6, 15], ['dracolet', 5, 6, 8], ['fossilin', 5, 6, 7]], items: ['potion', 'supercap', 'remede'] },
+  r3: { name: 'Caverne Tonnerre', enc: [['zibzib', 12, 15, 20], ['gravillon', 12, 15, 15], ['lucioline', 13, 15, 15], ['ampoulin', 12, 15, 15], ['chauvelin', 12, 15, 15], ['corailin', 13, 15, 10], ['dracolet', 13, 14, 5], ['fossilin', 13, 15, 5]], legend: ['voltaure', 42], items: ['superpotion', 'rappel', 'supercap'], trainer: [12, 15] },
+  r5: { name: 'Repaire Éclipse', hideout: 1, enc: [['spectrelle', 20, 23, 20], ['moussaille', 20, 23, 20], ['chauvelin', 20, 23, 20], ['viperine', 21, 23, 15], ['marecor', 22, 23, 10], ['crapodo', 20, 23, 15]], items: ['hyperpotion', 'rappel'] },
+  r6: { name: 'Grotte Céleste', enc: [['psyon', 25, 28, 20], ['noctaile', 26, 28, 15], ['fantomure', 26, 28, 10], ['ombrelune', 26, 28, 10], ['monolithe', 26, 28, 15], ['magnelux', 26, 28, 15], ['frimousse', 25, 27, 15]], items: ['hypercap', 'rappel', 'hyperpotion'], trainer: [26, 29] },
+  r8: { name: 'Caverne Gelée', enc: [['givrecroc', 34, 37, 20], ['brumeleau', 34, 37, 20], ['banquisor', 34, 37, 15], ['draconis', 35, 37, 12], ['frimousse', 33, 36, 13], ['dragonnelle', 35, 37, 8], ['fantomure', 34, 36, 12]], legend: ['glacorne', 46], items: ['hypercap', 'hypercap', 'rappel'], trainer: [35, 38] }
 };
 /* =====================================================================
    GRAPHISMES — créatures, tuiles, personnages, bâtiments
@@ -689,7 +733,57 @@ const PLANS = {
     face(c) { eye(c, -6, -37, 3.4); eye(c, 4, -37, 3.4); } },
   biped: { a: { head: [-2, -46, 10], top: [-2, -56], back: [9, -32], tail: [13, -14], face: [-5, -46], hand: [-17, -18] },
     body(c, sp, bk) { const [M, S] = sp.pal, D = shade(M, -.2); RR(c, -10, -15, 7, 14, 2.5, D); RR(c, 2, -15, 7, 14, 2.5, D); E(c, -7, -2, 5.5, 2.6, D); E(c, 6, -2, 5.5, 2.6, D); LN(c, [9, -33, 16, -20], 4.5, shade(M, -.1)); E(c, -1, -27, 12, 14, M); if (!bk) E(c, -3, -24, 7, 9, S); LN(c, [-10, -33, -17, -19], 4.5, M); E(c, -2, -46, 10, 10, M); },
-    face(c) { eye(c, -7, -47, 3); eye(c, 1, -47, 3); mouth(c, -4, -41); } }
+    face(c) { eye(c, -7, -47, 3); eye(c, 1, -47, 3); mouth(c, -4, -41); } },
+  turtle: { a: { head: [-19, -21, 8], top: [-19, -29], back: [4, -32], tail: [21, -10], face: [-21, -22], hand: [-12, -4] },
+    body(c, sp, bk) { const [M, S, A] = sp.pal, D = shade(M, -.2);
+      RR(c, 9, -11, 7, 11, 3, D); RR(c, 14, -9, 6, 9, 3, D); RR(c, -9, -10, 7, 10, 3, M);
+      LN(c, [-8, -14, -15, -19], 6, M); E(c, 19, -8, 4, 2.4, M, .4);
+      E(c, 3, -11, 18, 5, shade(A, -.25)); E(c, 3, -19, 16, 13, A);
+      PL(c, [-4, -24, 3, -29, 10, -24, 10, -16, 3, -12, -4, -16], shade(A, .2));
+      PL(c, [-12, -15, -7, -25, -5, -17], shade(A, .1)); PL(c, [11, -16, 11, -24, 17, -15], shade(A, .1));
+      if (!bk) E(c, -6, -9, 8, 3, S);
+      E(c, -19, -21, 8, 7, M); },
+    face(c) { eye(c, -21, -23, 2.8); E(c, -26, -19, 1.5, 1, INK, 0, false); } },
+  bat: { float: 10, a: { head: [0, -36, 11], top: [0, -46], back: [0, -34], tail: [0, -20], face: [-1, -35], hand: [-14, -28] },
+    body(c, sp, bk) { const [M, S] = sp.pal, W = shade(M, -.15);
+      PL(c, [-6, -36, -18, -49, -30, -45, -27, -37, -31, -28, -22, -31, -21, -22, -10, -28], W);
+      PL(c, [6, -36, 18, -49, 30, -45, 27, -37, 31, -28, 22, -31, 21, -22, 10, -28], W);
+      PL(c, [-12, -38, -24, -42, -22, -33, -14, -31], S, false); PL(c, [12, -38, 24, -42, 22, -33, 14, -31], S, false);
+      PL(c, [-9, -42, -8, -55, -2, -45], M); PL(c, [9, -42, 8, -55, 2, -45], M);
+      E(c, 0, -34, 11, 11, M); if (!bk) E(c, 0, -29, 6.5, 5, S);
+      LN(c, [-3, -24, -4, -19], 1.6, shade(M, -.3)); LN(c, [3, -24, 4, -19], 1.6, shade(M, -.3)); },
+    face(c) { eye(c, -4.5, -37, 3); eye(c, 4.5, -37, 3); PL(c, [-2.5, -31, -1.5, -28, -.5, -31], '#ffffff', false); PL(c, [.5, -31, 1.5, -28, 2.5, -31], '#ffffff', false); } },
+  jelly: { float: 8, a: { head: [0, -38, 15], top: [0, -52], back: [10, -42], tail: [0, -16], face: [-1, -38], hand: [-14, -26] },
+    body(c, sp, bk) { const [M, S, A] = sp.pal;
+      for (let i = 0; i < 5; i++) { const x0 = -10 + i * 5; LNP(c, k => { k.moveTo(x0, -28); k.quadraticCurveTo(x0 + (i % 2 ? 5 : -5), -18, x0, -6 - (i % 2) * 3); }, 2.4, A); }
+      c.beginPath(); c.arc(0, -34, 16, Math.PI, 0); c.quadraticCurveTo(16, -27, 12, -26); c.quadraticCurveTo(8, -28, 4, -25); c.quadraticCurveTo(0, -28, -4, -25); c.quadraticCurveTo(-8, -28, -12, -26); c.quadraticCurveTo(-16, -27, -16, -34); c.closePath(); fs(c, M);
+      E(c, -6, -43, 3, 2, S, 0, false); E(c, 7, -44, 2.4, 1.8, S, 0, false); E(c, 1, -47, 2, 1.4, S, 0, false); },
+    face(c) { eye(c, -5, -35, 2.8); eye(c, 5, -35, 2.8); mouth(c, 0, -30.5); } },
+  crab: { a: { head: [0, -22, 14], top: [0, -32], back: [0, -26], tail: [16, -8], face: [-1, -22], hand: [-25, -30] },
+    body(c, sp, bk) { const [M, S] = sp.pal, D = shade(M, -.25);
+      for (const sgn of [-1, 1]) { LN(c, [sgn * 10, -14, sgn * 19, -8, sgn * 21, 0], 2.2, D); LN(c, [sgn * 6, -12, sgn * 13, -5, sgn * 14, 0], 2.2, D); }
+      LN(c, [-12, -20, -20, -28], 4, M); LN(c, [12, -20, 20, -28], 4, M);
+      E(c, -24, -31, 7.5, 6, M, -.3); E(c, 24, -31, 7.5, 6, M, .3);
+      PL(c, [-31, -34, -24, -31, -31, -28], S, false); PL(c, [31, -34, 24, -31, 31, -28], S, false);
+      if (!bk) { LN(c, [-5, -24, -6, -33], 1.8, D); LN(c, [5, -24, 6, -33], 1.8, D); }
+      E(c, 0, -18, 16, 10, M); if (!bk) E(c, 0, -14, 10, 4, S); },
+    face(c) { E(c, -6, -35, 3.2, 3.2, '#ffffff'); E(c, 6, -35, 3.2, 3.2, '#ffffff'); E(c, -6.6, -34.6, 1.6, 2, INK, 0, false); E(c, 5.4, -34.6, 1.6, 2, INK, 0, false); mouth(c, 0, -19); } },
+  flower: { a: { head: [0, -42, 11], top: [0, -54], back: [0, -28], tail: [0, -10], face: [-1, -42], hand: [-12, -24] },
+    body(c, sp, bk) { const [M, S, A] = sp.pal;
+      E(c, -6, -2, 6, 2.6, '#3f8f3a'); E(c, 6, -2, 6, 2.6, '#3f8f3a');
+      LN(c, [0, -2, 0, -32], 5, '#4fae45');
+      E(c, -9, -16, 8, 3.4, '#5fc25a', -.5); E(c, 9, -22, 8, 3.4, '#5fc25a', .5);
+      for (let i = 0; i < 8; i++) { const an = i * Math.PI / 4; E(c, Math.cos(an) * 12, -42 + Math.sin(an) * 12, 6, 4, A, an); }
+      E(c, 0, -42, 10, 10, M); },
+    face(c) { eye(c, -4, -44, 2.6); eye(c, 4, -44, 2.6); mouth(c, 0, -39); } },
+  kong: { a: { head: [-1, -47, 9], top: [-1, -56], back: [4, -40], tail: [14, -14], face: [-2, -46], hand: [-22, -7] },
+    body(c, sp, bk) { const [M, S] = sp.pal, D = shade(M, -.2);
+      RR(c, -12, -14, 9, 14, 3, D); RR(c, 3, -14, 9, 14, 3, D);
+      LN(c, [11, -38, 19, -12], 8, D); E(c, 19, -8, 6, 5, shade(D, -.1));
+      E(c, 0, -30, 17, 16, M); if (!bk) E(c, -2, -27, 10, 10, S);
+      LN(c, [-12, -38, -21, -12], 8, M); E(c, -21, -8, 6, 5, shade(M, -.1));
+      E(c, -1, -47, 9.5, 8.5, M); if (!bk) E(c, -2, -45, 6.5, 5, S); },
+    face(c) { eye(c, -5, -47, 2.3); eye(c, 1.5, -47, 2.3); RR(c, -6, -51.5, 9, 1.6, .6, INK); E(c, -2, -42.5, 2, 1, INK, 0, false); } }
 };
 
 const FEAT = {
@@ -729,7 +823,9 @@ const FEAT = {
   coral: { b(c, sp, A) { const [x, y] = A.top, col = sp.pal[2]; LN(c, [x - 2, y + 6, x - 7, y - 7], 3, col); LN(c, [x - 5, y - 2, x - 12, y - 6], 2.6, col); LN(c, [x + 3, y + 6, x + 6, y - 9], 3, col); LN(c, [x + 5, y - 3, x + 11, y - 6], 2.6, col); } },
   moon: { pre(c, sp, A) { const [x, y] = A.face; E(c, x + 1, y - 9, 3.6, 3.6, sp.pal[2], 0, false); E(c, x + 2.8, y - 10, 3, 3, sp.pal[0], 0, false); } },
   antenna: { b(c, sp, A) { const [x, y] = A.top, col = shade(sp.pal[0], -.25); LN(c, [x - 2, y + 4, x - 7, y - 8], 1.5, col); LN(c, [x + 2, y + 4, x + 6, y - 9], 1.5, col); E(c, x - 7, y - 9, 2.3, 2.3, sp.pal[2]); E(c, x + 6, y - 10, 2.3, 2.3, sp.pal[2]); } },
-  hood: { b(c, sp, A) { const [hx, hy, hr] = A.head; E(c, hx + 4, hy + 5, hr * 1.5, hr * 1.35, sp.pal[1]); E(c, hx + 4, hy + 6, hr * .6, hr * .5, sp.pal[2], 0, false); } }
+  hood: { b(c, sp, A) { const [hx, hy, hr] = A.head; E(c, hx + 4, hy + 5, hr * 1.5, hr * 1.35, sp.pal[1]); E(c, hx + 4, hy + 6, hr * .6, hr * .5, sp.pal[2], 0, false); } },
+  fluff: { b(c, sp) { const col = sp.pal[1]; [[-19, -28], [19, -28], [-14, -40], [14, -40], [0, -44], [-20, -15], [20, -15]].forEach(([x, y]) => E(c, x, y, 7, 6, col)); } },
+  owlEars: { b(c, sp, A) { const [x, y] = A.top, col = shade(sp.pal[0], -.1); PL(c, [x - 8, y + 6, x - 9, y - 6, x - 3, y + 4], col); PL(c, [x + 2, y + 4, x + 7, y - 7, x + 6, y + 6], col); } }
 };
 
 function spriteBBox(c) { const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let x0 = 99, y0 = 99, x1 = -1, y1 = -1; for (let y = 0; y < c.height; y++) for (let x = 0; x < c.width; x++) if (d[(y * c.width + x) * 4 + 3] > 100) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } return x1 < 0 ? null : { x0, y0, x1, y1 }; }
@@ -899,62 +995,6 @@ function bldImg(b) {
   return (BLD_CACHE[k] = c);
 }
 
-/* ---------- Personnages (16×16) ---------- */
-const CHAR_CACHE = {};
-function charImg(look, dir, frame) {
-  const k = JSON.stringify(look) + dir + frame; if (CHAR_CACHE[k]) return CHAR_CACHE[k];
-  const c = mkCanvas(16, 16), x = c.getContext('2d');
-  const sk = look.skin || '#f3c9a0', hr = look.hair || '#3a2a20', sh = look.shirt || '#4a7ad0', pa = look.pants || '#2b2f55', hat = look.hat, shoe = '#2a2232';
-  const d = dir === 3 ? 2 : dir;
-  if (d === 0 || d === 1) {
-    const lA = frame === 1 ? 2 : 3, lB = frame === 2 ? 2 : 3;
-    rect(x, 5, 12, 2, lA, pa); rect(x, 9, 12, 2, lB, pa); rect(x, 5, 11 + lA, 2, 1, shoe); rect(x, 9, 11 + lB, 2, 1, shoe);
-    rect(x, 4, 8, 8, 5, sh); rect(x, 3, 8, 1, 3, sh); rect(x, 12, 8, 1, 3, sh); px(x, 3, 11, sk); px(x, 12, 11, sk);
-    if (look.coat) { rect(x, 4, 8, 8, 6, look.coat); rect(x, 7, 8, 2, 5, sh); }
-    if (look.emblem && d === 0) { px(x, 7, 9, '#f2c040'); px(x, 8, 9, '#f2c040'); px(x, 7, 10, '#f2c040'); px(x, 8, 11, '#f2c040'); px(x, 7, 11, '#f2c040'); }
-    if (d === 0) {
-      rect(x, 4, 2, 8, 6, sk); rect(x, 4, 1, 8, 3, hr); rect(x, 4, 3, 1, 3, hr); rect(x, 11, 3, 1, 3, hr);
-      if (look.long) { rect(x, 3, 3, 1, 6, hr); rect(x, 12, 3, 1, 6, hr); }
-      px(x, 6, 5, INK); px(x, 9, 5, INK); px(x, 6, 4, INK); px(x, 9, 4, INK); px(x, 7, 7, shade(sk, -.25)); px(x, 8, 7, shade(sk, -.25));
-      if (hat) { rect(x, 3, 0, 10, 3, hat); rect(x, 4, 3, 8, 1, shade(hat, -.3)); rect(x, 6, 1, 4, 1, shade(hat, .35)); }
-    } else {
-      rect(x, 4, 1, 8, 7, hr); if (look.long) rect(x, 4, 7, 8, 3, hr);
-      if (hat) { rect(x, 3, 0, 10, 3, hat); rect(x, 4, 3, 8, 1, shade(hat, -.3)); }
-    }
-  } else {
-    if (frame === 0) { rect(x, 6, 12, 3, 3, pa); rect(x, 6, 15, 3, 1, shoe); }
-    else { rect(x, 4, 12, 2, 3, pa); rect(x, 9, 12, 2, 3, pa); rect(x, 4, 15, 2, 1, shoe); rect(x, 9, 15, 2, 1, shoe); }
-    rect(x, 5, 8, 6, 5, sh); if (look.coat) rect(x, 5, 8, 6, 6, look.coat);
-    rect(x, 7, 9, 2, 3, shade(sh, -.15)); px(x, 7, 12, sk);
-    rect(x, 4, 2, 7, 6, sk); rect(x, 4, 1, 8, 3, hr); rect(x, 8, 2, 4, 5, hr); if (look.long) rect(x, 9, 6, 3, 4, hr);
-    px(x, 5, 5, INK); px(x, 5, 4, INK); px(x, 3, 6, sk);
-    if (hat) { rect(x, 3, 0, 9, 3, hat); rect(x, 1, 3, 6, 1, shade(hat, -.3)); }
-  }
-  outlinePass(c, INK);
-  let out = c;
-  if (dir === 3) { out = mkCanvas(16, 16); const o = out.getContext('2d'); o.translate(16, 0); o.scale(-1, 1); o.drawImage(c, 0, 0); }
-  return (CHAR_CACHE[k] = out);
-}
-const PLAYER_LOOK = { skin: '#f3c9a0', hair: '#3a2a20', shirt: '#2a9a90', pants: '#2b2f55', hat: '#f2b134' };
-const LOOKS = {
-  nurse: { skin: '#f6d2b4', hair: '#e8889a', shirt: '#ffffff', pants: '#f2a0b0', long: 1 },
-  clerk: { skin: '#e8b890', hair: '#5a3a2a', shirt: '#4a78ae', pants: '#2a3a5a' },
-  guard: { skin: '#e0b090', hair: '#2a2a2a', shirt: '#3a4a7a', pants: '#2a2a3a', hat: '#3a4a7a' },
-  prof: { skin: '#f0c8a0', hair: '#b8b8c8', shirt: '#4a8a6a', pants: '#3a3a4a', coat: '#f4f4f8', long: 1 },
-  mom: { skin: '#f3c9a0', hair: '#8a4a2a', shirt: '#e8689a', pants: '#4a3a5a', long: 1 },
-  rival: { skin: '#f0c8a0', hair: '#c8582a', shirt: '#5a4ab0', pants: '#22223a' },
-  grunt: { skin: '#e8c0a0', hair: '#2a2438', shirt: '#2a2438', pants: '#1c1828', hat: '#7a4ac0', emblem: 1 },
-  boss: { skin: '#ead2c2', hair: '#d8d8e8', shirt: '#1a1626', pants: '#1a1626', coat: '#3a2a58', emblem: 1 }
-};
-function randLook(R) {
-  const skins = ['#f3c9a0', '#e8b890', '#d09a70', '#a8724c', '#f6dcc2'], hairs = ['#3a2a20', '#8a4a2a', '#f2d23c', '#2a2a3a', '#c83a2a', '#e8e8f0', '#5a3a8a'];
-  const shirts = ['#e65a58', '#4a82d8', '#4fae45', '#f2b134', '#a055bd', '#2a9a90', '#ef7d3c', '#e8689a'], pants = ['#2b2f55', '#4a3a2a', '#3a4a3a', '#5a2a3a', '#2a2a3a'];
-  const r = R || Math.random;
-  const lk = { skin: skins[r() * skins.length | 0], hair: hairs[r() * hairs.length | 0], shirt: shirts[r() * shirts.length | 0], pants: pants[r() * pants.length | 0] };
-  if (r() < .4) lk.long = 1; if (r() < .25) lk.hat = shirts[r() * shirts.length | 0];
-  return lk;
-}
-
 /* ---------- Capsule ---------- */
 let CAPS_IMG = null;
 function capsuleImg() {
@@ -977,6 +1017,191 @@ const BADGE_SVG = [
   '<path d="M4 8 L16 3 L28 8 L26 20 L16 29 L6 20 Z" fill="#6656dc" stroke="#221c5a" stroke-width="2"/><path d="M9 11 Q16 8 23 11 M8 16 Q16 13 24 16 M10 21 Q16 18 22 21" stroke="#b8b0ff" stroke-width="1.8" fill="none"/>'
 ];
 function badgeSVG(i) { return `<svg viewBox="0 0 32 32" aria-hidden="true">${BADGE_SVG[i]}</svg>`; }
+/* ---------- Personnages : sprites d'exploration 16×24 (style portable 32 bits) ---------- */
+const CHAR_CACHE = {};
+function charImg(look, dir, frame) {
+  const key = JSON.stringify(look) + dir + frame; if (CHAR_CACHE[key]) return CHAR_CACHE[key];
+  const c = mkCanvas(16, 24), x = c.getContext('2d');
+  const d = dir === 3 ? 2 : dir;
+  const sk = look.skin || '#f3c9a0', skD = shade(sk, -.2);
+  const hr = look.hair || '#3a2a20', hrD = shade(hr, -.32), hrL = shade(hr, .28);
+  const sh = look.shirt || '#4a7ad0', pa = look.pants || '#2b2f55', paD = shade(pa, -.3);
+  const so = look.shoes || '#3a3040', soL = shade(so, .35);
+  const hat = look.hat, hatD = hat ? shade(hat, -.35) : null, hatL = hat ? shade(hat, .3) : null;
+  const coat = look.coat, pack = look.pack, dress = look.dress, longH = look.long || look.hairStyle === 'long', spiky = look.spiky;
+  const top = coat || sh, topD = shade(top, -.28), topL = shade(top, .22);
+  const R = (X, Y, w, h, col) => rect(x, X, Y, w, h, col), Q = (X, Y, col) => px(x, X, Y, col);
+  if (d === 0 || d === 1) {
+    const lUp = frame === 1, rUp = frame === 2;
+    // jambes et chaussures
+    if (dress) {
+      R(5, 19, 2, lUp ? 1 : 2, sk); R(9, 19, 2, rUp ? 1 : 2, skD);
+    } else {
+      R(4, 17, 8, 2, pa); R(10, 17, 2, 2, paD);
+      R(4, 19, 3, lUp ? 1 : 2, pa); R(9, 19, 3, rUp ? 1 : 2, paD);
+    }
+    R(4, lUp ? 20 : 21, 3, 2, so); Q(4, lUp ? 20 : 21, soL);
+    R(9, rUp ? 20 : 21, 3, 2, so); Q(9, rUp ? 20 : 21, soL);
+    // torse
+    R(4, 11, 8, 6, top); R(10, 11, 2, 6, topD); R(4, 12, 1, 4, topL);
+    if (dress) { R(3, 15, 10, 4, top); R(10, 15, 3, 4, topD); R(3, 18, 10, 1, topD); R(3, 15, 1, 3, topL); }
+    else if (coat) { R(4, 17, 8, 2, coat); R(10, 17, 2, 2, topD); }
+    else R(4, 16, 8, 1, shade(pa, -.45));
+    // bras
+    const hl = 16 - (frame === 2 ? 1 : 0), hrr = 16 - (frame === 1 ? 1 : 0);
+    R(2, 12, 2, hl - 12, top); Q(2, 12, topL); R(2, hl, 2, 1, sk);
+    R(12, 12, 2, hrr - 12, topD); R(12, hrr, 2, 1, skD);
+    if (d === 0) {
+      if (coat) R(7, 11, 2, 5, sh);
+      else if (look.inner) { R(6, 11, 4, 2, look.inner); R(7, 13, 2, 2, look.inner); }
+      if (look.emblem) { Q(7, 13, '#f2c040'); Q(8, 13, '#f2c040'); Q(6, 14, '#f2c040'); Q(9, 14, '#f2c040'); Q(7, 15, '#f2c040'); }
+      R(7, 10, 2, 1, skD);
+      // tête de face
+      R(5, 1, 6, 1, hr); R(3, 2, 10, 1, hr); R(2, 3, 12, 4, hr);
+      if (longH) { R(2, 7, 2, 7, hr); R(12, 7, 2, 7, hrD); }
+      R(3, 5, 10, 5, sk); R(4, 10, 8, 1, sk); R(12, 6, 1, 4, skD);
+      R(3, 4, 10, 1, hr); Q(3, 5, hr); Q(4, 5, hr); Q(7, 5, hr); Q(11, 5, hr); Q(12, 5, hr);
+      R(2, 5, 1, 4, hr); R(13, 5, 1, 4, hrD); R(5, 2, 3, 1, hrL); R(11, 3, 2, 2, hrD);
+      if (spiky) { Q(4, 1, hr); Q(11, 1, hr); Q(1, 3, hr); Q(14, 3, hrD); Q(8, 1, hrL); }
+      R(5, 7, 1, 2, INK); R(10, 7, 1, 2, INK); Q(5, 6, hrD); Q(10, 6, hrD);
+      Q(4, 9, '#f2a0a0'); Q(11, 9, '#f2a0a0'); Q(7, 9, skD); Q(8, 9, skD);
+      if (hat) { R(4, 1, 8, 1, hat); R(3, 2, 10, 3, hat); R(5, 1, 3, 1, hatL); R(7, 2, 2, 2, '#ffffff'); R(3, 5, 10, 1, hatD); R(2, 5, 1, 3, hr); R(13, 5, 1, 3, hrD); }
+    } else {
+      if (pack) { R(4, 11, 8, 6, pack); R(4, 11, 8, 1, shade(pack, .3)); R(5, 13, 6, 1, shade(pack, -.3)); R(10, 12, 2, 5, shade(pack, -.25)); R(7, 14, 2, 1, '#f2c040'); }
+      // tête de dos
+      R(5, 1, 6, 1, hr); R(3, 2, 10, 1, hr); R(2, 3, 12, 7, hr); R(3, 10, 10, 1, hr);
+      if (longH) { R(3, 11, 10, 3, hr); R(10, 11, 3, 3, hrD); }
+      R(11, 3, 3, 7, hrD); R(5, 2, 3, 1, hrL); R(4, 5, 1, 3, hrL);
+      if (spiky) { Q(4, 1, hr); Q(11, 1, hr); Q(1, 3, hr); Q(14, 3, hrD); }
+      if (hat) { R(4, 1, 8, 1, hat); R(3, 2, 10, 3, hat); R(5, 1, 3, 1, hatL); R(3, 5, 10, 1, hatD); R(6, 5, 4, 1, hat); }
+    }
+  } else {
+    // profil (vers la gauche)
+    if (frame === 0) {
+      if (dress) R(6, 19, 3, 2, sk); else { R(5, 17, 6, 2, pa); R(6, 19, 4, 2, pa); R(9, 19, 1, 2, paD); }
+      R(4, 21, 6, 2, so); Q(4, 21, soL);
+    } else {
+      const f = frame === 1;
+      if (!dress) R(5, 17, 6, 2, pa);
+      R(f ? 4 : 8, 19, 3, 2, dress ? sk : pa); R(f ? 9 : 5, 19, 2, 2, dress ? skD : paD);
+      R(f ? 3 : 8, 21, 4, 2, so); Q(f ? 3 : 8, 21, soL); R(f ? 9 : 4, 21, 3, 2, shade(so, -.2));
+    }
+    R(5, 11, 6, 6, top); R(5, 12, 1, 4, topL); R(10, 11, 1, 6, topD);
+    if (dress) { R(4, 15, 8, 4, top); R(10, 15, 2, 4, topD); } else if (coat) R(5, 17, 6, 2, coat); else R(5, 16, 6, 1, shade(pa, -.45));
+    if (pack) { R(10, 11, 3, 5, pack); R(10, 11, 3, 1, shade(pack, .3)); R(12, 12, 1, 4, shade(pack, -.3)); }
+    const ax = frame === 1 ? 5 : frame === 2 ? 8 : 7;
+    R(ax, 12, 2, 4, topD); R(ax, 16, 2, 1, sk);
+    if (look.emblem) { Q(6, 13, '#f2c040'); Q(6, 14, '#f2c040'); }
+    R(6, 10, 3, 1, skD);
+    // tête de profil
+    R(5, 1, 6, 1, hr); R(4, 2, 9, 1, hr); R(3, 3, 10, 2, hr);
+    R(3, 5, 6, 5, sk); R(4, 10, 5, 1, sk); Q(2, 8, sk); Q(2, 7, skD);
+    R(8, 4, 5, 6, hr); R(9, 10, 3, 1, hr); if (longH) { R(9, 10, 4, 4, hr); R(11, 10, 2, 4, hrD); }
+    R(3, 4, 6, 1, hr); Q(3, 5, hr); Q(6, 5, hr);
+    R(11, 4, 2, 6, hrD); R(5, 2, 3, 1, hrL);
+    R(4, 7, 1, 2, INK); Q(4, 6, hrD); R(8, 7, 1, 2, skD); Q(5, 9, '#f2a0a0');
+    if (spiky) { Q(4, 1, hr); Q(12, 1, hr); Q(13, 2, hrD); Q(2, 3, hr); }
+    if (hat) { R(5, 1, 6, 1, hat); R(4, 2, 9, 3, hat); R(6, 1, 3, 1, hatL); R(1, 5, 7, 1, hatD); R(3, 4, 3, 1, hat); R(5, 3, 2, 1, '#ffffff'); }
+  }
+  outlinePass(c, INK);
+  let out = c;
+  if (dir === 3) { out = mkCanvas(16, 24); const o = out.getContext('2d'); o.translate(16, 0); o.scale(-1, 1); o.drawImage(c, 0, 0); }
+  return (CHAR_CACHE[key] = out);
+}
+
+/* ---------- Dresseurs : grands portraits pour les combats ---------- */
+const TART = {};
+function drawTrainer(c, look, back, s) {
+  CS = s; USED.clear();
+  const x = c.getContext('2d'); x.clearRect(0, 0, 64, 64);
+  const sk = look.skin || '#f3c9a0', hr = look.hair || '#3a2a20', sh = look.shirt || '#4a7ad0', pa = look.pants || '#2b2f55', so = look.shoes || '#3a3040';
+  const coat = look.coat, hat = look.hat, pack = look.pack, dress = look.dress, longH = look.long || look.hairStyle === 'long', spiky = look.spiky;
+  const top = coat || sh;
+  const T = () => { x.save(); x.translate(32, 62); if (back) x.scale(-1, 1); x.scale(s, s); };
+  T();
+  if (longH && !back) RR(x, -12.5, -66, 25, 27, 9, hr);
+  // jambes
+  if (dress) { RR(x, -7, -16, 4, 15, 2, sk); RR(x, 3, -16, 4, 15, 2, shade(sk, -.1)); }
+  else { RR(x, -9, -22, 8, 21, 2, pa); RR(x, 1, -22, 8, 21, 2, shade(pa, -.12)); }
+  E(x, -5, -1.5, 5.6, 2.8, so); E(x, 5, -1.5, 5.6, 2.8, so);
+  // corps
+  if (coat) RR(x, -13, -46, 26, 36, 5, coat);
+  else RR(x, -11, -46, 22, 26, 6, sh);
+  if (dress) PL(x, [-10, -28, 10, -28, 16, -12, -16, -12], sh);
+  if (!back) {
+    if (coat) RR(x, -4, -46, 8, 24, 2, sh);
+    else if (look.inner) PL(x, [-6, -46, 6, -46, 0, -33], look.inner);
+    if (!dress && !coat) RR(x, -11, -23, 22, 3, 1, shade(pa, -.45));
+  } else if (pack) { RR(x, -9, -45, 18, 20, 5, pack); RR(x, -9, -45, 18, 7, 4, shade(pack, .18)); E(x, 0, -38, 2, 1.4, '#f2c040', 0, false); }
+  LN(x, [-11, -43, -15, -25], 5.6, top); LN(x, [11, -43, 15, -25], 5.6, shade(top, -.1));
+  E(x, -15.5, -23, 3.3, 3.3, sk); E(x, 15.5, -23, 3.3, 3.3, sk);
+  RR(x, -3, -50, 6, 6, 2, shade(sk, -.12));
+  // tête
+  E(x, 0, -60, 13, 12, hr);
+  if (back) {
+    if (longH) RR(x, -12, -64, 24, 30, 9, hr);
+    E(x, 0, -58, 12, 12, hr);
+    if (spiky) PL(x, [-12, -64, -17, -68, -10, -69, -8, -75, -3, -71, 0, -78, 4, -71, 8, -75, 10, -69, 17, -68, 12, -62], hr);
+    if (hat) { x.beginPath(); x.ellipse(0, -62, 13.5, 10, 0, Math.PI, 0); x.closePath(); fs(x, hat); E(x, 0, -61, 13.5, 2.4, shade(hat, -.35)); }
+  } else {
+    E(x, 0, -57, 11, 11.5, sk);
+    if (spiky) PL(x, [-12, -64, -17, -68, -10, -69, -8, -75, -3, -71, 0, -78, 4, -71, 8, -75, 10, -69, 17, -68, 12, -62], hr);
+    PL(x, [-12, -58, -10, -66, -3, -70, 4, -70, 10, -66, 12, -58, 9, -60, 7, -56, 4, -61, 1, -57, -2, -61, -5, -57, -8, -60, -10, -55], hr);
+    if (hat) { x.beginPath(); x.ellipse(0, -62, 12.5, 9.5, 0, Math.PI, 0); x.closePath(); fs(x, hat); E(x, 0, -61.5, 13, 2.2, shade(hat, -.35)); RR(x, -3, -70, 6, 5, 2, '#ffffff'); }
+  }
+  x.restore();
+  const bb = spriteBBox(c);
+  if (bb) {
+    x.save(); x.globalCompositeOperation = 'source-atop';
+    const g = x.createLinearGradient(0, bb.y0, 0, bb.y1 + 1); g.addColorStop(0, 'rgba(255,255,255,.18)'); g.addColorStop(.3, 'rgba(255,255,255,0)'); g.addColorStop(.7, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(24,10,56,.32)');
+    x.fillStyle = g; x.fillRect(0, 0, 64, 64);
+    const g2 = x.createLinearGradient(bb.x0, 0, bb.x1 + 1, 0); g2.addColorStop(0, 'rgba(255,255,255,.1)'); g2.addColorStop(.55, 'rgba(0,0,0,0)'); g2.addColorStop(1, 'rgba(24,10,56,.2)');
+    x.fillStyle = g2; x.fillRect(0, 0, 64, 64); x.restore();
+  }
+  if (!back) {
+    T();
+    const eyeY = hat ? -55 : -56;
+    E(x, -4.5, eyeY, 1.9, 2.9, INK, 0, false); E(x, 4.5, eyeY, 1.9, 2.9, INK, 0, false);
+    E(x, -5, eyeY - 1.2, .8, .9, '#ffffff', 0, false); E(x, 4, eyeY - 1.2, .8, .9, '#ffffff', 0, false);
+    x.strokeStyle = shade(hr, -.3); x.lineWidth = 1.3 / s; x.beginPath(); x.moveTo(-7, eyeY - 4.5); x.lineTo(-3, eyeY - 5); x.moveTo(3, eyeY - 5); x.lineTo(7, eyeY - 4.5); x.stroke();
+    E(x, -7.5, -50.5, 2.1, 1.2, '#f29a9a', 0, false); E(x, 7.5, -50.5, 2.1, 1.2, '#f29a9a', 0, false);
+    x.beginPath(); x.moveTo(-2.2, -49.5); x.quadraticCurveTo(0, -47.6, 2.2, -49.5); x.strokeStyle = INK; x.lineWidth = 1.5 / s; x.stroke();
+    if (look.emblem) { E(x, 0, -35, 3.6, 3.6, '#f2c040', 0, false); E(x, 1.6, -36, 3, 3, top, 0, false); }
+    x.restore();
+  }
+  const pal = new Set(['#ffffff', INK, '#f29a9a', '#f2c040']);
+  for (const col of USED) { pal.add(col); pal.add(shade(col, -.2)); pal.add(shade(col, -.38)); pal.add(shade(col, .2)); }
+  outlinePass(c, INK, [...pal]);
+}
+function trainerArt(look, back) {
+  const key = JSON.stringify(look) + (back ? 'b' : 'f'); if (TART[key]) return TART[key];
+  const c = mkCanvas(64, 64); let s = .8;
+  for (let i = 0; i < 6; i++) { drawTrainer(c, look, back, s); const bb = spriteBBox(c); if (!bb || (bb.y0 >= 1 && bb.x0 >= 1 && bb.x1 <= 62)) break; s *= .94; }
+  return (TART[key] = c);
+}
+const PLAYER_LOOK = { skin: '#f3c9a0', hair: '#3a2a20', shirt: '#2a9a90', inner: '#f4f0e6', pants: '#2b2f55', shoes: '#e8483f', hat: '#f2b134', pack: '#3a4a8a' };
+const LOOKS = {
+  nurse: { skin: '#f6d2b4', hair: '#e8889a', shirt: '#fbf6f2', pants: '#f2a0b0', shoes: '#ffffff', long: 1, dress: 1 },
+  clerk: { skin: '#e8b890', hair: '#5a3a2a', shirt: '#4a78ae', inner: '#ffffff', pants: '#2a3a5a', shoes: '#2a2a3a' },
+  guard: { skin: '#e0b090', hair: '#2a2a2a', shirt: '#3a4a7a', inner: '#c8d0f0', pants: '#2a2a3a', hat: '#3a4a7a' },
+  prof: { skin: '#f0c8a0', hair: '#c8c8d8', shirt: '#4a8a6a', pants: '#3a3a4a', coat: '#f4f4f8', long: 1, shoes: '#6a4a3a' },
+  mom: { skin: '#f3c9a0', hair: '#8a4a2a', shirt: '#e8689a', pants: '#4a3a5a', long: 1, dress: 1, shoes: '#f2f0e8' },
+  rival: { skin: '#f0c8a0', hair: '#c8582a', shirt: '#5a4ab0', inner: '#2a2a3a', pants: '#22223a', shoes: '#f2f2f2', spiky: 1 },
+  grunt: { skin: '#e8c0a0', hair: '#2a2438', shirt: '#2a2438', pants: '#1c1828', hat: '#7a4ac0', shoes: '#7a4ac0', emblem: 1 },
+  boss: { skin: '#ead2c2', hair: '#d8d8e8', shirt: '#1a1626', pants: '#1a1626', coat: '#3a2a58', shoes: '#1a1626', emblem: 1 }
+};
+function randLook(R) {
+  const r = R || Math.random;
+  const skins = ['#f3c9a0', '#e8b890', '#d09a70', '#a8724c', '#f6dcc2', '#8a5a3a'], hairs = ['#3a2a20', '#8a4a2a', '#f2d23c', '#2a2a3a', '#c83a2a', '#e8e8f0', '#5a3a8a', '#4a6ad0'];
+  const shirts = ['#e65a58', '#4a82d8', '#4fae45', '#f2b134', '#a055bd', '#2a9a90', '#ef7d3c', '#e8689a', '#5a6a8a'], pants = ['#2b2f55', '#4a3a2a', '#3a4a3a', '#5a2a3a', '#2a2a3a', '#6a5a4a'];
+  const shoes = ['#3a3040', '#e8483f', '#f2f2f2', '#6a4a3a', '#4a82d8'];
+  const lk = { skin: skins[r() * skins.length | 0], hair: hairs[r() * hairs.length | 0], shirt: shirts[r() * shirts.length | 0], pants: pants[r() * pants.length | 0], shoes: shoes[r() * shoes.length | 0] };
+  if (r() < .45) { lk.long = 1; if (r() < .5) lk.dress = 1; }
+  if (r() < .45) lk.inner = ['#ffffff', '#f4e8c8', '#2a2a3a'][r() * 3 | 0];
+  if (r() < .3) lk.hat = shirts[r() * shirts.length | 0];
+  if (r() < .2) lk.pack = ['#c8843a', '#3a4a8a', '#6a8a3a'][r() * 3 | 0];
+  return lk;
+}
 /* =====================================================================
    SON — petit synthétiseur 8 bits (musiques originales)
    ===================================================================== */
@@ -1350,6 +1575,7 @@ function genCave(tid) {
     const f = take(g => open(g) >= 8 && g.d > 6, false);
     if (f) { const RL = mulberry32(hashStr(id + 't')); const pool = C.enc.map(e => e[0]); const team = [[pool[Math.floor(RL() * pool.length)], C.trainer[0] + 1], [pool[Math.floor(RL() * pool.length)], C.trainer[1]]]; m.npcs.push(mkNpc({ x: f.x, y: f.y, dir: Math.floor(RL() * 4), kind: 'trainer', cls: 'Spéléologue', name: TNAMES[Math.floor(RL() * TNAMES.length)], team, range: 3, flag: id + ':tr0', before: "Ces grottes cachent des créatures que personne n'a jamais vues ! Mais d'abord, un combat !", after: "Explore bien chaque recoin, il y a des trésors ici.", look: { skin: '#e0b090', hair: '#5a3a2a', shirt: '#c8843a', pants: '#4a3a2a', hat: '#f2d23c' } })); }
   }
+  if (C.legend) { const f = take(() => true, true); if (f) m.npcs.push(mkNpc({ x: f.x, y: f.y, dir: 0, kind: 'legend', sp: C.legend[0], lv: C.legend[1], flag: 'legend:' + C.legend[0] })); }
   C.items.forEach((it, k) => { const f = take(g => g.d > maxD * .45, false) || take(() => true, false); if (f) m.items.push({ x: f.x, y: f.y, item: it, flag: id + ':it' + k }); });
   return m;
 }
@@ -1594,7 +1820,7 @@ function camera() {
 }
 function drawEntity(look, dir, frame, sx, sy, onGrass) {
   ctx.fillStyle = 'rgba(20,10,40,.22)'; ctx.fillRect(sx + 4, sy + 13, 8, 2); ctx.fillRect(sx + 5, sy + 15, 6, 1);
-  ctx.drawImage(charImg(look, dir, frame), sx, sy - 4);
+  ctx.drawImage(charImg(look, dir, frame), sx, sy - 7);
   if (onGrass) ctx.drawImage(tileImg(MAP, ',', 0, 0, 0), 0, 10, 16, 6, sx, sy + 10, 16, 6);
 }
 function renderWorld(now) {
@@ -1617,7 +1843,7 @@ function renderWorld(now) {
       const frame = n.moving ? (n.t < .5 ? (n.stepN % 2 ? 1 : 2) : 0) : 0;
       const onG = !n.moving && getT(MAP, n.x, n.y) === ',';
       drawEntity(n.look, n.dir, frame, sx, sy, onG);
-      if (n.alert) { const bx = sx + 3, by = sy - 17; ctx.fillStyle = INK; ctx.fillRect(bx - 1, by - 1, 12, 13); ctx.fillStyle = '#ffffff'; ctx.fillRect(bx, by, 10, 11); ctx.fillStyle = '#e8483f'; ctx.fillRect(bx + 4, by + 2, 2, 5); ctx.fillRect(bx + 4, by + 8, 2, 2); }
+      if (n.alert) { const bx = sx + 3, by = sy - 20; ctx.fillStyle = INK; ctx.fillRect(bx - 1, by - 1, 12, 13); ctx.fillStyle = '#ffffff'; ctx.fillRect(bx, by, 10, 11); ctx.fillStyle = '#e8483f'; ctx.fillRect(bx + 4, by + 2, 2, 5); ctx.fillRect(bx + 4, by + 8, 2, 2); }
     } else {
       const sx = Math.round(P.px * 16 - cam.x), sy = Math.round(P.py * 16 - cam.y);
       const frame = P.moving ? (P.t < .5 ? (P.step % 2 ? 1 : 2) : 0) : 0;
@@ -1635,7 +1861,7 @@ function renderWorld(now) {
 /* =====================================================================
    INTERFACE — commandes, dialogues, menus, écrans
    ===================================================================== */
-const SET = { music: true, speed: 1 };
+const SET = { music: true, speed: 1, pad: 'joy' };
 const Input = {
   stack: [], held: new Set(), order: [],
   push(h) { this.stack.push(h); }, pop(h) { const i = this.stack.lastIndexOf(h); if (i >= 0) this.stack.splice(i, 1); },
@@ -1658,7 +1884,42 @@ window.addEventListener('keydown', e => {
 window.addEventListener('keyup', e => { const k = KEYMAP[(e.key || '').toLowerCase()]; if (k) Input.up(k); });
 window.addEventListener('blur', () => Input.clear());
 
+function bindJoystick() {
+  const j = $('.joy'), knob = j.querySelector('.joy-knob');
+  let pid = null, cur = null, rep = null;
+  const stopRep = () => { clearTimeout(rep); rep = null; };
+  const setDir = d => {
+    if (d === cur) return;
+    if (cur) Input.up(cur);
+    cur = d; j.dataset.d = d || ''; stopRep();
+    if (!d) return;
+    Input.down(d); Input.press(d);
+    const loop = () => { if (cur !== d) return; if (Input.stack.length) Input.press(d); rep = setTimeout(loop, 150); };
+    rep = setTimeout(loop, 380);
+  };
+  const move = e => {
+    const r = j.getBoundingClientRect(), sc = r.width / j.offsetWidth || 1;
+    let dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+    const dist = Math.hypot(dx, dy), max = r.width * .3;
+    if (dist > max) { dx = dx / dist * max; dy = dy / dist * max; }
+    knob.style.transform = `translate(${dx / sc}px, ${dy / sc}px)`;
+    let d = null;
+    if (dist >= r.width * .13) {
+      const ax = Math.abs(dx), ay = Math.abs(dy);
+      // légère préférence pour la direction en cours, pour éviter les sauts en diagonale
+      if (cur === 'left' || cur === 'right') d = ax * 1.25 >= ay ? (dx < 0 ? 'left' : 'right') : (dy < 0 ? 'up' : 'down');
+      else if (cur === 'up' || cur === 'down') d = ay * 1.25 >= ax ? (dy < 0 ? 'up' : 'down') : (dx < 0 ? 'left' : 'right');
+      else d = ax > ay ? (dx < 0 ? 'left' : 'right') : (dy < 0 ? 'up' : 'down');
+    }
+    setDir(d);
+  };
+  j.addEventListener('pointerdown', e => { e.preventDefault(); SND.unlock(); pid = e.pointerId; try { j.setPointerCapture(pid); } catch (err) { } j.classList.add('on'); move(e); });
+  j.addEventListener('pointermove', e => { if (e.pointerId === pid) move(e); });
+  const end = e => { if (pid == null || (e && e.pointerId != null && e.pointerId !== pid)) return; pid = null; j.classList.remove('on'); knob.style.transform = ''; setDir(null); };
+  j.addEventListener('pointerup', end); j.addEventListener('pointercancel', end); j.addEventListener('lostpointercapture', end);
+}
 function bindControls() {
+  bindJoystick();
   const dp = $('.dpad');
   let cur = null;
   const dirAt = e => { const r = dp.getBoundingClientRect(), x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2; if (Math.hypot(x, y) < r.width * .1) return cur; return Math.abs(x) > Math.abs(y) ? (x < 0 ? 'left' : 'right') : (y < 0 ? 'up' : 'down'); };
@@ -1872,16 +2133,22 @@ async function optionsMenu() {
   let i = 0;
   while (true) {
     const fsOk = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
-    const opts = [`Musique : ${SET.music ? 'oui' : 'non'}`, `Texte : ${['lent', 'normal', 'rapide'][SET.speed]}`, 'Commandes'];
-    if (fsOk) opts.push(document.fullscreenElement ? 'Quitter le plein écran' : 'Plein écran');
-    opts.push('Retour');
-    const c0 = await choose(opts, { cls: 'menu-main', start: i });
-    const c = c0 < 0 ? 99 : c0 === 2 ? 2 : (fsOk && c0 === 3) ? 3 : c0 === 0 || c0 === 1 ? c0 : 99;
-    if (c === 2) { i = 2; await say("Croix ou flèches : se déplacer. A ou Espace : parler, valider. B ou Échap : retour. Garde B appuyé pour courir. MENU ou M : ouvrir le menu."); hideDlg(); continue; }
-    if (c === 3) { i = 3; toggleFullscreen(); continue; }
-    if (c === 0) { SET.music = !SET.music; SND.setMusic(SET.music); i = 0; }
-    else if (c === 1) { SET.speed = (SET.speed + 1) % 3; i = 1; }
-    else if (c === 99) break;
+    const items = [
+      { k: 'music', label: `Musique : ${SET.music ? 'oui' : 'non'}` },
+      { k: 'speed', label: `Texte : ${['lent', 'normal', 'rapide'][SET.speed]}` },
+      { k: 'pad', label: `Déplacement : ${SET.pad === 'dpad' ? 'croix' : 'joystick'}` },
+      { k: 'help', label: 'Commandes' }
+    ];
+    if (fsOk) items.push({ k: 'fs', label: document.fullscreenElement ? 'Quitter le plein écran' : 'Plein écran' });
+    items.push({ k: 'back', label: 'Retour' });
+    const c = await choose(items.map(x => x.label), { cls: 'menu-main', start: i });
+    const k = c < 0 ? 'back' : items[c].k; i = Math.max(0, c);
+    if (k === 'music') { SET.music = !SET.music; SND.setMusic(SET.music); }
+    else if (k === 'speed') SET.speed = (SET.speed + 1) % 3;
+    else if (k === 'pad') { SET.pad = SET.pad === 'dpad' ? 'joy' : 'dpad'; applyPad(); }
+    else if (k === 'help') { await say(`${SET.pad === 'dpad' ? 'Croix' : 'Joystick'} ou flèches : se déplacer. A ou Espace : parler, valider. B ou Échap : retour. Garde B appuyé pour courir. MENU ou M : ouvrir le menu.`); hideDlg(); }
+    else if (k === 'fs') toggleFullscreen();
+    else break;
   }
   saveSettings();
 }
@@ -2094,11 +2361,12 @@ async function wildEncounter() {
   if (res === 'lose') await blackout();
 }
 async function legendEncounter(n) {
+  const sp = SP[n.sp], lv = n.lv || 45;
   await say("Une aura majestueuse émane de cette créature…");
   const c = await ask("Veux-tu t'en approcher ?", ['Oui', 'Non']); if (c !== 0) { hideDlg(); return; }
-  await say("Aurélion pousse un cri qui résonne dans toute la montagne !"); hideDlg();
-  const res = await battle({ wild: makeMon('aurelion', 45), legend: true });
-  if (res === 'caught' || res === 'win') { G.flags[n.flag] = 1; n.gone = true; if (res === 'win') await say("Aurélion s'envole vers les nuages et disparaît…"); save(true); }
+  await say(`${sp.name} pousse un cri qui résonne tout autour !`); hideDlg();
+  const res = await battle({ wild: makeMon(n.sp, lv), legend: true });
+  if (res === 'caught' || res === 'win') { G.flags[n.flag] = 1; n.gone = true; if (res === 'win') await say(`${sp.name} s'enfuit dans un éclat de lumière…`); save(true); }
   else if (res === 'lose') await blackout();
 }
 async function blackout() {
@@ -2291,7 +2559,7 @@ function drawFX() {
   ctx.globalAlpha = 1;
 }
 function drawMonS(o, bx, by) { if (!o.vis || !o.img || o.scale <= .02) return; const s = o.scale, w = Math.round(64 * s), dx = Math.round(bx - 32 * s + o.x), dy = Math.round(by - 61 * s + o.y); ctx.globalAlpha = o.alpha; ctx.drawImage(o.white ? o.wimg : o.img, dx, dy, w, w); ctx.globalAlpha = 1; }
-function drawTr(o, bx, by) { if (!o.vis || !o.img) return; ctx.drawImage(o.img, 0, 0, 16, 16, Math.round(bx - 24 + o.x), Math.round(by - 46 + o.y), 48, 48); }
+function drawTr(o, bx, by) { if (!o.vis || !o.img) return; ctx.drawImage(o.img, Math.round(bx - 32 + o.x), Math.round(by - 61 + o.y)); }
 function renderBattle(now) {
   const B = BATTLE; if (!B) return; const S = B.S;
   if (B.bg.width !== LW || B.bg.height !== LH) B.bg = paintBattleBG();
@@ -2549,9 +2817,9 @@ async function battle(cfg) {
   await flash(3); await fade(1, 220);
   BATTLE = B; B.bg = paintBattleBG(); FX.length = 0; hudInit(); MODE = 'battle';
   const S = B.S;
-  S.meTr.img = charImg(PLAYER_LOOK, 1, 0); S.meTr.vis = true; S.meTr.x = 200;
+  S.meTr.img = trainerArt(PLAYER_LOOK, true); S.meTr.vis = true; S.meTr.x = 200;
   if (B.wild) { markSeen(cfg.wild.sp); setSprites(B); S.foe.vis = true; S.foe.x = -200; }
-  else { S.foeTr.img = charImg(B.trainer.look, 0, 0); S.foeTr.vis = true; S.foeTr.x = -200; }
+  else { S.foeTr.img = trainerArt(B.trainer.look, false); S.foeTr.vis = true; S.foeTr.x = -200; }
   await fade(0, 220);
   await Promise.all([tween(B.wild ? S.foe : S.foeTr, 'x', 0, 700), tween(S.meTr, 'x', 0, 700)]);
   if (B.wild) { hudSet('foe', cfg.wild); await say(cfg.legend ? `${monName(cfg.wild)} apparaît !` : `Un ${monName(cfg.wild)} sauvage apparaît !`, { auto: 500 }); }
@@ -2588,7 +2856,8 @@ function serialize() { G.uid = UID; if (MAP && MODE === 'world') { G.map = MAP.i
 function save() { if (!G) return false; try { localStorage.setItem(SAVE_KEY, serialize()); return true; } catch (e) { return false; } }
 function loadSaveRaw() { try { const s = localStorage.getItem(SAVE_KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
 function saveSettings() { try { localStorage.setItem(SET_KEY, JSON.stringify(SET)); } catch (e) { } }
-function loadSettings() { try { const s = JSON.parse(localStorage.getItem(SET_KEY) || 'null'); if (s) Object.assign(SET, s); } catch (e) { } SND.setMusic(SET.music); }
+function loadSettings() { try { const s = JSON.parse(localStorage.getItem(SET_KEY) || 'null'); if (s) Object.assign(SET, s); } catch (e) { } SND.setMusic(SET.music); applyPad(); }
+function applyPad() { const a = $('#app'); if (a) a.dataset.pad = SET.pad === 'dpad' ? 'dpad' : 'joy'; }
 function resetMaps() { for (const k in MAPS) delete MAPS[k]; }
 function startFromSave(s) {
   resetMaps();
@@ -2627,8 +2896,8 @@ function renderScene(now) {
   if (!SCENE) return;
   const showMon = !!SCENE.mon, showRival = !!SCENE.rival;
   const px = showMon || showRival ? cx - 72 : cx - 32;
-  ctx.drawImage(charImg(LOOKS.prof, 0, 0), 0, 0, 16, 16, px, cy - 12, 64, 64);
-  if (showRival) ctx.drawImage(charImg(LOOKS.rival, 0, 0), 0, 0, 16, 16, cx + 8, cy - 12, 64, 64);
+  ctx.drawImage(trainerArt(LOOKS.prof, false), px, cy - 12);
+  if (showRival) ctx.drawImage(trainerArt(LOOKS.rival, false), cx + 8, cy - 12);
   else if (showMon) { const bob = Math.floor(now / 400) % 2; ctx.drawImage(getSprite(SCENE.mon), 0, 0, 64, 64, cx + 8, cy - 4 - bob, 64, 64); }
 }
 
@@ -2652,8 +2921,8 @@ async function titleScreen() {
       if (sv) { mbox.hidden = true; const c = await ask('Une partie existe déjà. Commencer une nouvelle aventure effacera l’ancienne.', ['Garder ma partie', 'Recommencer']); hideDlg(); mbox.hidden = false; if (c !== 1) continue; }
       await fade(1, 300); t.remove(); return newGameIntro();
     }
-    if (o.k === 'o') { mbox.hidden = true; await optionsMenu(); hideDlg(); mbox.hidden = false; }
     if (o.k === 'q') { await fade(1, 250); location.href = 'index.html#/coin/jeux'; return; }
+    if (o.k === 'o') { mbox.hidden = true; await optionsMenu(); hideDlg(); mbox.hidden = false; }
   }
 }
 function askName(label, ph) {
